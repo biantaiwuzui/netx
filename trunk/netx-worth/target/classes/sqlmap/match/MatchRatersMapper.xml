@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchRatersMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchRaters">
+		<id column="id" property="id" />
+		<result column="raters_id" property="ratersId" />
+		<result column="raters_name" property="ratersName" />
+		<result column="progress_id" property="progressId" />
+		<result column="participant_id" property="participantId" />
+		<result column="score" property="score" />
+	</resultMap>
+
+	<select id="listScoreByGroupId" resultType="com.netx.worth.vo.MatchParticipantScoreVo" parameterType="Map">
+		select s.id id, s.score score, p.user_name participantName, p.head_images_url headImage
+		from match_participant p
+		RIGHT JOIN (SELECT r.participant_id as id, avg(r.score) as score FROM match_raters r WHERE r.participant_id IN (SELECT id FROM match_participant WHERE group_id = #{groupId})
+		GROUP BY r.participant_id) as s ON s.id = p.id ORDER BY s.score DESC;
+	</select>
+
+</mapper>

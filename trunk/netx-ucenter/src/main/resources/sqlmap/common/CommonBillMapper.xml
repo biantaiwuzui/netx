@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonBillMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonBill">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="wallet_id" property="walletId" />
+		<result column="pay_channel" property="payChannel" />
+		<result column="type" property="type" />
+		<result column="trade_type" property="tradeType" />
+		<result column="amount" property="amount" />
+		<result column="total_amount" property="totalAmount" />
+		<result column="description" property="description" />
+		<result column="third_bill_id" property="thirdBillId" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+		<result column="bak1" property="bak1" />
+		<result column="bak2" property="bak2" />
+		<result column="bak3" property="bak3" />
+		<result column="bak4" property="bak4" />
+		<result column="bak5" property="bak5" />
+		<result column="to_account" property="toAccount" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_id, wallet_id, trade_type, amount, description, third_bill_id, create_time, update_time,
+		create_user_id, update_user_id, deleted, bak1, bak2, bak3, bak4, bak5, pay_channel, type,to_account,total_amount
+	</sql>
+
+	<select id="statisticBill" resultType="java.math.BigDecimal">
+		select sum(amount) from wz_common_bill
+		where
+		deleted= '0'
+		<if test="type != null and type != ''">
+			and trade_type = #{type}
+		</if>
+		<if test="userId != null and userId != ''">
+			and user_id = #{userId}
+		</if>
+		<if test="startTime != null and startTime != ''">
+			and create_time &gt;= #{startTime}
+		</if>
+		<if test="endTime != null and endTime != ''">
+			and create_time &lt;= #{endTime}
+		</if>
+		<if test="payChannel != null and payChannel != ''">
+			and pay_channel = #{payChannel}
+		</if>
+		<if test="currencyId != null and currencyId != ''">
+			and bak2 = #{currencyId}
+		</if>
+		<if test="currencyId != null and currencyId != ''">
+			and type = #{type}
+		</if>
+	</select>
+
+	<select id="countThisDayOutcome" resultType="java.math.BigDecimal">
+		SELECT
+		CASE WHEN count IS NULL THEN 0 ELSE count  END AS moneyCount
+		FROM (SELECT SUM(amount) as count
+		FROM common_bill
+		WHERE (user_id=#{userId}
+ 		AND trade_type =#{type}
+ 		AND pay_channel in (0,1)
+ 		AND  <![CDATA[create_time>=date(now()) AND create_time < DATE_ADD(date(now()),INTERVAL 1 DAY)]]>)) as K
+	</select>
+</mapper>

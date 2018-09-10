@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchRequirementDataMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchRequirementData">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="zone_id" property="zoneId" />
+		<result column="group_id" property="groupId" />
+		<result column="requirement_id" property="requirementId" />
+		<result column="user_id" property="userId" />
+		<result column="requirement_title" property="requirementTitle" />
+		<result column="introduction" property="introduction" />
+		<result column="images_url" property="imagesUrl" />
+		<result column="is_child_or_team" property="isChildOrTeam" />
+	</resultMap>
+
+</mapper>

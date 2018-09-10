@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonExamineFinanceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonExamineFinance">
+		<id column="id" property="id" />
+		<result column="interest" property="interest" />
+		<result column="check_difference" property="checkDifference" />
+		<result column="adjust_account_reason" property="adjustAccountReason" />
+		<result column="extract_money" property="extractMoney" />
+		<result column="extract_money_reason" property="extractMoneyReason" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+		<result column="status" property="status" />
+		<result column="reason" property="reason" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, interest, check_difference, adjust_account_reason, extract_money, extract_money_reason, create_time
+		update_time, create_user_id, update_user_id, deleted,status,reason
+	</sql>
+</mapper>

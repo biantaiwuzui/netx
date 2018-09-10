@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/netx-job/netx-admin/netx-admin.iml" filepath="$PROJECT_DIR$/netx-job/netx-admin/netx-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-api/netx-api.iml" filepath="$PROJECT_DIR$/netx-api/netx-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-boss/netx-boss.iml" filepath="$PROJECT_DIR$/netx-boss/netx-boss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-common/netx-common.iml" filepath="$PROJECT_DIR$/netx-common/netx-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-job/netx-core/netx-core.iml" filepath="$PROJECT_DIR$/netx-job/netx-core/netx-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-credit/netx-credit.iml" filepath="$PROJECT_DIR$/netx-credit/netx-credit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-fuse/netx-fuse.iml" filepath="$PROJECT_DIR$/netx-fuse/netx-fuse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-job/netx-job.iml" filepath="$PROJECT_DIR$/netx-job/netx-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-parent/netx-parent.iml" filepath="$PROJECT_DIR$/netx-parent/netx-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-job/netx-schedule/netx-schedule.iml" filepath="$PROJECT_DIR$/netx-job/netx-schedule/netx-schedule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-searchengine/netx-searchengine.iml" filepath="$PROJECT_DIR$/netx-searchengine/netx-searchengine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-shopping-mall/netx-shopping-mall.iml" filepath="$PROJECT_DIR$/netx-shopping-mall/netx-shopping-mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-ucenter/netx-ucenter.iml" filepath="$PROJECT_DIR$/netx-ucenter/netx-ucenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-utils/netx-utils.iml" filepath="$PROJECT_DIR$/netx-utils/netx-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netx-worth/netx-worth.iml" filepath="$PROJECT_DIR$/netx-worth/netx-worth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uni-package.iml" filepath="$PROJECT_DIR$/uni-package.iml" />
+    </modules>
+  </component>
+</project>

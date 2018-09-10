@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.ordercenter.MerchantOrderInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.ordercenter.MerchantOrderInfo">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="merchant_id" property="merchantId" />
+		<result column="order_no" property="orderNo" />
+		<result column="order_type" property="orderType" />
+		<result column="order_type_business_id" property="orderTypeBusinessId" />
+		<result column="order_total_fee" property="orderTotalFee" />
+		<result column="product_total_fee" property="productTotalFee" />
+		<result column="order_time" property="orderTime" />
+		<result column="finish_time" property="finishTime" />
+		<result column="verify_time" property="verifyTime" />
+		<result column="order_status" property="orderStatus" />
+		<result column="pay_code" property="payCode" />
+		<result column="pay_submit_time" property="paySubmitTime" />
+		<result column="pay_receive_time" property="payReceiveTime" />
+		<result column="pay_status" property="payStatus" />
+		<result column="pay_out_no" property="payOutNo" />
+		<result column="shipping_fee" property="shippingFee" />
+		<result column="shipping_code" property="shippingCode" />
+		<result column="shipping_logistics_no" property="shippingLogisticsNo" />
+		<result column="shipping_time" property="shippingTime" />
+		<result column="shipping_status" property="shippingStatus" />
+		<result column="shipping_logistics_details" property="shippingLogisticsDetails" />
+		<result column="delivery_way" property="deliveryWay" />
+		<result column="remark" property="remark" />
+		<result column="consignee" property="consignee" />
+		<result column="full_address" property="fullAddress" />
+		<result column="zip_code" property="zipCode" />
+		<result column="mobile" property="mobile" />
+		<result column="cancel_reason" property="cancelReason" />
+		<result column="cancel_time" property="cancelTime" />
+		<result column="is_comment" property="isComment" />
+		<result column="remind_time" property="remindTime" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<resultMap id="getStatData" type="com.netx.common.user.model.StatData">
+        <result column="user_id" property="id"/>
+		<result column="num" property="num"/>
+	</resultMap>
+
+	<select id="queryShoppingStat" resultMap="getStatData">
+		SELECT user_id,sum(order_total_fee+shipping_fee) as num FROM merchant_order_info WHERE order_status='OS_FINISH' and deleted=0 GROUP BY user_id ORDER BY num DESC
+	</select>
+
+</mapper>

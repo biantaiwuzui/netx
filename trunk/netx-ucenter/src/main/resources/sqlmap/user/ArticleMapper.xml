@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.user.ArticleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.user.Article">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="pic" property="pic" />
+		<result column="atta" property="atta" />
+		<result column="content" property="content" />
+		<result column="length" property="length" />
+		<result column="who" property="who" />
+		<result column="receiver" property="receiver" />
+		<result column="is_anonymity" property="isAnonymity" />
+		<result column="is_show_location" property="isShowLocation" />
+		<result column="is_illegal" property="isIllegal" />
+		<result column="advertorial_type" property="advertorialType" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="top" property="top" />
+		<result column="location" property="location" />
+		<result column="top_expired_at" property="topExpiredAt" />
+		<result column="amount" property="amount" />
+		<result column="amount_type" property="amountType" />
+		<result column="status_code" property="statusCode" />
+		<result column="reason" property="reason" />
+		<result column="is_lock" property="isLock" />
+		<result column="hits" property="hits" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<update id="updateArticleContent" parameterType="com.netx.common.user.dto.article.EditArticleRequestDto">
+		update article
+		<set>
+			title = #{title},
+			content = #{content},
+			pic = #{pic},
+			`length` = #{length}
+		</set>
+		where id = #{id}
+	</update>
+</mapper>

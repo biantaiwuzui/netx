@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.credit.mapper.CreditMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.netx.credit.model.Credit">
+        <id column="id" property="id" />
+        <result column="picture_url" property="pictureUrl"/>
+        <result column="name" property="name" />
+        <result column="user_id" property="userId" />
+        <result column="merchant_id" property="merchantId" />
+        <result column="scope" property="scope" />
+        <result column="presale_upper_limit" property="presaleUpperLimit" />
+        <result column="description" property="description" />
+        <result column="issue_number" property="issueNumber" />
+        <result column="dividend_setting" property="dividendSetting" />
+        <result column="cashier_id" property="cashierId" />
+        <result column="ensure_deal" property="ensureDeal"/>
+        <result column="inner_purchase_date" property="innerPurchaseDate"/>
+        <result column="subscription_discount" property="subscriptionDiscount"/>
+        <result column="credit_price" property="creditPrice"/>
+        <result column="credit_status" property="creditStatus"/>
+        <result column="deleted" property="deleted"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+</mapper>

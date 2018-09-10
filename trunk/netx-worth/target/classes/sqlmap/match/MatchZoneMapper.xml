@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchZoneMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchZone">
+		<id column="id" property="id" />
+		<result column="zone_name" property="zoneName" />
+		<result column="zone_adress" property="zoneAdress" />
+		<result column="zone_site" property="zoneSite" />
+		<result column="sort" property="sort" />
+		<result column="match_id" property="matchId" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+	</resultMap>
+
+</mapper>

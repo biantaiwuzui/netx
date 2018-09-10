@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchAudienceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchAudience">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="match_ticket_id" property="matchTicketId" />
+		<result column="venue_id" property="venueId" />
+		<result column="user_id" property="userId" />
+		<result column="is_pay" property="isPay" />
+		<result column="is_attend" property="isAttend" />
+	</resultMap>
+
+	<select id="listAudienceByMatchId" resultType="com.netx.common.user.model.UserMacthInfo" parameterType="Map">
+		SELECT
+		b.*, a.url
+		FROM
+		user_photo a
+		INNER JOIN (
+		SELECT
+		id,
+		user_number userNumber,
+		nickname,
+		sex,
+		(
+		SELECT
+		DATE_FORMAT(
+		FROM_DAYS(
+		TO_DAYS(NOW()) - TO_DAYS(birthday)
+		),
+		'%Y'
+		) + 0
+		) AS age,
+		lv,
+		credit
+		FROM
+		user
+		WHERE
+		id IN (
+		SELECT
+		user_id
+		FROM
+		match_audience
+		WHERE
+		match_id = #{match_id}
+		AND is_pay = 1
+		<if test="is_attend!=null and is_attend!=''">
+			AND is_attend = #{is_attend}
+		</if>
+		)
+		) b ON a.user_id = b.id
+	</select>
+
+	<select id="getMatchAttendVo" resultType="com.netx.worth.vo.MatchAttendVO" parameterType="String">
+		SELECT
+		b.nickname, a.url
+		FROM
+		user_photo a
+		INNER JOIN
+		SELECT
+		nickname
+		FROM
+		user
+		WHERE
+		id
+	</select>
+
+</mapper>

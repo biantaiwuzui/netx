@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.RefundMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.Refund">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="description" property="description" />
+		<result column="relatable_type" property="relatableType" />
+		<result column="relatable_id" property="relatableId" />
+		<result column="amount" property="amount" />
+		<result column="status" property="status" />
+		<result column="operate_user_id" property="operateUserId" />
+		<result column="bail" property="bail" />
+		<result column="pay_way" property="payWay" />
+		<result column="expired_at" property="expiredAt" />
+		<result column="is_process" property="isProcess" />
+		<result column="process_at" property="processAt" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>

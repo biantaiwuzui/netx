@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.DemandRegisterMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.DemandRegister">
+		<id column="id" property="id" />
+		<result column="demand_id" property="demandId" />
+		<result column="user_id" property="userId" />
+		<result column="start_at" property="startAt" />
+		<result column="end_at" property="endAt" />
+		<result column="about" property="about" />
+		<result column="description" property="description" />
+		<result column="unit" property="unit" />
+		<result column="wage" property="wage" />
+		<result column="address" property="address" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="is_pay_wage" property="isPayWage" />
+		<result column="status" property="status" />
+		<result column="is_anonymity" property="isAnonymity" />
+		<result column="validation_status" property="validationStatus" />
+		<result column="code" property="code" />
+		<result column="times" property="times" />
+		<result column="is_validation" property="isValidation" />
+		<result column="demand_order_id" property="demandOrderId" />
+		<result column="paied_fee" property="paiedFee" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<update id="updateDate" parameterType="com.netx.common.wz.dto.demand.DemandRegisterDto">
+		update demand_register
+		<set >
+			start_at = #{startDate},end_at = #{endDate},unit=#{unit},demand_id=#{demandId},
+			about = #{about},description=#{description},wage=#{wageLong},address=#{address},
+			lon=#{lon},lat=#{lat},is_anonymity=#{isAnonymity}
+		</set>
+		where id = #{id} and user_id = #{userId}
+	</update>
+</mapper>

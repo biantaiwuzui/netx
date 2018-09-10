@@ -1,0 +1,26 @@
+database:
+  host: 120.78.104.218
+  port: 3306
+  databasename: netx
+  username: root
+  password: JHwz123
+oss:
+  #bucket-name: wzproject-prod
+  bucket-prefix: netx
+#upload:
+#  imgPre: img-
+#jiguang:
+#  app-key: f08f0f1afc3104253d3b29e9
+#  secret: 5e675410ac12e6fc149044d9
+jiguang:
+  app-key: da72eba60c00d50bc6a05fad
+  secret: 889491190f898c5996f5969a
+jwt:
+  header: Token
+  expires_in: 86400000 # 24 小时
+  mobile_expires_in: 86400000 # 24 小时
+  secret: iukjytrqzdlq
+app:
+  version: v0.4.51
+
+

@@ -1,0 +1,80 @@
+server:
+  port: 18083
+  tomcat:
+    uri-encoding: UTF-8
+log:
+  path: ${server.path}/boss/
+logging:
+  level: error
+  config: classpath:logback-boot.xml
+spring:
+  profiles:
+    active: dev
+  application:
+    name: netx-boss
+  datasource:
+    url: jdbc:mysql://${database.host}:${database.port}/${database.databasename}?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false
+    username: ${database.username}
+    password: ${database.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat,wall,log4j
+    database: MySQL
+    druid:
+      initial-size: ${mysqlSize.size}
+      max-active: ${mysqlSize.max}
+      min-idle: ${mysqlSize.min}
+      max-wait: 60000
+      validation-query: select 1
+      validation-query-timeout: 30
+      test-while-idle: true
+      keep-alive: true
+      filters: stat,wall,log4j
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      test-on-borrow: true
+      test-on-return: false
+      min-evictable-idle-time-millis: 3600000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 300000
+      remove-abandoned: true #是否自动回收超时连接
+      remove-abandoned-timeout: 180 #超时时间(以秒数为单位)
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:sqlmap/user/*Mapper.xml,classpath:sqlmap/common/*Mapper.xml,classpath:sqlmap/friend/*Mapper.xml,classpath:sqlmap/productcenter/*Mapper.xml,classpath:sqlmap/cartcenter/*Mapper.xml,classpath:sqlmap/merchantcenter/*Mapper.xml,classpath:sqlmap/marketingcenter/*Mapper.xml,classpath:sqlmap/ordercenter/*Mapper.xml,classpath:sqlmap/redpacketcenter/*Mapper.xml,classpath:sqlmap/demand/*Mapper.xml,classpath:sqlmap/wish/*Mapper.xml,classpath:sqlmap/skill/*Mapper.xml,classpath:sqlmap/meeting/*Mapper.xml,classpath:sqlmap/worth/*Mapper.xml,classpath:sqlmap/settlment/*Mapper.xml,classpath:sqlmap/credit/*Mapper.xml
+  typeAliasesPackage: com.netx.boss.**
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 3
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: false
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    meta-object-handler: com.netx.boss.config.CustomMetaObjectHandler
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+
+boss:
+  interceptors:
+    exclude:
+      - /index/**
+      - /login
+      - /Error/needLogin
+      - /swagger-ui.html
+      - /swagger-resources/**
+  session:
+    domain: boss.netx.com
+  cache:
+    address: 127.0.0.1:6379

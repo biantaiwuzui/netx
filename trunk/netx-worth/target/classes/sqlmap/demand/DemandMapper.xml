@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.DemandMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.Demand">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="demand_type" property="demandType" />
+		<result column="demand_label" property="demandLabel" />
+		<result column="is_open_ended" property="isOpenEnded" />
+		<result column="start_at" property="startAt" />
+		<result column="end_at" property="endAt" />
+		<result column="about" property="about" />
+		<result column="amount" property="amount" />
+		<result column="unit" property="unit" />
+		<result column="obj" property="obj" />
+		<result column="obj_list" property="objList" />
+		<result column="address" property="address" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="description" property="description" />
+		<result column="images_url" property="imagesUrl" />
+		<result column="details_images_url" property="detailsImagesUrl" />
+		<result column="order_ids" property="orderIds" />
+		<result column="order_price" property="orderPrice" />
+		<result column="is_pick_up" property="isPickUp" />
+		<result column="wage" property="wage" />
+		<result column="is_each_wage" property="isEachWage" />
+		<result column="bail" property="bail" />
+		<result column="status" property="status" />
+		<result column="is_pay" property="isPay" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<update id="updateOrderId">
+		update demand
+		<set >
+			order_ids=#{orderIds}
+		</set>
+		where id = #{id}
+	</update>
+
+</mapper>

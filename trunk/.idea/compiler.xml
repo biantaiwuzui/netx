@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="netx-admin" />
+        <module name="netx-api" />
+        <module name="netx-boss" />
+        <module name="netx-common" />
+        <module name="netx-core" />
+        <module name="netx-credit" />
+        <module name="netx-fuse" />
+        <module name="netx-schedule" />
+        <module name="netx-searchengine" />
+        <module name="netx-shopping-mall" />
+        <module name="netx-ucenter" />
+        <module name="netx-utils" />
+        <module name="netx-worth" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="netx-admin" target="1.8" />
+      <module name="netx-api" target="1.8" />
+      <module name="netx-boss" target="1.8" />
+      <module name="netx-common" target="1.8" />
+      <module name="netx-core" target="1.8" />
+      <module name="netx-credit" target="1.8" />
+      <module name="netx-fuse" target="1.8" />
+      <module name="netx-job" target="1.8" />
+      <module name="netx-parent" target="1.8" />
+      <module name="netx-schedule" target="1.8" />
+      <module name="netx-searchengine" target="1.8" />
+      <module name="netx-shopping-mall" target="1.8" />
+      <module name="netx-ucenter" target="1.8" />
+      <module name="netx-utils" target="1.8" />
+      <module name="netx-worth" target="1.8" />
+      <module name="uni-package" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

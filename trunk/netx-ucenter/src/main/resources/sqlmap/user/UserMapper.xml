@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.user.UserMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.user.User">
+		<id column="id" property="id" />
+		<result column="user_number" property="userNumber" />
+		<result column="nickname" property="nickname" />
+		<result column="real_name" property="realName" />
+		<result column="sex" property="sex" />
+		<result column="birthday" property="birthday" />
+		<result column="password" property="password" />
+		<result column="pay_password" property="payPassword" />
+		<result column="admin_password" property="adminPassword" />
+		<result column="jmessage_password" property="jmessagePassword" />
+		<result column="mobile" property="mobile" />
+		<result column="role" property="role" />
+		<result column="is_admin_user" property="isAdminUser" />
+		<result column="is_lock" property="isLock" />
+		<result column="lock_version" property="lockVersion" />
+		<result column="id_number" property="idNumber" />
+		<result column="video" property="video" />
+		<result column="car" property="car" />
+		<result column="house" property="house" />
+		<result column="degree" property="degree" />
+		<result column="education_label" property="educationLabel" />
+		<result column="profession_label" property="professionLabel" />
+		<result column="interest_label" property="interestLabel" />
+		<result column="last_login_at" property="lastLoginAt" />
+		<result column="last_active_at" property="lastActiveAt" />
+		<result column="login_days" property="loginDays" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="gift_setting" property="giftSetting" />
+		<result column="invitation_setting" property="invitationSetting" />
+		<result column="article_setting" property="articleSetting" />
+		<result column="nearly_setting" property="nearlySetting" />
+		<result column="voice_setting" property="voiceSetting" />
+		<result column="shock_setting" property="shockSetting" />
+		<result column="score" property="score" />
+		<result column="credit" property="credit" />
+		<result column="value" property="value" />
+		<result column="income" property="income" />
+		<result column="contribution" property="contribution" />
+		<result column="lv" property="lv" />
+		<result column="user_profile_score" property="userProfileScore" />
+		<result column="last_complete_percent" property="lastCompletePercent" />
+		<result column="current_likes" property="currentLikes" />
+		<result column="current_watch_to" property="currentWatchTo" />
+		<result column="current_watch_from" property="currentWatchFrom" />
+		<result column="approval_time" property="approvalTime" />
+		<result column="is_reg_jMessage" property="isRegJMessage" />
+		<result column="is_login" property="isLogin" />
+		<result column="is_login_backend" property="isLoginBackend" />
+		<result column="is_publish_credit" property="isPublishCredit" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+	<select id="queryUserFriendsByUserNumber" resultMap="BaseResultMap">
+		select
+		user.*
+		from
+		user user
+		left join common_friends friends on user.id  = friends.friend_id
+		where
+		friends.master_id = #{userId}
+		and
+		user.user_number = #{userNumber}
+	</select>
+	<select id="queryUserFriendsByUserId" resultMap="BaseResultMap">
+		select
+			user.*
+		from
+			user
+		inner join
+			common_friends friends
+		on
+			user.id  = friends.friend_id
+		where
+			friends.master_id = #{userId}
+		and
+			friends.deleted = '0'
+		and
+			user.deleted = '0'
+		group by
+			user.id
+		ORDER BY
+			user.nickname
+		limit #{current},#{size}
+	</select>
+	<update id="updateDayNum">
+		update user
+		set current_likes=0,current_watch_from=0,current_watch_to=0
+		where deleted=0
+	</update>
+
+	<select id="getCreditRankByUserId" resultType="Integer" >
+	select u.rank from (
+	select id,(@rank:=@rank+1) as rank
+	from user,
+	(select (@rank :=0) ) b
+	order by user.credit desc ) u where u.id= #{id, jdbcType=VARCHAR}
+	</select>
+
+	<resultMap id="getUserStatData" type="com.netx.ucenter.vo.response.UserStatData">
+            <result column="id" property="id" />
+            <result column="user_number" property="userNumber" />
+            <result column="nickname" property="nickname" />
+            <result column="credit" property="credit" />
+            <result column="create_time" property="createTime" />
+            <result column="url" property="url" />
+        </resultMap>
+
+	<select id="getUserStatData" resultMap="getUserStatData">
+    		SELECT u.id,u.user_number,u.nickname,u.credit,u.create_time,p.url as headImg FROM user u  INNER JOIN user_photo p ON u.id=p.user_id where position = 1
+    	</select>
+
+<resultMap id="getSuggestStatData" type="com.netx.common.user.model.StatData">
+            <result column="user_id" property="id" />
+            <result column="num" property="num" />
+        </resultMap>
+
+<select id="getSuggestStat" resultMap="getSuggestStatData">
+    		SELECT user_id,COUNT(user_id) as num FROM user_suggest WHERE(is_effective=1 or is_effective =2) GROUP BY user_id
+    	</select>
+
+</mapper>

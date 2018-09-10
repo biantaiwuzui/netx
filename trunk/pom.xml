@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.netx</groupId>
+    <artifactId>uni-package</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>netx-parent</module>
+        <module>netx-common</module>
+        <module>netx-shopping-mall</module>
+        <module>netx-credit</module>
+        <module>netx-worth</module>
+        <module>netx-ucenter</module>
+        <module>netx-boss</module>
+        <module>netx-utils</module>
+        <module>netx-searchengine</module>
+		<module>netx-api</module>
+        <module>netx-fuse</module>
+        <module>netx-job</module>
+    </modules>
+</project>

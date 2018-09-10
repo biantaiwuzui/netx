@@ -1,0 +1,322 @@
+package com.netx.searchengine.model;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by CloudZou on 2/10/18.
+ */
+public class WishSearchResponse {
+    private String id;
+    private String userId;
+    /**
+     * 主题
+     */
+    private String title;
+    /**
+     * 标签，逗号分隔
+     */
+    private List<String> wishLabels;
+    /**
+     * 希望筹集的金额
+     */
+    private BigDecimal amount;
+    /**
+     * 当前筹集数
+     */
+    private BigDecimal currentAmount;
+    /**
+     * 当前已使用金额
+     */
+    private BigDecimal currentApplyAmount;
+    /**
+     * 截至时间
+     */
+    private Date expiredAt;
+    /**
+     * 推荐人，逗号分隔
+     */
+    private List<String> refereeIds;
+    /**
+     * 描述
+     */
+    private String description;
+    /**
+     * 图片
+     */
+    private String imagesUrl;
+
+    private String imagesTwoUrl;
+    /**
+     * 状态：
+     1：已发布
+     2：已取消
+     3：已关闭，即推荐人数不足50%
+     4：推荐成功
+     5：已失败，即筹款目标未达成
+     6：筹集目标达成，即心愿发起成功
+     7：已完成，即金额使用完毕
+     */
+    private Integer status;
+    /**
+     * 距离
+     */
+    private Double distance;
+
+    /**
+     * 发布者昵称
+     */
+    private String nickname;
+
+    /**
+     * 发布者性别
+     */
+    private String sex;
+
+    /**
+     * 发布者生日
+     */
+    private Date birthday;
+
+    /**
+     * 发布者手机
+     */
+    private String mobile;
+
+    /**
+     * 发布者总积分
+     */
+    private BigDecimal score;
+
+    /**
+     * 发布者信用
+     */
+    private Integer credit;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 发布者等级
+     */
+    private Integer lv;
+
+    /**
+     * 发布网信数量
+     */
+    private Integer creditSum;
+
+    /**
+     * 人数
+     */
+    private Integer count;
+
+    /**
+     * 是否封禁
+     */
+    private boolean isLock;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getWishLabels() {
+        return wishLabels;
+    }
+
+    public void setWishLabels(List<String> wishLabels) {
+        this.wishLabels = wishLabels;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getCurrentAmount() {
+        return currentAmount;
+    }
+
+    public void setCurrentAmount(BigDecimal currentAmount) {
+        this.currentAmount = currentAmount;
+    }
+
+    public BigDecimal getCurrentApplyAmount() {
+        return currentApplyAmount;
+    }
+
+    public void setCurrentApplyAmount(BigDecimal currentApplyAmount) {
+        this.currentApplyAmount = currentApplyAmount;
+    }
+
+    public Date getExpiredAt() {
+        return expiredAt;
+    }
+
+    public void setExpiredAt(Date expiredAt) {
+        this.expiredAt = expiredAt;
+    }
+
+    public List<String> getRefereeIds() {
+        return refereeIds;
+    }
+
+    public void setRefereeIds(List<String> refereeIds) {
+        this.refereeIds = refereeIds;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImagesUrl() {
+        return imagesUrl;
+    }
+
+    public void setImagesUrl(String imagesUrl) {
+        this.imagesUrl = imagesUrl;
+    }
+
+    public String getImagesTwoUrl() {
+        return imagesTwoUrl;
+    }
+
+    public void setImagesTwoUrl(String imagesTwoUrl) {
+        this.imagesTwoUrl = imagesTwoUrl;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
+
+    public Integer getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Integer credit) {
+        this.credit = credit;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getLv() {
+        return lv;
+    }
+
+    public void setLv(Integer lv) {
+        this.lv = lv;
+    }
+
+    public Integer getCreditSum() {
+        return creditSum;
+    }
+
+    public void setCreditSum(Integer creditSum) {
+        this.creditSum = creditSum;
+    }
+
+    public boolean isLock() {
+        return isLock;
+    }
+
+    public void setLock(boolean lock) {
+        isLock = lock;
+    }
+}
+

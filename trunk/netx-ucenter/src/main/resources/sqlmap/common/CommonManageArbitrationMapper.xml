@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonManageArbitrationMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonManageArbitration">
+		<id column="id" property="id" />
+		<result column="from_nickname" property="fromNickname" />
+		<result column="to_nickname" property="toNickname" />
+		<result column="from_user_level" property="fromUserLevel" />
+		<result column="to_user_level" property="toUserLevel" />
+		<result column="from_user_sex" property="fromUserSex" />
+		<result column="to_user_sex" property="toUserSex" />
+		<result column="from_user_age" property="fromUserAge" />
+		<result column="to_user_age" property="toUserAge" />
+		<result column="status_code" property="statusCode" />
+		<result column="type" property="type" />
+		<result column="type_id" property="typeId" />
+		<result column="theme" property="theme" />
+		<result column="from_user_credit_value" property="fromUserCreditValue" />
+		<result column="to_user_credit_value" property="toUserCreditValue" />
+		<result column="time" property="time" />
+		<result column="reason" property="reason" />
+		<result column="from_user_id" property="fromUserId" />
+		<result column="to_user_id" property="toUserId" />
+		<result column="descriptions" property="descriptions" />
+		<result column="from_src_url" property="fromSrcUrl" />
+		<result column="appeal_src_url" property="appealSrcUrl" />
+		<result column="appeal_date" property="appealDate" />
+		<result column="result_id" property="resultId" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+	<!--根据userId 和 statusCode -->
+	<select id="selectByUserIdAndStatusCode" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select distinct id as 'arbitrationId' ,status_code,theme,create_time as 'time',reason from common_manage_arbitration
+		where from_user_id=#{userId} or to_user_id=#{userId} and status_code = #{statusCode}
+		order by create_time
+	</select>
+
+	<select id="selectByUserIdAll" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select distinct id as 'arbitrationId' ,status_code,theme,create_time as 'time',reason from common_manage_arbitration
+		where from_user_id= #{userId} or to_user_id= #{userId}
+		order  by createTime
+	</select>
+
+	<select id="selectByUserIdAndStatusCode" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select distinct id as 'arbitrationId' ,status_code,theme,createTime as 'time',reason from common_manage_arbitration
+		where from_user_id = #{userId} or to_user_id = #{userId} and status_code = #{statusCode}
+		order  by createTime
+	</select>
+
+	<!--根据昵称 和 statusCode 数组-->
+	<select id="selectByNicknameAndStatusCodes" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select  distinct id as 'arbitrationId' ,status_code,theme,createTime as 'time',reason from common_manage_arbitration
+		where from_nickname = #{nickname} or to_nickname = #{nickname}
+		and status_code not in #{statusCodes}
+	</select>
+
+	<!--根据昵称 和 statusCode 数组-->
+	<select id="selectByNicknameAll" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select  distinct id as 'arbitrationId' ,status_code,theme,createTime as 'time',reason from common_manage_arbitration
+		where from_nickname = #{nickname} or to_nickname = #{nickname} and status_code !=null
+	</select>
+</mapper>

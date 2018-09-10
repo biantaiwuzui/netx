@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.WishApplyMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.WishApply">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="wish_id" property="wishId" />
+		<result column="bank_id" property="bankId" />
+		<result column="amount" property="amount" />
+		<result column="balance" property="balance" />
+		<result column="description" property="description" />
+		<result column="reason" property="reason" />
+		<result column="pic" property="pic" />
+		<result column="apply_type" property="applyType" />
+		<result column="trading_type" property="tradingType" />
+		<result column="apply_info" property="applyInfo" />
+		<result column="is_pass" property="isPass" />
+		<result column="manager_count" property="managerCount" />
+		<result column="opreate_manager_count" property="opreateManagerCount" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>
+

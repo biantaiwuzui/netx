@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.order.ProductOrderMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.order.ProductOrder">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="seller_id" property="sellerId" />
+		<result column="order_num" property="orderNum" />
+		<result column="activity_id" property="activityId" />
+		<result column="demane_id" property="demaneId" />
+		<result column="total_price" property="totalPrice" />
+		<result column="pay_price" property="payPrice" />
+		<result column="remark" property="remark" />
+		<result column="order_time" property="orderTime" />
+		<result column="delivery_way" property="deliveryWay" />
+		<result column="pay_time" property="payTime" />
+		<result column="send_time" property="sendTime" />
+		<result column="address" property="address" />
+		<result column="status" property="status" />
+		<result column="pay_way" property="payWay" />
+		<result column="credit_id" property="creditId" />
+		<result column="net_credit" property="netCredit" />
+		<result column="logistics_code" property="logisticsCode" />
+		<result column="logistics_num" property="logisticsNum" />
+		<result column="logistics_status" property="logisticsStatus" />
+		<result column="logistcs_details" property="logistcsDetails" />
+		<result column="arbitration_id" property="arbitrationId" />
+		<result column="is_put_off_order" property="isPutOffOrder" />
+		<result column="remind_time" property="remindTime" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="getSellerByByDealAmount"  resultType="String">
+		SELECT
+		seller_id
+		FROM
+		product_order
+		where deleted = '0'
+		GROUP BY
+		seller_id
+		ORDER BY
+		SUM(pay_price) DESC
+		LIMIT #{currentPage},#{size}
+	</select>
+
+	<select id="getAllGoodsOderByUserId" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		(SELECT * FROM product_order WHERE seller_id in
+		<foreach collection="sellerIds" item="sellerIds" index="index" open="(" close=")" separator=",">
+			#{sellerIds}
+		</foreach>
+		and status in
+		<foreach collection="statuslist" item="statuslist1" index="index" open="(" close=")" separator=",">
+			#{statuslist1}
+		</foreach>
+		ORDER BY FIELD
+		<foreach collection="statuslist" item="statuslist1" index="index" open="(status," close=")" separator=",">
+			#{statuslist1}
+		</foreach>,create_time DESC)as ogj
+		LIMIT #{currentPage},#{size}
+	</select>
+
+	<select id="getMyGoodsOrderByUserId" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		product_order
+		WHERE
+		user_id=(#{userId})
+		and status in
+		<foreach collection="statuslist" item="statuslist1" index="index" open="(" close=")" separator=",">
+			#{statuslist1}
+		</foreach>
+		ORDER BY FIELD
+		<foreach collection="statuslist" item="statuslist1" index="index" open="(status," close=")" separator=",">
+			#{statuslist1}
+		</foreach>,create_time DESC
+		LIMIT #{currentPage},#{size}
+	</select>
+
+	<select id="getSumOrderAmountBySellerId" resultType="Long">
+		select
+			sum(total_price)
+		from
+			product_order
+		where
+			seller_id = #{sellerId} and deleted = 0 and status in(6,7)
+	</select>
+	<select id="getProductOrderListByIds" resultMap="BaseResultMap">
+		select
+			*
+		from
+			product_order
+		where
+			id IN
+		<foreach collection="ids" item="ids1" index="index" open="(" close=")" separator=",">
+			#{ids1}
+		</foreach>
+		ORDER BY FIELD
+		<foreach collection="ids" item="ids1" index="index" open="(status," close=")" separator=",">
+			#{ids1}
+		</foreach>
+	</select>
+</mapper>

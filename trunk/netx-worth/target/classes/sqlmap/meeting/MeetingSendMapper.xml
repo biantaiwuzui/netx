@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MeetingSendMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MeetingSend">
+		<id column="id" property="id" />
+		<result column="meeting_id" property="meetingId" />
+		<result column="user_id" property="userId" />
+		<result column="is_default" property="isDefault" />
+		<result column="status" property="status" />
+		<result column="accept_at" property="acceptAt" />
+		<result column="refuse_at" property="refuseAt" />
+		<result column="expired_at" property="expiredAt" />
+		<result column="validation_status" property="validationStatus" />
+		<result column="code" property="code" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>

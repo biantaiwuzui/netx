@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.credit.mapper.CreditCategoryMapper">
+
+    <resultMap id="BaseResultMapper" type="com.netx.credit.model.CreditCategory">
+        <id column="id" property="id"/>
+        <result column="credit_id" property="creditId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+	<select id="selectKidTags" resultMap="BaseResultMapper">
+		SELECT
+			*
+		FROM
+			category
+		WHERE
+			pid = #{pid}
+		ORDER BY
+			CONVERT(name USING gbk) COLLATE gbk_chinese_ci ASC
+			LIMIT #{currentPage},#{size}
+	</select>
+</mapper>

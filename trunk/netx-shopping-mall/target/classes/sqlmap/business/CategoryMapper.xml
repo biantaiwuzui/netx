@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.business.CategoryMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.business.Category">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="pid" property="pid" />
+		<result column="used_count" property="usedCount" />
+		<result column="py" property="py" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="sort" property="sort" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="selectKidTags" resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM
+			category
+		WHERE
+			pid = #{pid}
+		ORDER BY
+			CONVERT(name USING gbk) COLLATE gbk_chinese_ci ASC
+			LIMIT #{currentPage},#{size}
+	</select>
+
+</mapper>

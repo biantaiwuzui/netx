@@ -1,0 +1,145 @@
+package com.netx.shopping.model.product;
+
+import java.io.Serializable;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 商品类目关系表
+ * </p>
+ *
+ * @author 李威
+ * @since 2018-04-03
+ */
+@TableName("category_product")
+public class ProductCategory extends Model<ProductCategory> {
+
+    private static final long serialVersionUID = 1L;
+
+	private String id;
+    /**
+     * 商品类目
+     */
+	@TableField("category_id")
+	private String categoryId;
+    /**
+     * 商品id
+     */
+	@TableField("product_id")
+	private String productId;
+    /**
+     * 创建时间
+     */
+	@TableField(value = "create_time", fill = FieldFill.INSERT)
+	private Date createTime;
+    /**
+     * 创建人
+     */
+	@TableField("create_user_id")
+	private String createUserId;
+    /**
+     * 更新时间
+     */
+	@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+	private Date updateTime;
+    /**
+     * 更新人
+     */
+	@TableField("update_user_id")
+	private String updateUserId;
+    /**
+     * 删除标识
+     */
+	private Integer deleted;
+
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCreateUserId() {
+		return createUserId;
+	}
+
+	public void setCreateUserId(String createUserId) {
+		this.createUserId = createUserId;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public String getUpdateUserId() {
+		return updateUserId;
+	}
+
+	public void setUpdateUserId(String updateUserId) {
+		this.updateUserId = updateUserId;
+	}
+
+	public Integer getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Integer deleted) {
+		this.deleted = deleted;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.id;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductCategoryAction{" +
+			"id=" + id +
+			", categoryId=" + categoryId +
+			", productId=" + productId +
+			", createTime=" + createTime +
+			", createUserId=" + createUserId +
+			", updateTime=" + updateTime +
+			", updateUserId=" + updateUserId +
+			", deleted=" + deleted +
+			"}";
+	}
+}

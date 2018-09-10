@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  redis:
+    port: ${redisbase.port}
+    password: ${redisbase.password}
+    database: ${redisbase.databasename}
+    pool:
+      max-wait: -1
+      max-active: -1
+      max-idle: -1
+      min-idle: 1
+    timeout: 0

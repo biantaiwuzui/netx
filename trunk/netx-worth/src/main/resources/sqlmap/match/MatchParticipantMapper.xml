@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchParticipantMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchParticipant">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="match_id" property="matchId" />
+		<result column="zone_id" property="zoneId" />
+		<result column="group_id" property="groupId" />
+		<result column="project_name" property="projectName" />
+		<result column="user_name" property="userName" />
+		<result column="birthday" property="birthday" />
+		<result column="sex" property="sex" />
+		<result column="head_images_url" property="headImagesUrl" />
+		<result column="requirement_text" property="requirementText" />
+		<result column="is_team" property="isTeam" />
+		<result column="team_id" property="teamId" />
+		<result column="is_pay" property="isPay" />
+		<result column="is_pass" property="isPass" />
+		<result column="is_guardian" property="isGuardian" />
+		<result column="is_spot" property="isSpot" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<select id="getJionMatchListByMatchId" resultType="com.netx.worth.vo.MatchParticipantAllVo" parameterType="Map">
+		SELECT
+			b.*, a.url
+		FROM
+			user_photo a
+		INNER JOIN (
+			SELECT
+				a.user_number userNumber,
+				a.nickname,
+				a.sex,
+				(
+					SELECT
+						DATE_FORMAT(
+							FROM_DAYS(
+								TO_DAYS(NOW()) - TO_DAYS(a.birthday)
+							),
+							'%Y'
+						) + 0
+				) AS age,
+				a.lv,
+				a.credit,
+				b.*
+			FROM
+				user a
+			INNER JOIN (
+					SELECT DISTINCT
+						id participantId,
+						user_id userId,
+						match_id matchId,
+						zone_id zoneId,
+						group_id groupId,
+						is_team isTeam,
+						is_pay isPay,
+						is_pass isPass,
+						is_guardian isGuardian,
+						is_spot isSpot,
+						requirement_text requirementText
+					FROM
+						match_participant WHERE 1=1
+					<if test="match_id!=null and match_id!=''">
+						 and match_id = #{match_id}
+					</if>
+					<if test="zone_id!=null and zone_id!=''">
+						and zone_id = #{zone_id}
+					</if>
+					<if test="group_id!=null and group_id!=''">
+						and group_id = #{group_id}
+					</if>
+					<if test="is_pay!=null and is_pay!=''">
+						and is_pay = #{is_pay}
+					</if>
+					<if test="is_pass!=null and is_pass!=''">
+						and is_pass = #{is_pass}
+					</if>
+					<if test="is_spot!=null and is_spot!=''">
+						and is_spot = #{is_spot}
+					</if>
+					<if test="user_id!=null and user_id!=''">
+						and user_id = #{user_id}
+					</if>
+				)  b ON a.id=b.userId
+		) b ON a.user_id = b.userId AND a.position=1
+		<if test="pageSize!=null and pageSize!='' and pageCount!=null and pageSize!=''">
+			 LIMIT #{pageCount},#{pageSize}
+		</if>
+	</select>
+
+	<select id="getUserInfo" resultType="com.netx.common.user.model.UserMacthInfo" parameterType="String">
+		SELECT
+		b.*, a.url
+		FROM
+		user_photo a
+		INNER JOIN (
+		SELECT
+		id,
+		user_number userNumber,
+		nickname,
+		sex,
+		(
+		SELECT
+		DATE_FORMAT(
+		FROM_DAYS(
+		TO_DAYS(NOW()) - TO_DAYS(birthday)
+		),
+		'%Y'
+		) + 0
+		) AS age,
+		lv,
+		credit
+		FROM
+		user
+		WHERE
+		id  = #{userId}
+	</select>
+
+	<select id="selectMatchParticipantVo" resultType="com.netx.worth.vo.MatchParticipantVo" parameterType="Map">
+	SELECT
+		(
+			SELECT
+				nickname
+			FROM
+				user
+			WHERE
+				id = p.user_id
+		) userName,
+		p.id attendCode,
+		m.title matchName,
+		z.zone_name zoneName,
+		g.match_group_name groupName,
+		p.is_pay isPay,
+		p.is_pass isPass,
+		p.is_spot isSpot,
+		(
+			SELECT
+				url
+			FROM
+				user_photo
+			WHERE
+				user_id = p.user_id
+			AND position = 1
+		) imageUrl,
+		p.id participantId,
+		p.is_guardian isGuardian,
+		p.is_team isTeam,
+		v.address address,
+		v.begin_time beginTime,
+		g.id groupId,
+		p.status status
+	FROM
+		match_participant p
+	INNER JOIN match_event m ON m.id = p.match_id
+	INNER JOIN match_zone z ON z.id = p.zone_id
+	INNER JOIN match_group g ON g.id = p.group_id
+	LEFT JOIN match_venue v ON v.id IN (
+		SELECT
+			venue_id
+		FROM
+			match_venue_group
+		WHERE
+			group_id = g.id
+	)
+	WHERE 1=1
+	<if test="match_id!=null and match_id!=''">
+		AND p.match_id = #{match_id}
+	</if>
+	<if test="user_id!=null and user_id!=''">
+		AND p.user_id = #{user_id}
+	</if>
+	<if test="status!=null and status!=''">
+		AND p.status &gt;= #{status}
+	</if>
+	LIMIT 1
+	</select>
+
+
+	<select id="selectUserInfoForMatch" resultType="com.netx.worth.vo.UserForMatchVo" parameterType="String">
+		SELECT u.id id, u.nickname nickname, u.sex sex, (
+					SELECT
+						DATE_FORMAT(
+							FROM_DAYS(
+								TO_DAYS(NOW()) - TO_DAYS(u.birthday)
+							),
+							'%Y'
+						) + 0
+				) AS age, u.birthday birthday, u.lv lv, u.credit credit,
+		p.url url, pr.height height, pr.weight weight FROM `user` u
+		right JOIN user_photo p on u.id = p.user_id and p.position = 1
+		right JOIN user_profile pr on u.id = pr.user_id
+		WHERE u.id = #{userId}
+	</select>
+
+
+</mapper>

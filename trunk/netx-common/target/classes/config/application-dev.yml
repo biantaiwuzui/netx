@@ -1,0 +1,30 @@
+redisbase:
+  host: 127.0.0.1
+  port: 6379
+  databasename: 0
+  password: Chris6612520
+server:
+  path: /data/logs
+aliyunExpress:
+  host: http://jisukdcx.market.alicloudapi.com
+  appcode: 498c871404a04ee6a5c529adfc67edba
+  appkey: 24789530
+  appsecret: a523fee562ac93c23dd6a8f07f148a04
+mysqlSize:
+  max: 8
+  min: 2
+  size: 2
+domain:
+  upload:
+    ugcImgPre: http://img-dev-ugc.qqtowns.com
+    productImgPre: http://img-dev-product.qqtowns.com
+    activityImgPre: http://img-dev-activity.qqtowns.com
+    creditImgPre: http://img-dev-credit.qqtowns.com
+jiguang:
+  app-key: f08f0f1afc3104253d3b29e9
+  secret: 5e675410ac12e6fc149044d9
+localHost:
+  host: 112.74.200.88
+admin:
+  ip: 127.0.0.1
+  port: 8083

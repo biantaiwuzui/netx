@@ -1,0 +1,79 @@
+spring:
+  profiles:
+    active: dev
+  redis:
+    host: ${redisbase.host}
+    port: ${redisbase.port}
+    password: ${redisbase.password}
+    database: ${redisbase.databasename}
+    pool:
+      max-wait: -1
+      max-active: -1
+      max-idle: -1
+      min-idle: 1
+    timeout: 0
+netx:
+  elasticsearch:
+    host: 127.0.0.1
+    port: 9300
+  worth:
+    elasticsearch:
+      host: 127.0.0.1
+      port: 9300
+  alidayu:
+    domain: dysmsapi.aliyuncs.com #短信API产品域名（接口地址固定，无需修改）
+    product: Dysmsapi #短信API产品名称（短信产品名固定，无需修改）
+    url: http://gw.api.taobao.com/router/rest
+    appkey: 24643028
+    newappkey: LTAIArjDLaOGjz6d
+    secret: 7e9d31e436ee59ebe3ef448764527849
+    newsecret: wIWCGU7tcogMc5aOcw2BbEZT9kFXzZ
+    signName: 网值让天下从此简单
+  oss:
+    end-point: http://oss-cn-shenzhen.aliyuncs.com
+    web-site: wzprojectbucket.oss-cn-shenzhen.aliyuncs.com
+    #bucket-name: ${oss.bucket-name}
+    bucket-prefix: ${oss.bucket-prefix}
+    access:
+      key: PKvgp5McrViqTZTO
+      secret: uGiCBnlLJBT1NbRofR8CMWqyJ6pGTB
+    sts:
+      key: LTAIMV8gzYj9OAL7
+      secret: MBcDzNk0rBZUSQ3RsC0mh4BXGbZXMx
+      role-arn: acs:ram::1485204437994266:role/oss
+  #domain:
+  #  upload:
+  #    imgPre: http://${upload.imgPre}
+  #    imgSuffix: .qqtowns.com
+  jiguang:
+    app-key: ${jiguang.app-key}
+    secret: ${jiguang.secret}
+  alipay:
+    openUrl: https://openapi.alipay.com/gateway.do
+    appId: 2017093009005921
+    pId: 2088821096050322
+    appPrivateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8x4n7WQxYe333rW2S0h/EeldHlgiJ6PooBP1BBYLa46hCluAEMncOy0flNj9hKPAVBgE9K4QR/qGgLOneMHa/AyoqgBgau/gq7q1mbyH5oIob/Hr1k1M0u+gyc6hQhG+Ww2w9j+7KcaZFOzx+QzYorQ1zAD6wuXj+1PdPZ29q1W2OAF6e9gd11DHInlL776CWHsXsD9/eO2jUvLM9q4b3ULEGktUOK2niMCuQamebJbvA7lAEW8xLIIeeow11dgWMM9EEChhMYogqrnXvKDYkFldfVLhJctup/6Le2hPE43Zibma3wY9lLm1CHtMSgEtJ2jzagkMZZbKBmRUp3WPlAgMBAAECggEAJhDaWut+2My1/t5irOtf6n983/t5500qPC2dX6Ib28VyJVNFArOmXD5TVf3VU+MsXiDi2RHQRMyijKjh06LUHvolY4KG2cUzanzMTE52fF6J2tDTfndhnM2TKbE2rF24Hp9zUQqX7QxzqZwjO5aT8inK/3h6K6qKomARKlrCFblxAIdH7qjFLTkmzkrh4uKbe3tUCDn0K4ByCZGhlg84ZJHMZz25Zcgw8dE4xc8GlMEzxTiLNfm9O9u77Lpg0B8oaoGAxSn2YBlYBLlzpCQW8qqMdZDzur5mtzMpS2vOJftiAXL1wwaOO8C1QOuyBjMFieg0wHBMCosDLzcOsyFKQQKBgQDcdSZOPpdM7xTnWg5s1hqbi0kzDRn8y6ufOJJDxUtMrCFgAhZMWgoecvJR6ZwP61L9bPM+SzHJkqQXWgLO29UJseXWI19rke3qNSmlISlEJANQ/tQcCO/ZuqnI0S1zoeCcI9xCxdKFwz5Mn0ogdGz6/H28WtuXedwhvgUftuc59QKBgQDbNvNG/LAYCOadfXcUgmGxBkkZEaNCEEiB/eJZeD55Gf7tCcq54Q+/vlCIXcwRhqSIAD/K3r8htEN9QfdUifAqcuEkpmG6neghKe4dRgeQaMUbzNJ9YQjgxyQYV51yP7DQCeY14jyAPauIB/32A7MeJk/+ig2Gqibywxu8/uKcMQKBgQClIBpRARDSz0EZCJtFahkD6JArbOTKNMOXvwfPOzfrdgKJpwaMqeRqai6WrCP4yIqgx7pqLmhcUzoVQ5ZW2tH3MQi2HEicifFqO+e1h+Eg6NiTEkxNs2Pz8Zy6jfM9aUKTsUiJuyK0jklbmvQq2wnF9Nk4+9T+4IfBvlKYLqeDAQKBgQCCLhzEsDTG4SpKpoJ77H2lSe1I9N910QOuJp4vsaev9Q8dpy37urrGjHd4s/MHCWVV2ogHqsXodwuJLA575rp4CubHBAOPdkyuvR7JxZeiW4WKX9U0XdaO3dQCnK1EdqxCr05F+4cgRP9DdjOL0GCja+8fYs5rhUpB6jnjv53FUQKBgFGDkyHjm3s+Ckc7wAi94A1qCEwbD7T/gu7MsxWaYeUn/iECVmyl0fxjvb7WgALuEvxbrgSyjlXANe3nMm5loVEgT3luxobqIYV1JSilTdf//joO47m12MVViHcTezvtFNYCWFSt2xlFg/x3gznpdJwASDjDlaQyCMSnYIJIEW1x
+    appPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvMeJ+1kMWHt9961tktIfxHpXR5YIiej6KAT9QQWC2uOoQpbgBDJ3DstH5TY/YSjwFQYBPSuEEf6hoCzp3jB2vwMqKoAYGrv4Ku6tZm8h+aCKG/x69ZNTNLvoMnOoUIRvlsNsPY/uynGmRTs8fkM2KK0NcwA+sLl4/tT3T2dvatVtjgBenvYHddQxyJ5S+++glh7F7A/f3jto1LyzPauG91CxBpLVDitp4jArkGpnmyW7wO5QBFvMSyCHnqMNdXYFjDPRBAoYTGKIKq517yg2JBZXX1S4SXLbqf+i3toTxON2Ym5mt8GPZS5tQh7TEoBLSdo82oJDGWWygZkVKd1j5QIDAQAB
+    aliPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgY0pesFJwYTDQoeKWxcYGKDFU7LcZgfEAsQdDrwQzBW3YpmoF2P82I2Tcx9oYAam/ggtUI4SmciNdB6aGSSZEDgEUX8RE8Y0qfPUQ68qahWBmWzuyx6cLP96zmwGXSaKZk/r1adBCBOD7QtaGvztBbfnhaliXd9VWRxRnzNwlKTIMOLh/XGLwXaKBRrlcmouU0BAWXnVbezWX0lSRDYDIsGI5Kq0jqvWUHoF2pT3051vvDxs00r/gfrFwJip3iDWOXpG9qOoTgoNWCKCElDGs8PbqEf5liT6DnwEWznfb9Jc6YEdMyXEEe4EnZC2guH4KCMv7wSJ27sI+lsyTS4ZQQIDAQAB
+    notifyUrl: http://119.23.163.109:18088/callback/ali
+  wechat:
+    appid: wx0138d90c2e662e60
+    #new
+#    appid: wxf70f7ee85e71e48d
+    mch_id: 1491515532
+    #new
+#    mch_id: 1513596011
+    api_key: aobYvOg5NJvL7KyTsUjSvtDDV2O04oBS
+    #new
+#    api_key: JHo2uoi3901902eoijklsjdjlskd9903
+    notifyUrl: http://119.23.163.109:18088/callback/wechat
+    order_url: https://api.mch.weixin.qq.com/pay/unifiedorder
+    query_url: https://api.mch.weixin.qq.com/pay/orderquery
+    withdraw_url: https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers
+jwt:
+  header: ${jwt.header}
+  expires_in: ${jwt.expires_in} # 5 minutes
+  mobile_expires_in: ${jwt.mobile_expires_in} # 10 minutes
+  secret: ${jwt.secret}
+xxl:
+  addresses: http://${admin.ip}:${admin.port}/netx-admin-1.0.0

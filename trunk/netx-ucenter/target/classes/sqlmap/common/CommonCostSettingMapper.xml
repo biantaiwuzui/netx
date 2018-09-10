@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonCostSettingMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonCostSetting">
+		<id column="id" property="id" />
+		<result column="shared_fee" property="sharedFee" />
+		<result column="withdraw_fee" property="withdrawFee" />
+		<result column="shop_manager_fee" property="shopManagerFee" />
+		<result column="shop_manager_fee_limit_date" property="shopManagerFeeLimitDate" />
+		<result column="shop_category_fee" property="shopCategoryFee" />
+		<result column="shop_tags_fee" property="shopTagsFee" />
+		<result column="credit_issue_fee" property="creditIssueFee" />
+		<result column="credit_funds_interest" property="creditFundsInterest" />
+		<result column="credit_subscribe_fee" property="creditSubscribeFee" />
+		<result column="credit_inst" property="creditInst" />
+		<result column="pic_and_voice_publish_deposit" property="picAndVoicePublishDeposit" />
+		<result column="click_fee" property="clickFee" />
+		<result column="violation_click_fee" property="violationClickFee" />
+		<result column="wish_capital_manage_fee" property="wishCapitalManageFee" />
+		<result column="saler_shared_fee" property="salerSharedFee" />
+		<result column="state" property="state" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+		<result column="dispose_user" property="disposeUser" />
+		<result column="dispose_time" property="disposeTime" />
+	</resultMap>
+
+</mapper>

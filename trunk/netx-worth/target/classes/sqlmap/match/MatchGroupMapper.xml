@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchGroupMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchGroup">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="match_group_name" property="matchGroupName" />
+		<result column="sort" property="sort" />
+		<result column="quota" property="quota" />
+		<result column="free" property="free" />
+		<result column="is_auto_select" property="isAutoSelect" />
+	</resultMap>
+
+	<select id="selectMatchGroupByZoneId" resultType="com.netx.worth.vo.MatchGroupZoneVo" parameterType="String">
+		SELECT
+			g.id groupId,
+			g.match_group_name matchGroupName,
+			g.quota quota,
+			b.match_zone_id zoneId,
+			(
+				SELECT
+					zone_name
+				FROM
+					match_zone
+				WHERE
+					id = b.match_zone_id
+			) matchZoneName,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					match_participant
+				WHERE
+					zone_id = b.match_zone_id
+				AND group_id = g.id AND is_pay=1
+			) participantSum,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					match_appearance
+				WHERE
+					zone_id =b.match_zone_id
+				AND group_id = g.id
+			) passNumber,
+			b.start_time startTime,
+			b.end_time endTime
+		FROM
+			match_group AS g
+		INNER JOIN (
+			SELECT
+				match_group_id,
+				match_zone_id,
+				start_time,
+				end_time
+			FROM
+				match_group_and_zone
+			WHERE
+				match_zone_id = #{zoneId}
+			AND is_zone_time = 0
+		) b ON g.id = b.match_group_id
+	</select>
+	<select id="selectMatchGroupByMatchId" resultType="com.netx.worth.vo.MatchGroupZoneVo" parameterType="String">
+		SELECT
+			g.id groupId,
+			g.match_group_name matchGroupName,
+			g.quota quota,
+			b.match_zone_id zoneId,
+			(
+				SELECT
+					zone_name
+				FROM
+					match_zone
+				WHERE
+					id = b.match_zone_id
+			) matchZoneName,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					match_participant
+				WHERE
+					zone_id = b.match_zone_id
+				AND group_id = g.id AND is_pay=1
+			) participantSum,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					match_appearance
+				WHERE
+					zone_id = b.match_zone_id
+				AND group_id = g.id
+			) passNumber,
+			b.start_time startTime,
+			b.end_time endTime
+		FROM
+			match_group AS g
+		INNER JOIN (
+			SELECT
+				match_group_id,
+				match_zone_id,
+				start_time,
+				end_time
+			FROM
+				match_group_and_zone
+			WHERE
+				match_zone_id IN (
+					SELECT
+						id
+					FROM
+						match_zone
+					WHERE
+						match_id = #{match_id}
+				)
+			AND is_zone_time = 0
+		) b ON g.id = b.match_group_id
+	</select>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonOtherSetMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonOtherSet">
+		<id column="id" property="id" />
+		<result column="can_use" property="canUse" />
+		<result column="dispose_user_id" property="disposeUserId" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+		<result column="skill_limit_type" property="skillLimitType" />
+		<result column="skill_limit_point" property="skillLimitPoint" />
+		<result column="skill_limit_user_Ids" property="skillLimitUserIds" />
+		<result column="skill_limit_condition" property="skillLimitCondition" />
+		<result column="pic_limit_type" property="picLimitType" />
+		<result column="pic_limit_point" property="picLimitPoint" />
+		<result column="pic_limit_user_Ids" property="picLimitUserIds" />
+		<result column="pic_limit_condition" property="picLimitCondition" />
+		<result column="wish_limit_type" property="wishLimitType" />
+		<result column="wish_limit_point" property="wishLimitPoint" />
+		<result column="wish_limit_user_Ids" property="wishLimitUserIds" />
+		<result column="wish_limit_condition" property="wishLimitCondition" />
+		<result column="reg_merchant_limit_type" property="regMerchantLimitType" />
+		<result column="reg_merchant_limit_point" property="regMerchantLimitPoint" />
+		<result column="reg_merchant_limit_user_Ids" property="regMerchantLimitUserIds" />
+		<result column="reg_merchant_limit_condition" property="regMerchantLimitCondition" />
+		<result column="credit_limit_type" property="creditLimitType" />
+		<result column="credit_limit_Point" property="creditLimitPoint" />
+		<result column="credit_limit_user_ids" property="creditLimitUserIds" />
+		<result column="credit_limit_ondition" property="creditLimitOndition" />
+		<result column="credit_limit_moreThen" property="creditLimitMoreThen" />
+		<result column="credit_limit_balance" property="creditLimitBalance" />
+		<result column="share_limit_type" property="shareLimitType" />
+		<result column="share_limit_point" property="shareLimitPoint" />
+		<result column="share_limit_condition" property="shareLimitCondition" />
+		<result column="bak1" property="bak1" />
+		<result column="bak2" property="bak2" />
+		<result column="bak3" property="bak3" />
+		<result column="bak4" property="bak4" />
+		<result column="bak5" property="bak5" />
+	</resultMap>
+
+</mapper>

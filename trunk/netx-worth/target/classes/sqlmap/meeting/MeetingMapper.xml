@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MeetingMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.Meeting">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="meeting_type" property="meetingType" />
+		<result column="meeting_label" property="meetingLabel" />
+		<result column="started_at" property="startedAt" />
+		<result column="end_at" property="endAt" />
+		<result column="reg_stop_at" property="regStopAt" />
+		<result column="obj" property="obj" />
+		<result column="obj_list" property="objList" />
+		<result column="amount" property="amount" />
+		<result column="address" property="address" />
+		<result column="order_ids" property="orderIds" />
+		<result column="order_price" property="orderPrice" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="description" property="description" />
+		<result column="poster_images_url" property="posterImagesUrl" />
+		<result column="meeting_images_url" property="meetingImagesUrl" />
+		<result column="ceil" property="ceil" />
+		<result column="floor" property="floor" />
+		<result column="reg_count" property="regCount" />
+		<result column="reg_success_count" property="regSuccessCount" />
+		<result column="status" property="status" />
+		<result column="fee_not_enough" property="feeNotEnough" />
+		<result column="is_confirm" property="isConfirm" />
+		<result column="lock_version" property="lockVersion" />
+		<result column="all_register_amount" property="allRegisterAmount" />
+		<result column="balance" property="balance" />
+		<result column="is_balance_pay" property="isBalancePay" />
+		<result column="pay_from" property="payFrom" />
+		<result column="meeting_fee_pay_amount" property="meetingFeePayAmount" />
+		<result column="meeting_fee_Pay_from" property="meetingFeePayFrom" />
+		<result column="meeting_fee_pay_type" property="meetingFeePayType" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>

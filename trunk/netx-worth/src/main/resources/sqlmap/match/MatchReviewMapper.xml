@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchReviewMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchReview">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="user_id" property="userId" />
+		<result column="organizer_name" property="organizerName" />
+		<result column="organizer_kind" property="organizerKind" />
+		<result column="is_accept" property="isAccept" />
+		<result column="is_approve" property="isApprove" />
+		<result column="merchant_id" property="merchantId" />
+	</resultMap>
+	<select id="getReviewListBYMatchId" parameterType="Map" resultType="com.netx.worth.vo.MatchReviewVo">
+		SELECT
+			a.credit,
+			b.*
+		FROM
+			user a
+		RIGHT JOIN (
+			SELECT
+				a.user_id userId,
+				b.*
+			FROM
+				merchant a
+			RIGHT JOIN (
+				SELECT
+					a.id,
+					b.logo,
+					a.merchant_id merchantId,
+					a.is_accept isAccept,
+					a.is_approve isApprove,
+					a.match_id matchId,
+					a.organizer_kind organizerKind,
+					a.organizer_name organizerName
+				FROM
+					match_review a
+				LEFT JOIN (
+					SELECT
+						merchant_id,
+						picture_url logo
+					FROM
+						merchant_picture
+					WHERE
+						merchant_picture_type = 'logo'
+				) b ON a.merchant_id = b.merchant_id
+				WHERE
+					a.match_id = #{match_id}
+					<if test="is_accept!=null and is_accept!=''">
+						AND a.is_accept=#{is_accept}
+					</if>
+					<if test="organizer_kind!=null and organizer_kind!=''">
+						AND a.organizer_kind=#{organizer_kind}
+					</if>
+				ORDER BY
+					a.organizer_kind DESC
+			) b ON a.id = b.merchantId
+		) b ON a.id = b.userId
+	</select>
+	<select id="getOneTags" resultType="String" parameterType="String">
+		SELECT
+			b.name tag
+		FROM
+			merchant_category a
+		INNER JOIN (
+			SELECT
+				*
+			FROM
+				category
+			WHERE
+				parent_id = '0'
+			AND deleted = '0'
+		) b ON a.category_id = b.id WHERE a.merchant_id=#{merchant_id}
+	</select>
+</mapper>

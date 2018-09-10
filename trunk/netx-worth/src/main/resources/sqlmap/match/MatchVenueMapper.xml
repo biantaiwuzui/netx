@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchVenueMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchVenue">
+		<id column="id" property="id" />
+		<result column="zone_id" property="zoneId" />
+		<result column="title" property="title" />
+		<result column="kind" property="kind" />
+		<result column="group_ids" property="groupIds" />
+		<result column="begin_time" property="beginTime" />
+		<result column="end_time" property="endTime" />
+		<result column="address" property="address" />
+		<result column="site" property="site" />
+		<result column="site_image_url" property="siteImageUrl" />
+		<result column="sort" property="sort" />
+		<result column="flow_path" property="flowPath" />
+		<result column="flow_path_sort" property="flowPathSort" />
+	</resultMap>
+	<select id="getLastEndTimeBtMatchId" resultType="Date" parameterType="String">
+		SELECT
+			max(end_time) endTime
+		FROM
+			match_venue a
+		INNER JOIN (SELECT id FROM match_zone WHERE match_id=#{match_id}) b ON a.zone_id = b.id
+	</select>
+</mapper>

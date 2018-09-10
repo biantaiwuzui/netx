@@ -1,0 +1,25 @@
+`# Default Properties file for use by StdSchedulerFactory
+# to create a Quartz Scheduler Instance, if a different
+# properties file is not explicitly specified.
+#
+org:
+  quartz:
+    scheduler:
+      wrapJobExecutionInUserTransaction: false
+      instanceId: AUTO
+      instanceName: DefaultQuartzScheduler
+      rmi:
+        proxy: false
+        export: false
+    jobStore:
+      isClustered: true
+      maxMisfiresToHandleAtATime: 1
+      tablePrefix:
+      misfireThreshold: 60000
+      class: org.quartz.impl.jdbcjobstore.JobStoreTX
+      clusterCheckinInterval: 5000
+    threadPool:
+      threadCount: 15
+      threadPriority: 5
+      threadsInheritContextClassLoaderOfInitializingThread: true
+      class: org.quartz.simpl.SimpleThreadPool

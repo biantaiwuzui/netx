@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.WishMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.Wish">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="wish_label" property="wishLabel" />
+		<result column="amount" property="amount" />
+		<result column="current_amount" property="currentAmount" />
+		<result column="current_apply_amount" property="currentApplyAmount" />
+		<result column="expired_at" property="expiredAt" />
+		<result column="referee_ids" property="refereeIds" />
+		<result column="referee_count" property="refereeCount" />
+		<result column="referee_accept_count" property="refereeAcceptCount" />
+		<result column="referee_refuse_count" property="refereeRefuseCount" />
+		<result column="description" property="description" />
+		<result column="wish_images_url" property="wishImagesUrl" />
+		<result column="wish_images_two_url" property="wishImagesTwoUrl" />
+		<result column="status" property="status" />
+		<result column="is_lock" property="isLock"/>
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>

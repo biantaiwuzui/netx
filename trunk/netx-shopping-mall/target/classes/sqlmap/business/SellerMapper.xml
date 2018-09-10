@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.business.SellerMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.business.Seller">
+		<id column="id" property="id" />
+		<result column="customer_code" property="customerCode" />
+		<result column="user_id" property="userId" />
+		<result column="name" property="name" />
+		<result column="job" property="job" />
+		<result column="referral_code" property="referralCode" />
+		<result column="province_code" property="provinceCode" />
+		<result column="city_code" property="cityCode" />
+		<result column="area_code" property="areaCode" />
+		<result column="addr_country" property="addrCountry" />
+		<result column="addr_detail" property="addrDetail" />
+		<result column="addr_door_number" property="addrDoorNumber" />
+		<result column="addr_unit_name" property="addrUnitName" />
+		<result column="addr_tel" property="addrTel" />
+		<result column="addr_contact" property="addrContact" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="pac_set_id" property="pacSetId" />
+		<result column="seller_desc" property="sellerDesc" />
+		<result column="logo_images_url" property="logoImagesUrl" />
+		<result column="seller_images_url" property="sellerImagesUrl" />
+		<result column="certi_images_url" property="certiImagesUrl" />
+		<result column="verify_corporate" property="verifyCorporate" />
+		<result column="verify_phone" property="verifyPhone" />
+		<result column="verify_id_card" property="verifyIdCard" />
+		<result column="verify_network_num" property="verifyNetworkNum" />
+		<result column="manage_id" property="manageId" />
+		<result column="seller_cashier_id" property="sellerCashierId" />
+		<result column="status" property="status" />
+		<result column="back_reason" property="backReason" />
+		<result column="over_reason" property="overReason" />
+		<result column="handlers_id" property="handlersId" />
+		<result column="visit_num" property="visitNum" />
+		<result column="today_packet_pool_amount" property="todayPacketPoolAmount" />
+		<result column="packet_pool_amount" property="packetPoolAmount" />
+		<result column="seller_qrcode" property="sellerQrcode" />
+		<result column="pay_status" property="payStatus" />
+		<result column="effective_time" property="effectiveTime" />
+		<result column="fee_time" property="feeTime" />
+		<result column="end_time" property="endTime" />
+		<result column="second_num" property="secondNum" />
+		<result column="third_num" property="thirdNum" />
+		<result column="day_num" property="dayNum" />
+		<result column="month_num" property="monthNum" />
+		<result column="month_second_num" property="monthSecondNum" />
+		<result column="month_third_num" property="monthThirdNum" />
+		<result column="group_no" property="groupNo" />
+		<result column="achievement_month" property="achievementMonth" />
+		<result column="achievement_total" property="achievementTotal" />
+		<result column="is_hold_credit" property="holdCredit" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="selectSellersAndRandNo" resultType="com.netx.shopping.vo.SellerAgentDto">
+		SELECT
+		obj.*
+		FROM
+		(
+			SELECT
+				id, user_id,name,second_num,third_num,create_time,city_code,province_code,achievement_total,
+				achievement_month,month_second_num,month_third_num ,@rownum := @rownum + 1 AS rownum
+			FROM
+				`seller`,(SELECT @rownum := 0) r
+			WHERE
+				deleted = '0'
+			ORDER BY
+				(second_num + third_num)
+			DESC,
+				create_time
+		) AS obj
+		WHERE
+			obj.user_id = #{userId}
+	</select>
+
+	<select id="selectSellerAndRandNo" resultType="Long">
+		SELECT
+		rownum
+		FROM
+		(   SELECT
+		id,@rownum := @rownum + 1 AS rownum
+		FROM
+		`seller` as seller  , (SELECT @rownum := 0) r
+		where
+		deleted = '0'
+		<if test="provinceCode !=null and provinceCode != ''">
+			AND seller.province_code = #{provinceCode}
+		</if>
+		<if test="cityCode !=null and cityCode != ''">
+			AND seller.city_code = #{cityCode}
+		</if>
+		ORDER BY
+		(second_num+third_num) DESC,create_time
+		) AS obj
+		WHERE
+		obj.id = #{id}
+	</select>
+
+	<select id="getAllGoodsOderByUserId" resultType="String">
+		SELECT
+		GROUP_CONCAT(id) as id
+		FROM
+		seller
+		where
+		(
+		user_id = #{userId}
+		<if test="manageId!=null and manageId!=''">
+			or manage_id in
+			<foreach collection="manageId" item="manageIds"  index="index" open="(" close=")" separator=",">
+				#{manageIds}
+			</foreach>
+		</if>
+		<if test="cashierId!=null and cashierId!=''">
+			or seller_cashier_id in
+			<foreach collection="cashierId" item="cashierIds"  index="index" open="(" close=")" separator=",">
+				#{cashierIds}
+			</foreach>
+		</if>
+		)
+		and deleted = '0'
+		order by create_time
+	</select>
+
+	<select id="getSellerbyIn"  resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		seller
+		WHERE
+		id in (#{id})
+		and deleted='0'
+		ORDER BY
+		FIELD(id,#{id})
+	</select>
+
+	<update id="updateSellerRedpacket">
+		UPDATE
+			seller
+		set
+			packet_pool_amount =today_packet_pool_amount
+	</update>
+
+	<update id="emptySellerRedpacket">
+		UPDATE
+			seller
+		set
+			today_packet_pool_amount =(case  when today_packet_pool_amount >0 then 0 else packet_pool_amount end)
+	</update>
+
+	<update id="updateDayNum">
+		UPDATE
+			seller
+		set
+			day_num = 0
+		where
+			deleted=0
+	</update>
+
+	<select id="getRelatedSellersNotMoneyUserByUserId" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		seller
+		where
+		(
+		user_id = #{userId}
+		<if test="manageId!=null and manageId!=''">
+			or manage_id in
+			<foreach collection="manageId" item="manageIds"  index="index" open="(" close=")" separator=",">
+				#{manageIds}
+			</foreach>
+		</if>
+		)
+		and deleted = '0'
+		order by create_time DESC
+		LIMIT #{current}, #{size}
+	</select>
+</mapper>

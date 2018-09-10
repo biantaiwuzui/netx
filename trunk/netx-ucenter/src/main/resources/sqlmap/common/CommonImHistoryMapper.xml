@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonImHistoryMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonImHistory">
+		<id column="id" property="id" />
+		<result column="from_user_id" property="fromUserId" />
+		<result column="to_user_id" property="toUserId" />
+		<result column="message_payload" property="messagePayload" />
+		<result column="type" property="type" />
+		<result column="type_id" property="typeId" />
+		<result column="push_params" property="pushParams" />
+		<result column="doc_type" property="docType" />
+		<result column="send_time" property="sendTime" />
+		<result column="is_read" property="isRead" />
+		<result column="create_time" property="createTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+</mapper>

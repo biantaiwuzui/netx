@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchVoteMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchVote">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="project_id" property="projectId" />
+		<result column="project_introduct" property="projectIntroduct" />
+		<result column="project_images_url" property="projectImagesUrl" />
+		<result column="project_vote" property="projectVote" />
+	</resultMap>
+
+</mapper>

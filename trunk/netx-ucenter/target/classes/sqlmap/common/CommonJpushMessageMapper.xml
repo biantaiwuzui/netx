@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonJpushMessageMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonJpushMessage">
+		<id column="id" property="id" />
+		<result column="alert_msg" property="alertMsg" />
+		<result column="title" property="title" />
+		<result column="ype" property="type" />
+		<result column="doc_type" property="docType" />
+		<result column="push_params" property="pushParams" />
+		<result column="from_user_id" property="fromUserId" />
+		<result column="to_user_id" property="toUserId" />
+		<result column="state" property="state" />
+		<result column="create_date" property="createDate" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<update id="updateStateByUserId">
+		update common_jpush_message set state = #{state} where to_user_id = #{userId}
+	</update>
+
+	<delete id="deleteByUserId">
+		delete from common_jpush_message where to_user_id = #{userId} or from_user_id = #{userId}
+	</delete>
+</mapper>

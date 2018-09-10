@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>netx-parent</artifactId>
+        <groupId>com.netx</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../netx-parent/pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.netx.fuse</groupId>
+    <artifactId>netx-fuse</artifactId>
+    <packaging>jar</packaging>
+
+    <name>netx-fuse</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+        	<groupId>com.netx</groupId>
+        	<artifactId>netx-worth</artifactId>
+        	<version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netx</groupId>
+            <artifactId>netx-ucenter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netx</groupId>
+            <artifactId>netx-shopping-mall</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.3.5.RELEASE</version>
+        </dependency>-->
+        <dependency>
+        	<groupId>com.netx.searchengine</groupId>
+        	<artifactId>netx-searchengine</artifactId>
+        	<version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netx</groupId>
+            <artifactId>netx-credit</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    </project>

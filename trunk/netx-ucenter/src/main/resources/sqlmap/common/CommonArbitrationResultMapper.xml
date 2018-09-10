@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.common.CommonArbitrationResultMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.ucenter.model.common.CommonArbitrationResult">
+		<id column="id" property="id" />
+		<result column="from_user_credit_point" property="fromUserCreditPoint" />
+		<result column="from_user_credit_point_reason" property="fromUserCreditPointReason" />
+		<result column="to_user_credit_point" property="toUserCreditPoint" />
+		<result column="to_user_credit_point_reason" property="toUserCreditPointReason" />
+		<result column="refund_radio_button" property="refundRadioButton" />
+		<result column="refund_arbitrate_reason" property="refundArbitrateReason" />
+		<result column="return_radio_button" property="returnRadioButton" />
+		<result column="return_arbitrate_reason" property="returnArbitrateReason" />
+		<result column="substract_release_frozen_money_refund" property="substractReleaseFrozenMoneyRefund" />
+		<result column="substract_release_frozen_money_reason" property="substractReleaseFrozenMoneyReason" />
+		<result column="op_common_answer" property="opCommonAnswer" />
+		<result column="op_common_reason" property="opCommonReason" />
+		<result column="descriptions" property="descriptions" />
+		<result column="status_code" property="statusCode" />
+		<result column="create_time" property="createTime" />
+		<result column="op_user_id" property="opUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_user_id" property="createUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+	<!--多表查询-->
+	<select id="selectByOpUserId" resultType="com.netx.common.vo.common.ArbitrationSelectResponseVo">
+		select  id as arbitrationId ,status_code as statusCode,theme,createTime,reason
+		from common_manage_arbitration
+		where result_id in (
+			select  id  from common_arbitration_result where op_user_id =#{opUserId}
+		)
+	</select>
+</mapper>

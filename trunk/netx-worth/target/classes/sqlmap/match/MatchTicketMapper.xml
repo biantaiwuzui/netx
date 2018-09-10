@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchTicketMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchTicket">
+		<id column="id" property="id" />
+		<result column="zone_id" property="zoneId" />
+		<result column="ticket_name" property="ticketName" />
+		<result column="venue_ids" property="venueIds" />
+		<result column="free" property="free" />
+		<result column="number" property="number" />
+		<result column="description" property="description" />
+		<result column="begin_time" property="beginTime" />
+		<result column="end_time" property="endTime" />
+		<result column="optimistic_locking" property="optimisticLocking" />
+		<result column="sort" property="sort" />
+		<result column="is_defalut" property="isDefalut" />
+		<result column="use_defalut" property="useDefalut" />
+	</resultMap>
+	<select id="getEndTicketTimeByMatchId" parameterType="String" resultType="Date">
+		SELECT
+			max(end_time) endTime
+		FROM
+			match_ticket a
+		INNER JOIN (
+			SELECT
+				id
+			FROM
+				match_zone
+			WHERE
+				match_id = #{macth_id}
+		) b ON a.zone_id = b.id
+		WHERE
+			is_defalut = 0
+	</select>
+	<select id="getMatchTicketByProgress" parameterType="String" resultMap="BaseResultMap">
+		SELECT
+		a.zone_name zone_id,
+		b.venue_ids,
+		b.free,
+		b.description,
+		b.ticket_name,
+		b.begin_time,
+		b.end_time,
+		b.is_defalut,
+		b.use_defalut
+		FROM
+		match_zone a
+		INNER JOIN (
+		SELECT
+		a.*
+		FROM
+		match_ticket a
+		LEFT JOIN (
+		SELECT
+		a.id
+		FROM
+		match_venue a
+		INNER JOIN (
+		SELECT DISTINCT
+		a.id ticketId,
+		SUBSTRING_INDEX(
+		SUBSTRING_INDEX(
+		a.venue_ids,
+		',',
+		b.help_topic_id + 1
+		),
+		',' ,- 1
+		) venueId
+		FROM
+		(
+		SELECT
+		*
+		FROM
+		match_ticket
+		WHERE
+		is_defalut = 0
+		AND use_defalut = 0
+		) a
+		LEFT JOIN mysql.help_topic b ON b.help_topic_id &lt;(
+		LENGTH(a.venue_ids) - LENGTH(
+		REPLACE (a.venue_ids, ',', '')
+		) + 1
+		)
+		) b ON a.id = b.venueId
+		WHERE
+		a.kind = #{progress_id}
+		) b ON a.id = b.id
+		WHERE
+		a.is_defalut = 0
+		AND a.use_defalut = 0
+		) b ON a.id = b.zone_id
+	</select>
+	<select id="getBuyTicketByUserId" resultType="com.netx.worth.vo.MatchBuyTicketVo" parameterType="Map">
+		SELECT
+			b.ticket_name ticketName,
+			b.description,
+			a.title,
+			a.sub_title,
+			b.audienceId,
+			a.match_image_url url,
+			b.isAttend,
+			b.venue_ids venueIds,
+			b.free
+		FROM
+			match_event a
+		INNER JOIN (
+			SELECT
+				a.*, b.match_id matchId,b.id audienceId,b.is_attend isAttend
+			FROM
+				match_ticket a
+			INNER JOIN (
+				SELECT
+					*
+				FROM
+					match_audience
+				WHERE
+					user_id = #{user_id}
+				AND match_id = #{match_id}
+			) b ON a.id = b.match_ticket_id
+		) b ON a.id = b.matchId
+	</select>
+</mapper>

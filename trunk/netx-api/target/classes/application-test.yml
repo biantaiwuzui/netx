@@ -1,0 +1,23 @@
+database:
+  host: 168.62.62.234
+  port: 3306
+  databasename: netx
+  username: cloudzou
+  password: Pa$$word123456
+
+oss:
+  #bucket-name: wzprojectbucket
+  bucket-prefix: netx-test1
+#upload:
+#  imgPre: img-dev-
+jiguang:
+  app-key: f08f0f1afc3104253d3b29e9
+  secret: 5e675410ac12e6fc149044d9
+jwt:
+  header: Token
+  expires_in: 86400000 # 24 小时
+  mobile_expires_in: 86400000 # 24 小时
+  secret: iukjytrqzdlq
+app:
+  version: v0.4.51
+

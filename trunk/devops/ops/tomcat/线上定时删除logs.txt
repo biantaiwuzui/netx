@@ -1,0 +1,11 @@
+﻿#第一种方法，直接使用命令方式
+
+#删除2天以前的catalina.*.log
+0 02  */1 * * *  root find /data/logs/tomcat/job-admin  -name "catalina.*.log" -and  -mtime +2 -type f | xargs rm
+#07分删除dump*.log
+07 01  */1 * * *  root find /data/logs/python/ -name "*.log" -type f | xargs rm
+
+#第二种方法，使用shell脚本
+
+    #第一步，chmod 700    path_to/clean_log.sh
+    #第二步， 07 01  */1 * * *  root path_to/clean_log.sh >> /data/logs/clean_log.log（带输出日志）

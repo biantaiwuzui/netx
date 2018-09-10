@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.productcenter.SkuMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.productcenter.Sku">
+		<result column="id" property="id" />
+		<result column="product_id" property="productId" />
+		<result column="storage_nums" property="storageNums" />
+		<result column="sell_nums" property="sellNums" />
+		<result column="trade_max_nums" property="tradeMaxNums" />
+		<result column="market_price" property="marketPrice" />
+		<result column="price" property="price" />
+		<result column="sku_bar_code" property="skuBarCode" />
+		<result column="default_sku" property="defaultSku" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<!-- 获取商品总销量-->
+	<select id="getSumSellNums" resultType="Long">
+		SELECT
+		  SUM(sell_nums)
+		FROM
+		  sku
+		WHERE
+		  product_id = #{productId}
+	</select>
+
+</mapper>

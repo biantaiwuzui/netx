@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sessionConfig>
+    <!-- 缺省配置 -->
+    <defaultConfig>
+        <domain>${boss.session.domain}</domain>
+        <lifecycle>-1</lifecycle>
+        <storeType>cookie</storeType>
+    </defaultConfig>
+
+    <!-- 生命周期为非-1的配置不能是cache,-1表示浏览器关闭后失效 -->
+    <entries>
+        <entry name="lastVisitTime">
+            <key>lvt</key>
+            <encrypt>true</encrypt>
+            <readonly>false</readonly>
+        </entry>
+        <entry name="sessionId">
+            <key>ss</key>
+            <path>/</path>
+            <lifecycle>-1</lifecycle>
+            <httponly>true</httponly>
+            <readonly>true</readonly>
+            <encrypt>true</encrypt>
+        </entry>
+        <entry name="loginUser">
+            <key>loginUser</key>
+            <path>/</path>
+            <lifecycle>-1</lifecycle>
+            <storeType>cache</storeType>
+            <httponly>true</httponly>
+            <readonly>false</readonly>
+            <encrypt>true</encrypt>
+        </entry>
+        <entry name="login">
+            <key>login</key>
+            <path>/</path>
+            <lifecycle>-1</lifecycle>
+            <encrypt>true</encrypt>
+            <readonly>false</readonly>
+            <storeType>cache</storeType>
+        </entry>
+    </entries>
+    <globalinfo>
+        <!-- cookie 加密的key -->
+        <key name="blowfish_key">dhDMNcMlHx7DR0Y=</key>
+        <key name="key">value</key>
+        <key name="cacheAddress">${boss.cache.address}</key>
+        <key name="cacheImplClass">com.netx.utils.cache.RedisCache</key>
+    </globalinfo>
+</sessionConfig>

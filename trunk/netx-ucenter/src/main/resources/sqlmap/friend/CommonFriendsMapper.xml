@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.ucenter.mapper.friend.CommonFriendsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.netx.ucenter.model.friend.CommonFriends">
+        <id column="id" property="id"/>
+        <result column="master_id" property="masterId"/>
+        <result column="friend_id" property="friendId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user_id" property="createUserId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user_id" property="updateUserId"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+    <select id="getUserIdsByMasterId" resultType="java.lang.String">
+		select friends.friend_id from common_friends friends
+		where friends.master_id=#{masterId}
+	</select>
+    <select id="checkFriend" resultType="java.lang.Integer">
+		select count(*) from common_friends friends
+		where (friends.master_id = #{userId} and friends.friend_id = #{toUserId})
+		or (friends.master_id = #{toUserId} and friends.friend_id = #{userId})
+	</select>
+    <select id="selectStatData" resultType="com.netx.common.vo.common.StatDataDto">
+        SELECT s.master_id as id,s.count,v.user_number as userNumber,v.nickname,v.credit,v.create_time as createTime,p.url as headImg from user v RIGHT  JOIN (
+        (SELECT master_id,COUNT(*) AS count  from
+        (select cf.master_id, cf.friend_id from common_friends cf where friend_id in (
+        select us.id from user us where  real_name is not null and mobile is not null and id_number is not null)) c
+        GROUP BY c.master_id))s ON v.id=s.master_id
+        INNER JOIN user_photo p on p.user_id=v.id WHERE position =1
+        ORDER BY s.count Desc
+    </select>
+</mapper>
+        <!--count(*) as count -->

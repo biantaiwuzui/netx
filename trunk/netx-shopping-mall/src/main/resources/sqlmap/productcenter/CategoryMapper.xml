@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.productcenter.CategoryMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.productcenter.Category">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="parent_id" property="parentId" />
+		<result column="used_count" property="usedCount" />
+		<result column="priority" property="priority" />
+		<result column="py" property="py" />
+		<result column="icon" property="icon" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="selectKidTags" resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM
+			category
+		WHERE
+			parent_id = #{parentId}
+		ORDER BY
+			CONVERT(name USING gbk) COLLATE gbk_chinese_ci ASC
+			LIMIT #{currentPage},#{size}
+	</select>
+
+	<!-- 更新优先级-->
+	<update id="updatePriority">
+		UPDATE category
+		SET priority = priority + #{num}
+		WHERE
+			priority >= #{priority}
+		AND
+			deleted = 0
+		<if test="parentId != null and parentId != ''">
+			AND
+			parent_id = #{parentId}
+		</if>
+	</update>
+
+	<update id="deleteByParentId">
+		UPDATE category
+		SET deleted = #{delete}
+		WHERE
+			parent_id = #{parentId}
+		AND
+			deleted = #{deleted}
+	</update>
+
+</mapper>

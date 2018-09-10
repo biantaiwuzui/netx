@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchTeamMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchTeam">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="team_name" property="teamName" />
+		<result column="team_slogan" property="teamSlogan" />
+		<result column="team_introduction" property="teamIntroduction" />
+		<result column="team_image_url" property="teamImageUrl" />
+		<result column="team_leader" property="teamLeader" />
+		<result column="is_pass" property="isPass" />
+	</resultMap>
+
+</mapper>

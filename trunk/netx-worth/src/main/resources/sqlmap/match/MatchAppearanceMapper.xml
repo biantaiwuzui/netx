@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchAppearanceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchAppearance">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="progress_id" property="progressId" />
+		<result column="zone_id" property="zoneId" />
+		<result column="group_id" property="groupId" />
+		<result column="venue_id" property="venueId" />
+		<result column="performer_id" property="performerId" />
+		<result column="performer_name" property="performerName" />
+		<result column="project_name" property="projectName" />
+		<result column="head_image_url" property="headImageUrl" />
+		<result column="project_introduct" property="projectIntroduct" />
+		<result column="appearance_images_url" property="appearanceImagesUrl" />
+		<result column="appearance_order" property="appearanceOrder" />
+		<result column="performance_time" property="performanceTime" />
+		<result column="appearance_status" property="appearanceStatus" />
+	</resultMap>
+
+	<select id="listMatchAppearanceVo" resultType="com.netx.worth.vo.MatchAppearanceOrderVo" parameterType="Map">
+		SELECT a.id id, m.title matchName, z.zone_name zoneName, g.match_group_name groupName,
+		a.performer_name performerName, a.head_image_url headImageUrl, a.appearance_order appearanceOrder, a.performance_time performanceTime,
+		a.appearance_status FROM match_appearance a
+		INNER JOIN match_event m ON  a.match_id = m.id
+		INNER JOIN match_zone z ON a.zone_id = z.id
+		INNER JOIN match_group g ON a.group_id = g.id
+		WHERE a.match_id = #{matchId}
+		<if test="groupId!=null and groupId!=''">
+			AND a.group_id = #{groupId}
+		</if>
+		<if test="zoneId!=null and zoneId!=''">
+			AND a.zone_id = #{zoneId}
+		</if>
+		ORDER BY a.appearance_order
+	</select>
+
+	<select id="listMatchAppearanceVoByProgress" resultType="com.netx.worth.vo.MatchAppearanceOrderVo" parameterType="Map">
+		SELECT a.id id, m.title matchName, z.zone_name zoneName, g.match_group_name groupName,
+		a.performer_name performerName, a.head_image_url headImageUrl, a.appearance_order appearanceOrder, a.performance_time performanceTime,
+		a.appearance_status FROM match_appearance a
+		INNER JOIN match_event m ON  a.match_id = m.id
+		INNER JOIN match_zone z ON a.zone_id = z.id
+		INNER JOIN match_group g ON a.group_id = g.id
+		WHERE a.progress_id = #{progressId}
+		<if test="groupId!=null and groupId!=''">
+			AND a.group_id = #{groupId}
+		</if>
+		<if test="zoneId!=null and zoneId!=''">
+			AND a.zone_id = #{zoneId}
+		</if>
+		ORDER BY a.appearance_order
+	</select>
+
+</mapper>

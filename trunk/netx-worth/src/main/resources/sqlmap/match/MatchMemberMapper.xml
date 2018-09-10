@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchMemberMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchMember">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="user_id" property="userId" />
+		<result column="user_call" property="userCall" />
+		<result column="kind" property="kind" />
+		<result column="is_accept" property="isAccept" />
+		<result column="is_spot" property="isSpot" />
+		<result column="is_net_user" property="isNetUser" />
+		<result column="active_code" property="activeCode" />
+	</resultMap>
+
+
+	<select id="getWorkPeopleList" resultType="com.netx.worth.vo.MatchUserInfoVo" parameterType="java.util.Map">
+		SELECT
+			b.*, a.url
+		FROM
+			user_photo a
+		RIGHT JOIN (
+			SELECT
+				id,
+				user_number userNumber,
+				nickname,
+				sex,
+				(
+					SELECT
+						DATE_FORMAT(
+							FROM_DAYS(
+								TO_DAYS(NOW()) - TO_DAYS(birthday)
+							),
+							'%Y'
+						) + 0
+				) AS age,
+				lv,
+				credit,
+				members.*
+			FROM
+				user users
+			RIGHT JOIN (
+				SELECT
+					id memeberId,
+					match_id matchId,
+					user_id userId,
+					user_call userCall,
+					kind,
+					is_net_user inNet,
+					is_accept isAccept
+				FROM
+					match_member
+				WHERE
+				match_id=#{match_id} AND kind!=0
+				<if test="is_spot!=null and is_spot!=''">
+					AND is_spot=#{is_spot}
+				</if>
+				<if test="is_accept!=null and is_accept!=''">
+					AND is_accept=#{is_accept}
+				</if>
+			) members ON members.userId = users.id
+		) b ON a.user_id = b.id AND a.position=1 ORDER BY b.userNumber desc
+	</select>
+</mapper>

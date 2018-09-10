@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchProgressParticipantMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchProgressParticipant">
+		<id column="id" property="id" />
+		<result column="match_id" property="matchId" />
+		<result column="zone_id" property="zoneId" />
+		<result column="group_id" property="groupId" />
+		<result column="participant_id" property="participantId" />
+		<result column="progress_id" property="progressId" />
+	</resultMap>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="ParticipantMap" type="com.netx.worth.model.MatchParticipant">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="match_id" property="matchId" />
+		<result column="zone_id" property="zoneId" />
+		<result column="group_id" property="groupId" />
+		<result column="project_name" property="projectName" />
+		<result column="user_name" property="userName" />
+		<result column="birthday" property="birthday" />
+		<result column="sex" property="sex" />
+		<result column="head_images_url" property="headImagesUrl" />
+		<result column="requirement_text" property="requirementText" />
+		<result column="is_team" property="isTeam" />
+		<result column="team_id" property="teamId" />
+		<result column="is_pay" property="isPay" />
+		<result column="is_pass" property="isPass" />
+		<result column="is_guardian" property="isGuardian" />
+		<result column="is_spot" property="isSpot" />
+	</resultMap>
+	<select id="getPassParticipant" resultMap="ParticipantMap" parameterType="Map">
+		SELECT
+			*
+		FROM
+			match_participant a
+		LEFT JOIN (
+			SELECT
+				progress_id
+			FROM
+				match_progress_participant
+			WHERE zone_id=#{zone_id} AND progress_id=#{progress_id}
+		) b ON a.id = b.progress_id
+	</select>
+</mapper>

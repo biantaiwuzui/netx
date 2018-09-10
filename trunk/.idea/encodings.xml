@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/netx-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-boss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-credit" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-fuse" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-job" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-job/netx-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-job/netx-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-job/netx-schedule" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-searchengine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-shopping-mall" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-ucenter" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netx-worth" charset="UTF-8" />
+  </component>
+</project>

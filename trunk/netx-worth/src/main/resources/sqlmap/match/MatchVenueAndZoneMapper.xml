@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.worth.mapper.MatchVenueAndZoneMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.worth.model.MatchVenueAndZone">
+		<id column="id" property="id" />
+		<result column="match_venue_id" property="matchVenueId" />
+		<result column="match_zone_id" property="matchZoneId" />
+		<result column="sort" property="sort" />
+	</resultMap>
+	<select id="getMatchVunueBYMatchZoneId" parameterType="String" resultType="com.netx.worth.vo.TitleAndVenueIdVo">
+		SELECT
+			title,id matchVunueId
+		FROM
+			match_venue
+		WHERE
+			id IN (
+				SELECT
+					match_venue_id
+				FROM
+					match_venue_and_zone
+				WHERE
+					match_zone_id = #{match_zone_id}
+			)
+	</select>
+
+</mapper>

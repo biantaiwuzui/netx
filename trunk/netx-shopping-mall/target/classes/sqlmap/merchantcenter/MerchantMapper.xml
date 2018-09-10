@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netx.shopping.mapper.merchantcenter.MerchantMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.netx.shopping.model.merchantcenter.Merchant">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="customer_service_code" property="customerServiceCode" />
+		<result column="name" property="name" />
+		<result column="position" property="position" />
+		<result column="parent_merchant_id" property="parentMerchantId" />
+		<result column="referral_service_code" property="referralServiceCode" />
+		<result column="province_code" property="provinceCode" />
+		<result column="city_code" property="cityCode" />
+		<result column="area_code" property="areaCode" />
+		<result column="addr_country" property="addrCountry" />
+		<result column="addr_detail" property="addrDetail" />
+		<result column="addr_door_number" property="addrDoorNumber" />
+		<result column="addr_tel" property="addrTel" />
+		<result column="addr_contact" property="addrContact" />
+		<result column="lon" property="lon" />
+		<result column="lat" property="lat" />
+		<result column="desc" property="desc" />
+		<result column="status" property="status" />
+		<result column="disable_reason" property="disableReason" />
+		<result column="enable_reason" property="enableReason" />
+		<result column="visit_count" property="visitCount" />
+		<result column="qrcode" property="qrcode" />
+		<result column="pay_status" property="payStatus" />
+		<result column="fee_time" property="feeTime" />
+		<result column="expire_time" property="expireTime" />
+		<result column="is_support_credit" property="isSupportCredit" />
+		<result column="pac_set_id" property="pacSetId" />
+		<result column="today_packet_pool_amount" property="todayPacketPoolAmount" />
+		<result column="packet_pool_amount" property="packetPoolAmount" />
+		<result column="second_num" property="secondNum" />
+		<result column="third_num" property="thirdNum" />
+		<result column="day_num" property="dayNum" />
+		<result column="month_num" property="monthNum" />
+		<result column="month_second_num" property="monthSecondNum" />
+		<result column="month_third_num" property="monthThirdNum" />
+		<result column="group_no" property="groupNo" />
+		<result column="achievement_month" property="achievementMonth" />
+		<result column="achievement_total" property="achievementTotal" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="selectMerchantsAndRandNo" resultType="com.netx.shopping.vo.SellerAgentDto">
+		SELECT
+			obj.*
+		FROM
+		(
+			SELECT
+				id,user_id as userId, name,second_num as secondNum, third_num as thirdNum, create_time as createTime,
+				city_code as cityCode, province_code as provinceCode, achievement_total as achievementTotal,
+				achievement_month as achievementMonth, month_second_num as monthSecondNum, month_third_num as monthThirdNum,
+				 @rownum := @rownum + 1 AS rownum
+			FROM
+				`merchant`,(SELECT @rownum := 0) r
+			WHERE
+				deleted = '0'
+			ORDER BY
+				(second_num + third_num) DESC,create_time
+		) AS obj
+		WHERE
+			obj.userId = #{userId}
+	</select>
+
+	<select id="selectMerchantAndRandNo" resultType="Long">
+		SELECT
+			rownum
+		FROM
+		(
+			SELECT
+				id, @rownum := @rownum + 1 AS rownum
+			FROM
+			`merchant` AS merchant  ,
+			(
+				SELECT
+					@rownum := 0) r
+				WHERE
+					deleted = '0'
+				<if test="provinceCode !=null and provinceCode != ''">
+					AND
+						merchant.province_code = #{provinceCode}
+				</if>
+				<if test="cityCode !=null and cityCode != ''">
+					AND
+						merchant.city_code = #{cityCode}
+				</if>
+				ORDER BY
+					(second_num+third_num) DESC,create_time
+			) AS obj
+		WHERE
+			obj.id = #{id}
+	</select>
+
+	<update id = "updateDayNum">
+		UPDATE
+		merchant
+		set
+		day_num = 0
+		where
+		deleted=0
+	</update>
+
+</mapper>

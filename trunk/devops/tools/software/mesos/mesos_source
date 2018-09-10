@@ -1,0 +1,25 @@
+nohup sudo mesos-master --cluster=MesosCluster \
+--ip=10.0.4.4 \
+--work_dir=/var/lib/mesos \
+--zk=zk://10.0.4.4:2181,10.0.4.5:2181,10.0.4.6:2181/mesos \
+--quorum=1 \
+>/dev/null 2>&1 &
+
+nohup sudo mesos-slave  \
+--ip=10.0.4.4 \
+--work_dir=/var/lib/mesos \
+--master=zk://10.0.4.4:2181,10.0.4.5:2181,10.0.4.6:2181/mesos \
+>/dev/null 2>&1 &
+
+
+nohup sudo mesos-slave  \
+--ip=10.0.4.5 \
+--work_dir=/var/lib/mesos \
+--master=zk://10.0.4.4:2181,10.0.4.5:2181,10.0.4.6:2181/mesos \
+>/dev/null 2>&1 &
+
+nohup sudo mesos-slave  \
+--ip=10.0.4.6 \
+--work_dir=/var/lib/mesos \
+--master=zk://10.0.4.4:2181,10.0.4.5:2181,10.0.4.6:2181/mesos \
+>/dev/null 2>&1 &
