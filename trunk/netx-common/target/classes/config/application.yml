@@ -14,12 +14,12 @@ spring:
     timeout: 0
 netx:
   elasticsearch:
-    host: 127.0.0.1
-    port: 9300
+    host: ${netxbase.elasticsearch.host}
+    port: ${netxbase.elasticsearch.port}
   worth:
     elasticsearch:
-      host: 127.0.0.1
-      port: 9300
+      host: ${netxbase.worth.elasticsearch.host}
+      port: ${netxbase.worth.elasticsearch.port}
   alidayu:
     domain: dysmsapi.aliyuncs.com #短信API产品域名（接口地址固定，无需修改）
     product: Dysmsapi #短信API产品名称（短信产品名固定，无需修改）

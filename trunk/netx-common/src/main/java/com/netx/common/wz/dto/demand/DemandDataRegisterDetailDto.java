@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 具体的申请信息 发布者看的
  */
-public class DemandDataRegisterDetailDto{
+public class DemandDataRegisterDetailDto {
 
     @ApiModelProperty
     private Integer code;
@@ -71,12 +71,12 @@ public class DemandDataRegisterDetailDto{
 
     @ApiModelProperty(value = "经度")
     @NotNull(message = "经度不能为空")
-    @Range(min = -180,max = 180,message = "经度输入不在范围内")
+    @Range(min = -180, max = 180, message = "经度输入不在范围内")
     private BigDecimal lon;
 
     @ApiModelProperty(value = "纬度")
     @NotNull(message = "纬度不能为空")
-    @Range(min = -90,max = 90,message = "纬度输入不在范围内")
+    @Range(min = -90, max = 90, message = "纬度输入不在范围内")
     private BigDecimal lat;
 
     @ApiModelProperty(value = "是否匿名")
@@ -126,6 +126,9 @@ public class DemandDataRegisterDetailDto{
 
     @ApiModelProperty("发布者信用")
     private Integer credit;
+
+    @ApiModelProperty("退款信息")
+    private Object refund;
 
     private Boolean isEachWage;
 
@@ -443,5 +446,13 @@ public class DemandDataRegisterDetailDto{
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public Object getRefund() {
+        return refund;
+    }
+
+    public void setRefund(Object refund) {
+        this.refund = refund;
     }
 }

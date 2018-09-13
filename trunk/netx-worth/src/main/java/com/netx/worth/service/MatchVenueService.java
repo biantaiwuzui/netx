@@ -165,4 +165,15 @@ public class MatchVenueService extends ServiceImpl<MatchVenueMapper, MatchVenue>
     public Date getLastEndTimeBtMatchId(String matchId){
         return baseMapper.getLastEndTimeBtMatchId(matchId);
     }
+
+    /**
+     * 获得最晚的时间
+     * @param ids
+     * @return
+     */
+    public Date getFirstStartTimeByVenueIds(String[] ids) {
+        EntityWrapper<MatchVenue> matchVenueEntityWrapper=new EntityWrapper<>();
+        matchVenueEntityWrapper.setSqlSelect("min(begin_time)").in("id",ids);
+        return  (Date)selectObj(matchVenueEntityWrapper);
+    }
 }

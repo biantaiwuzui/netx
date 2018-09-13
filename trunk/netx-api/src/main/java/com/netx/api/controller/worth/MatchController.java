@@ -169,12 +169,18 @@ public class MatchController extends BaseController {
      */
     @ApiOperation(value = "获取赛事的基础信息")
     @GetMapping(value = "/baseMatch")
-    public JsonResult getBaseMatchEvent(String matchId) {
+    public JsonResult getBaseMatchEvent(String matchId,HttpServletRequest httpServletRequest) {
+        String userId;
+        try {
+            userId = getUserId(httpServletRequest);
+        } catch (Exception e) {
+            return JsonResult.fail(ApiCode.NO_AUTHORIZATION.getMessage());
+        }
         if (StringUtils.isBlank(matchId)) {
             return JsonResult.fail("matchId不能为空");
         }
         try {
-            Map map = matchCreateAction.getBaseMatchEvent(matchId);
+            Map map = matchFuseAction.getBaseMatchEvent(matchId,userId);
             return JsonResult.success().addResult("data", map);
         } catch (RuntimeException e) {
             return JsonResult.fail("获取赛事失败，请稍后重试。");
@@ -183,7 +189,37 @@ public class MatchController extends BaseController {
         }
     }
 
-
+    /**
+     * 获取所有接收邀请的单位
+     *
+     * @return
+     */
+    @ApiOperation(value = "赛事相关人员接受邀请",notes = "评委、嘉宾等接受邀请")
+    @GetMapping(value = "/acceptMember")
+    public JsonResult getReviewListAcceptBYMatchId(String matchId,HttpServletRequest httpServletRequest) {
+        boolean flag;
+        String userId;
+        try {
+            userId = getUserId(httpServletRequest);
+        } catch (Exception e) {
+            return JsonResult.fail(ApiCode.NO_AUTHORIZATION.getMessage());
+        }
+        if (StringUtils.isBlank(matchId)) {
+            return JsonResult.fail("matchId不能为空");
+        }
+        try {
+            flag = matchApplyAction.acceptMember(userId,matchId);
+            if(flag) {
+                return JsonResult.success("通过成功");
+            }
+            return JsonResult.fail("通过邀请失败，请稍后重试。");
+        } catch (RuntimeException e) {
+            return JsonResult.fail(e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return JsonResult.fail("获取所有接收邀请的单位失败");
+        }
+    }
     /**
      * 获取所有接收邀请的单位
      *
@@ -225,6 +261,7 @@ public class MatchController extends BaseController {
         try {
             success = matchFuseAction.commitMatchEvent(matchId, userId);
         } catch (RuntimeException e) {
+
             return JsonResult.fail(e.getMessage());
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -2711,5 +2748,47 @@ public class MatchController extends BaseController {
         return JsonResult.fail("删除失败");
     }
 
+    @ApiOperation(value = "退票")
+    @PostMapping(value = "/refundTicket")
+    public JsonResult refundTicket(@Validated @RequestBody MatchIdAndAppearanceIdDto matchIdAndAppearanceIdDto, HttpServletRequest httpServletRequest) {
+        String userId;
+        try {
+            userId = getUserId(httpServletRequest);
+        } catch (Exception e) {
+            return JsonResult.fail(ApiCode.NO_AUTHORIZATION.getMessage());
+        }
+        try {
+            boolean flag=matchFuseAction.refundFrozenMatchTicket(matchIdAndAppearanceIdDto.getAudienceId(),userId,matchIdAndAppearanceIdDto.getMatchId());
+            if(flag) {
+                return JsonResult.success("退票成功");
+            }
+        } catch (RuntimeException e) {
+            return JsonResult.fail(e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return JsonResult.fail("退票失败请稍后重试");
+        }
+        return JsonResult.fail("退票失败请稍后重试");
+    }
 
+
+    @ApiOperation(value = "验证退票状态")
+    @PostMapping(value = "/checkRefundTicket")
+    public JsonResult checkRefundTicket(@Validated @RequestBody MatchIdAndAppearanceIdDto matchIdAndAppearanceIdDto, HttpServletRequest httpServletRequest) {
+        String userId;
+        try {
+            userId = getUserId(httpServletRequest);
+        } catch (Exception e) {
+            return JsonResult.fail(ApiCode.NO_AUTHORIZATION.getMessage());
+        }
+        try {
+            Map map=matchApplyAction.checkRefundTicket(matchIdAndAppearanceIdDto.getAudienceId(),userId);
+            return JsonResult.successJsonResult(map);
+        } catch (RuntimeException e) {
+            return JsonResult.fail(e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return JsonResult.fail("退票失败请稍后重试");
+        }
+    }
 }

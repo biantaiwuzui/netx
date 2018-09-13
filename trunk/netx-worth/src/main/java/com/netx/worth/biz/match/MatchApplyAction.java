@@ -150,8 +150,6 @@ public class MatchApplyAction {
         List<MatchRequirementDataDTO> requirementData = matchParticipantDTO.getImage_message();
         addImageData(requirementData, id, matchParticipantDTO, false);
         //添加各个照片资料
-
-
         return id;
     }
     //插入默认的入选者
@@ -208,8 +206,7 @@ public class MatchApplyAction {
 
         Map<String, String> map = new HashMap<>();
         map.put("matchParticipantId", matchParticipantId);
-        String payId = getTicketCodeByToken(matchParticipantDTO.getUserId(), token);
-        map.put("payId", payId);
+        createApplyCodeByUserId(matchParticipantDTO.getUserId());
         return map;
     }
 
@@ -1174,16 +1171,16 @@ public class MatchApplyAction {
                 matchBuyTicketVo.setStartTime(matchVenue.getBeginTime());
                 if(matchBuyTicketVo.getAttend()) {
                     matchBuyTicketVo.setStatus(2);
-                }else {
+                }else if(matchBuyTicketVo.getQuit()){
+                    matchBuyTicketVo.setStatus(3);
+                } else{
                     if(matchVenue.getEndTime().getTime()<new Date().getTime()) {
                         matchBuyTicketVo.setStatus(0);
                     }else {
                         matchBuyTicketVo.setStatus(1);
                     }
                 }
-
             }
-
             matchBuyTicketVo.setAudienceId(matchBuyTicketVo.getAudienceId()+",aU");
             matchBuyTicketVo.setUrl(matchCreateAction.pictures(matchBuyTicketVo.getUrl()));
         }
@@ -1414,5 +1411,49 @@ public class MatchApplyAction {
             throw new RuntimeException("请删除自己更新的帖子");
         }
         return matchServiceProvider.getMatchNoticeService().delete(matchNoticeId);
+    }
+
+    /**
+     * 验证是否可以退票
+     * @param audienceId
+     * @param userId
+     * @return
+     */
+    public Map checkRefundTicket(String audienceId, String userId) {
+        MatchAudience matchAudience=matchServiceProvider.getMatchAudienceService().getAudienceIsPayById(audienceId,userId);
+        if(matchAudience==null) {
+            throw new RuntimeException("你还没有购买此种票，不能进行退票操作。");
+        }
+        MatchTicket matchTicket=matchServiceProvider.getMatchTicketService().selectById(matchAudience.getMatchTicketId());
+        if(matchTicket==null) {
+            throw new RuntimeException("没有此类门票");
+        }
+        HashMap<String,Object> map=new HashMap<>();
+        String[] ids=matchTicket.getVenueIds().split(",");
+        Date firstTime=matchServiceProvider.getMatchVenueService().getFirstStartTimeByVenueIds(ids);
+        Date nowTime=new Date();
+        Long interval = (firstTime.getTime()- nowTime.getTime() ) / (1000 * 60 * 60);
+        if (interval > 12) {
+            map.put("msg","可免手续费退票，确认退票？");
+            map.put("status",0);
+
+        } else if(interval<=12&&interval>=0){
+            map.put("msg","现在退票需收取10%的手续费，确认退票？");
+            map.put("status",1);
+        }else {
+            map.put("msg","比赛已经开始，无法退票。");
+            map.put("status",2);
+        }
+        return map;
+    }
+
+    /**
+     * 接受邀请
+     * @param userId
+     * @param matchId
+     * @return
+     */
+    public boolean acceptMember(String userId,String matchId) {
+        return matchServiceProvider.getMatchMemberService().acceptMember(userId,matchId);
     }
 }

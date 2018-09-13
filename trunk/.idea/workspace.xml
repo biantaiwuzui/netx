@@ -57,69 +57,73 @@
     <session id="1167175636">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.18" value="3" />
           <entry key="project.open.time.19" value="3" />
           <entry key="project.open.time.20" value="5" />
           <entry key="project.open.time.21" value="3" />
           <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.24" value="4" />
           <entry key="project.open.time.25" value="2" />
-          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="252" />
+          <entry key="class" value="263" />
           <entry key="conf" value="2" />
           <entry key="ftl" value="1" />
-          <entry key="html" value="2" />
+          <entry key="html" value="3" />
           <entry key="http" value="2" />
-          <entry key="ini" value="3" />
-          <entry key="java" value="835" />
+          <entry key="ini" value="4" />
+          <entry key="java" value="924" />
           <entry key="js" value="7" />
+          <entry key="json" value="1" />
           <entry key="less" value="1" />
           <entry key="properties" value="12" />
-          <entry key="py" value="23" />
-          <entry key="sh" value="3" />
-          <entry key="vm" value="1" />
+          <entry key="py" value="43" />
+          <entry key="sh" value="4" />
+          <entry key="vm" value="2" />
           <entry key="vue" value="3" />
-          <entry key="xml" value="43" />
-          <entry key="yml" value="57" />
+          <entry key="xml" value="53" />
+          <entry key="yml" value="70" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="252" />
+          <entry key="CLASS" value="263" />
           <entry key="FTL" value="1" />
-          <entry key="HTML" value="2" />
-          <entry key="JAVA" value="835" />
+          <entry key="HTML" value="3" />
+          <entry key="JAVA" value="924" />
+          <entry key="JSON" value="1" />
           <entry key="JavaScript" value="7" />
           <entry key="Less" value="1" />
-          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="PLAIN_TEXT" value="56" />
           <entry key="Properties" value="12" />
           <entry key="Scratch" value="2" />
-          <entry key="VTL" value="1" />
-          <entry key="XML" value="43" />
-          <entry key="YAML" value="57" />
+          <entry key="VTL" value="2" />
+          <entry key="XML" value="53" />
+          <entry key="YAML" value="70" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="21209" />
+          <entry key="java" value="21772" />
           <entry key="properties" value="51" />
           <entry key="py" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21209" />
+          <entry key="JAVA" value="21772" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="51" />
         </counts>
@@ -136,66 +140,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="505" selection-start-line="505" selection-end-line="505" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java">
+        <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/MeetingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="838" column="19" lean-forward="true" selection-start-line="838" selection-start-column="19" selection-end-line="838" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="266">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/kafka-consumer/kafka_consume_run.sh">
+        <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/ApiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-end-line="5" selection-end-column="33" />
+            <state relative-caret-position="380">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/WishController.java">
+        <entry file="file://$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/ScheduleApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+            <state relative-caret-position="228">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/service/RefundService.java">
+        <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/MeetingFuseAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+            <state relative-caret-position="437">
+              <caret line="102" column="35" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/model/Refund.java">
+        <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/model/Skill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="247">
               <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding>
-                <element signature="e#2854#2855#0" expanded="true" />
-                <element signature="e#2874#2875#0" expanded="true" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/FuseBaseAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1330">
+              <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -212,25 +206,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>验证码</find>
-      <find>validationStatus</find>
-      <find>同意</find>
-      <find>redisbase</find>
-      <find>退</find>
-      <find>定时任务</find>
-      <find>EXPIRED</find>
-      <find>SkillCheckStartJobHandle</find>
-      <find>jobFuseAction.addJob</find>
-      <find>new Date</find>
-      <find>now</find>
-      <find>定时验证码、距离是否通过</find>
-      <find>检测需求完成24小时后是否自动结算报酬</find>
-      <find>申请</find>
-      <find>amount</find>
-      <find>mount</find>
       <find>技能详情</find>
       <find>技能列表</find>
-      <find>退款</find>
       <find>@Test</find>
       <find>未输入</find>
       <find>list</find>
@@ -241,7 +218,24 @@
       <find>searchBuilder</find>
       <find>sub</find>
       <find>预约单详情</find>
+      <find>user.setCredit</find>
+      <find>退款</find>
+      <find>demandOrder</find>
+      <find>refundCount</find>
+      <find>发布需求失败</find>
+      <find>添加冻结金额异常</find>
+      <find>请检查需求开始时间是否有误</find>
+      <find>发布需求</find>
+      <find>申请退款</find>
+      <find>getRefund</find>
       <find>registerDetail</find>
+      <find>定时</find>
+      <find>level</find>
+      <find>getDistance</find>
+      <find>bind</find>
+      <find>spring-boot-maven-plugin</find>
+      <find>devtools</find>
+      <find>-jar</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -254,7 +248,6 @@
         <option value="$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/config/XxlJobConfig.java" />
         <option value="$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/ScheduleApplication.java" />
         <option value="$PROJECT_DIR$/netx-common/src/main/resources/config/application-dev.yml" />
-        <option value="$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/DemandFuseAction.java" />
         <option value="$PROJECT_DIR$/netx-job/netx-admin/src/main/resources/xxl-job-admin.properties" />
         <option value="$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/common/enums/AuthorEmailEnum.java" />
         <option value="$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/service/MatchProgressParticipantService.java" />
@@ -287,8 +280,10 @@
         <option value="$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/biz/common/RefundAction.java" />
         <option value="$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/common/enums/JobEnum.java" />
         <option value="$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/jobhandler/worth/SkillCheckTimeoutRefundJobHandle.java" />
-        <option value="$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java" />
         <option value="$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/wz/dto/skill/SkillRegisterListDto.java" />
+        <option value="$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java" />
+        <option value="$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/wz/dto/demand/DemandDataRegisterDetailDto.java" />
+        <option value="$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/DemandFuseAction.java" />
         <option value="$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java" />
       </list>
     </option>
@@ -306,6 +301,13 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/Program Files/Java/apache-maven-3.5.4" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand />
@@ -318,10 +320,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="50" />
-    <option name="y" value="100" />
-    <option name="width" value="1750" />
-    <option name="height" value="970" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1938" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -343,6 +345,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -358,78 +362,25 @@
             <path>
               <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
               <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="devops" type="462c0819:PsiDirectoryNode" />
-              <item name="es_index_realtime_build" type="462c0819:PsiDirectoryNode" />
+              <item name="netx-worth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
               <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="devops" type="462c0819:PsiDirectoryNode" />
-              <item name="es_index_realtime_build" type="462c0819:PsiDirectoryNode" />
-              <item name="kafka-consumer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
+              <item name="netx-worth" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
               <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
+              <item name="netx-worth" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uni-package" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trunk" type="462c0819:PsiDirectoryNode" />
-              <item name="netx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="worth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,19 +390,19 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="SearchEverywhereHistoryKey" value="ServiceE&#9;PSI&#9;JAVA://com.aliyun.openservices.ServiceException&#10;Job&#9;PSI&#9;JAVA://com.netx.common.common.enums.JobEnum&#10;Skill&#9;PSI&#9;JAVA://com.netx.worth.model.Skill&#10;Http&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-job/netx-core/src/main/java/com/netx/core/util/HttpClientUtil.java&#10;HttpU&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-common/src/main/java/com/netx/common/common/utils/HttpUtils.java&#10;JobCl&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-fuse/src/main/java/com/netx/fuse/client/job/JobClient.java&#10;httpc&#9;PSI&#9;JAVA://com.netx.core.util.HttpClientUtil&#10;UserCon&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-api/src/main/java/com/netx/api/controller/ucenter/user/UserController.java&#10;JobE&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-common/src/main/java/com/netx/common/common/enums/JobEnum.java&#10;wall&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-ucenter/src/main/java/com/netx/ucenter/biz/common/WalletFrozenAction.java&#10;Common&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-ucenter/src/main/java/com/netx/ucenter/model/common/CommonBill.java&#10;commw&#9;PSI&#9;JAVA://com.netx.ucenter.model.common.CommonWallet&#10;skillor&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/model/SkillOrder.java&#10;skillRe&#9;PSI&#9;JAVA://com.netx.worth.model.SkillRegister&#10;skillorder&#9;PSI&#9;JAVA://com.netx.worth.model.SkillOrder&#10;SkillOrderS&#9;PSI&#9;JAVA://com.netx.worth.enums.SkillOrderStatus&#10;SkillRe&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/enums/SkillRegisterStatus.java&#10;Skillo&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/model/SkillOrder.java&#10;User&#9;PSI&#9;JAVA://com.netx.ucenter.model.user.User&#10;Sett&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-api/src/main/java/com/netx/api/controller/worth/SettlementController.java" />
+    <property name="SearchEverywhereHistoryKey" value="searc&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-searchengine/src/main/java/com/netx/searchengine/service/MeetingSearchService.java&#10;Skill&#9;PSI&#9;JAVA://com.netx.worth.model.Skill&#10;Demand&#9;PSI&#9;JAVA://com.netx.worth.model.Demand&#10;ServiceE&#9;PSI&#9;JAVA://com.aliyun.openservices.ServiceException&#10;Job&#9;PSI&#9;JAVA://com.netx.common.common.enums.JobEnum&#10;Http&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-job/netx-core/src/main/java/com/netx/core/util/HttpClientUtil.java&#10;HttpU&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-common/src/main/java/com/netx/common/common/utils/HttpUtils.java&#10;JobCl&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-fuse/src/main/java/com/netx/fuse/client/job/JobClient.java&#10;httpc&#9;PSI&#9;JAVA://com.netx.core.util.HttpClientUtil&#10;UserCon&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-api/src/main/java/com/netx/api/controller/ucenter/user/UserController.java&#10;JobE&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-common/src/main/java/com/netx/common/common/enums/JobEnum.java&#10;wall&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-ucenter/src/main/java/com/netx/ucenter/biz/common/WalletFrozenAction.java&#10;Common&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-ucenter/src/main/java/com/netx/ucenter/model/common/CommonBill.java&#10;commw&#9;PSI&#9;JAVA://com.netx.ucenter.model.common.CommonWallet&#10;skillor&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/model/SkillOrder.java&#10;skillRe&#9;PSI&#9;JAVA://com.netx.worth.model.SkillRegister&#10;skillorder&#9;PSI&#9;JAVA://com.netx.worth.model.SkillOrder&#10;SkillOrderS&#9;PSI&#9;JAVA://com.netx.worth.enums.SkillOrderStatus&#10;SkillRe&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/enums/SkillRegisterStatus.java&#10;Skillo&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-worth/src/main/java/com/netx/worth/model/SkillOrder.java&#10;User&#9;PSI&#9;JAVA://com.netx.ucenter.model.user.User&#10;Sett&#9;FILE&#9;file://C:/lsj/netx-server/trunk/netx-api/src/main/java/com/netx/api/controller/worth/SettlementController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536562700889" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536805252198" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/devops/elasticsearch" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/mySql_connect_test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -474,6 +425,22 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiApplication">
+    <configuration name="SkillFuseAction.ddsfsd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="netx-fuse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.netx.fuse.biz.worth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
+      <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
+      <option name="METHOD_NAME" value="ddsfsd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SkillFuseAction.dfsf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="netx-fuse" />
       <extension name="coverage">
@@ -485,6 +452,22 @@
       <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
       <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
       <option name="METHOD_NAME" value="dfsf" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkillFuseAction.dsfds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="netx-fuse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.netx.fuse.biz.worth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
+      <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
+      <option name="METHOD_NAME" value="dsfds" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -517,38 +500,6 @@
       <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
       <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
       <option name="METHOD_NAME" value="dsfsdfs" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SkillFuseAction.sdfsf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="netx-fuse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.netx.fuse.biz.worth.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
-      <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
-      <option name="METHOD_NAME" value="sdfsf" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SkillFuseAction.tesdfsdf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="netx-fuse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.netx.fuse.biz.worth.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.netx.fuse.biz.worth" />
-      <option name="MAIN_CLASS_NAME" value="com.netx.fuse.biz.worth.SkillFuseAction" />
-      <option name="METHOD_NAME" value="tesdfsdf" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -749,19 +700,19 @@
       <item itemvalue="Spring Boot.BossApp" />
       <item itemvalue="Spring Boot.ApiApplication" />
       <item itemvalue="Tomcat Server.tomcat" />
-      <item itemvalue="JUnit.SkillFuseAction.tesdfsdf" />
-      <item itemvalue="JUnit.SkillFuseAction.sdfsf" />
       <item itemvalue="JUnit.SkillFuseAction.dsfsdfs" />
       <item itemvalue="JUnit.SkillFuseAction.dsfsdfd" />
       <item itemvalue="JUnit.SkillFuseAction.dfsf" />
+      <item itemvalue="JUnit.SkillFuseAction.ddsfsd" />
+      <item itemvalue="JUnit.SkillFuseAction.dsfds" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SkillFuseAction.dsfds" />
+        <item itemvalue="JUnit.SkillFuseAction.ddsfsd" />
         <item itemvalue="JUnit.SkillFuseAction.dfsf" />
         <item itemvalue="JUnit.SkillFuseAction.dsfsdfd" />
         <item itemvalue="JUnit.SkillFuseAction.dsfsdfs" />
-        <item itemvalue="JUnit.SkillFuseAction.sdfsf" />
-        <item itemvalue="JUnit.SkillFuseAction.tesdfsdf" />
       </list>
     </recent_temporary>
   </component>
@@ -797,20 +748,18 @@
       <workItem from="1536109317348" duration="22233000" />
       <workItem from="1536196292045" duration="26675000" />
       <workItem from="1536283382602" duration="17820000" />
-      <workItem from="1536541792077" duration="12406000" />
+      <workItem from="1536541792077" duration="22928000" />
+      <workItem from="1536628365941" duration="22501000" />
+      <workItem from="1536714025926" duration="24565000" />
+      <workItem from="1536747124062" duration="576000" />
+      <workItem from="1536747765182" duration="414000" />
+      <workItem from="1536748233325" duration="4191000" />
+      <workItem from="1536800228043" duration="1048000" />
+      <workItem from="1536801323794" duration="735000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SkillFuseAction_dsfsdfd - 2018.09.07 at 09h 52m 33s.xml">
-      <configuration name="SkillFuseAction.dsfsdfd" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SkillFuseAction_dsfsdfd - 2018.09.07 at 09h 55m 13s.xml">
-      <configuration name="SkillFuseAction.dsfsdfd" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SkillFuseAction_dfsf - 2018.09.07 at 09h 59m 36s.xml">
-      <configuration name="SkillFuseAction.dfsf" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SkillFuseAction_dfsf - 2018.09.07 at 10h 00m 14s.xml">
       <configuration name="SkillFuseAction.dfsf" configurationId="JUnit" />
     </history-entry>
@@ -832,9 +781,18 @@
     <history-entry file="SkillFuseAction_dfsf - 2018.09.07 at 10h 24m 17s.xml">
       <configuration name="SkillFuseAction.dfsf" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SkillFuseAction_ddsfsd - 2018.09.11 at 17h 34m 36s.xml">
+      <configuration name="SkillFuseAction.ddsfsd" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SkillFuseAction_ddsfsd - 2018.09.11 at 17h 38m 19s.xml">
+      <configuration name="SkillFuseAction.ddsfsd" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SkillFuseAction_dsfds - 2018.09.11 at 17h 38m 38s.xml">
+      <configuration name="SkillFuseAction.dsfds" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="489228000" />
+    <option name="totallyTimeSpent" value="553780000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -846,10 +804,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4925" visible="true" weight="0.30294907" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4925" visible="true" weight="0.33310992" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -860,7 +818,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35724744" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" visible="true" weight="0.41874084" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.41874084" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -872,6 +830,7 @@
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Application Servers" order="14" weight="0.329429" />
+      <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -902,21 +861,15 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>251</line>
+          <line>250</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>286</line>
+          <line>285</line>
           <properties />
           <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>683</line>
-          <properties />
-          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
@@ -956,7 +909,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>1148</line>
+          <line>1088</line>
           <properties />
           <option name="timeStamp" value="59" />
         </line-breakpoint>
@@ -980,7 +933,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>1039</line>
+          <line>991</line>
           <properties />
           <option name="timeStamp" value="64" />
         </line-breakpoint>
@@ -992,7 +945,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>1116</line>
+          <line>1056</line>
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
@@ -1004,75 +957,81 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>982</line>
+          <line>937</line>
           <properties />
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>918</line>
+          <line>894</line>
           <properties />
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>1189</line>
+          <line>1127</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>505</line>
+          <line>502</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>517</line>
+          <line>498</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>533</line>
+          <line>530</line>
           <properties />
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>553</line>
+          <line>550</line>
           <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java</url>
-          <line>380</line>
+          <line>379</line>
           <properties />
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>422</line>
+          <line>409</line>
           <properties />
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>550</line>
+          <line>531</line>
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>569</line>
+          <line>549</line>
           <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java</url>
-          <line>1527</line>
+          <line>1470</line>
           <properties />
           <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/DemandFuseAction.java</url>
+          <line>1248</line>
+          <properties />
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1085,476 +1044,340 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/common/enums/JobEnum.java">
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/component/TokenUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/jobhandler/worth/SkillCheckStartJobHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/biz/common/RefundAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="64" column="59" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/enums/RefundStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.14.RELEASE/spring-core-4.3.14.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/service/SkillSearchService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="86" column="9" lean-forward="true" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/common/LastAscQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-utils/src/main/java/com/netx/utils/json/JsonResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/query/WorthSearchQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/jobhandler/DemoJobHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="41" column="53" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/ScheduleApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/aliyun/aliyun-openservices/1.2.3/aliyun-openservices-1.2.3.jar!/com/aliyun/openservices/ServiceException.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/ops/nginx/qqtowns.com/conf.d/job-admin.conf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/ops/nginx/qqtowns.com/conf.d/mobile.conf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/utils/search_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-684" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/utils/es_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/utils/util.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/pip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/common/const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-305" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/dumpSkill.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/client/ucenter/WalletBillClientAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/query/SkillSearchQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#2837#2838#0" expanded="true" />
-            <element signature="e#2890#2891#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/ucenter/WallerFrozenFuseAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="115" column="17" selection-start-line="115" selection-start-column="17" selection-end-line="115" selection-end-column="17" />
-          <folding>
-            <element signature="e#4817#4818#0" expanded="true" />
-            <element signature="e#4866#4867#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-utils/src/main/java/com/netx/utils/money/Money.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="607" column="7" selection-start-line="607" selection-start-column="7" selection-end-line="607" selection-end-column="7" />
-          <folding>
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1944#1945#0" expanded="true" />
-            <element signature="e#6326#6327#0" expanded="true" />
-            <element signature="e#6401#6402#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="61" column="73" lean-forward="true" selection-start-line="61" selection-start-column="73" selection-end-line="61" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/biz/common/IndexAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="183" column="75" selection-start-line="183" selection-start-column="75" selection-end-line="183" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/NetxWorthSearchService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.2.1/elasticsearch-6.2.1.jar!/org/elasticsearch/index/query/QueryBuilders.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.2.1/elasticsearch-6.2.1.jar!/org/elasticsearch/action/search/SearchRequestBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="183" column="32" selection-start-line="183" selection-start-column="32" selection-end-line="183" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/conf/elasticsearch.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/elasticsearch/conf/elasticsearch.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4522" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.2.1/elasticsearch-6.2.1.jar!/org/elasticsearch/cluster/metadata/IndexNameExpressionResolver.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="722" selection-start-line="722" selection-end-line="722" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/service/WorthSearchService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/wz/dto/skill/SkillDataDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#2438#2439#0" expanded="true" />
-            <element signature="e#2474#2475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/WishController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/service/RefundService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/wz/dto/skill/SkillRegisterListDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="414" column="35" selection-start-line="414" selection-start-column="35" selection-end-line="414" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2737#2738#0" expanded="true" />
-            <element signature="e#2770#2771#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#2883#2884#0" expanded="true" />
-            <element signature="e#2920#2921#0" expanded="true" />
-            <element signature="e#2968#2969#0" expanded="true" />
-            <element signature="e#3012#3013#0" expanded="true" />
-            <element signature="e#3050#3051#0" expanded="true" />
-            <element signature="e#3088#3089#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
-            <element signature="e#3184#3185#0" expanded="true" />
-            <element signature="e#3220#3221#0" expanded="true" />
-            <element signature="e#3258#3259#0" expanded="true" />
-            <element signature="e#3306#3307#0" expanded="true" />
-            <element signature="e#3352#3353#0" expanded="true" />
-            <element signature="e#3386#3387#0" expanded="true" />
-            <element signature="e#3422#3423#0" expanded="true" />
-            <element signature="e#3466#3467#0" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
-            <element signature="e#3543#3544#0" expanded="true" />
-            <element signature="e#3578#3579#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3662#3663#0" expanded="true" />
-            <element signature="e#3698#3699#0" expanded="true" />
-            <element signature="e#3733#3734#0" expanded="true" />
-            <element signature="e#3778#3779#0" expanded="true" />
-            <element signature="e#3818#3819#0" expanded="true" />
-            <element signature="e#3856#3857#0" expanded="true" />
-            <element signature="e#3893#3894#0" expanded="true" />
-            <element signature="e#3942#3943#0" expanded="true" />
-            <element signature="e#3986#3987#0" expanded="true" />
-            <element signature="e#4026#4027#0" expanded="true" />
-            <element signature="e#4065#4066#0" expanded="true" />
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4166#4167#0" expanded="true" />
-            <element signature="e#4204#4205#0" expanded="true" />
-            <element signature="e#4238#4239#0" expanded="true" />
-            <element signature="e#4284#4285#0" expanded="true" />
-            <element signature="e#4322#4323#0" expanded="true" />
-            <element signature="e#4364#4365#0" expanded="true" />
-            <element signature="e#4406#4407#0" expanded="true" />
-            <element signature="e#4464#4465#0" expanded="true" />
-            <element signature="e#4518#4519#0" expanded="true" />
-            <element signature="e#4556#4557#0" expanded="true" />
-            <element signature="e#4594#4595#0" expanded="true" />
-            <element signature="e#4644#4645#0" expanded="true" />
-            <element signature="e#4690#4691#0" expanded="true" />
-            <element signature="e#4728#4729#0" expanded="true" />
-            <element signature="e#4762#4763#0" expanded="true" />
-            <element signature="e#4808#4809#0" expanded="true" />
-            <element signature="e#4846#4847#0" expanded="true" />
-            <element signature="e#4884#4885#0" expanded="true" />
-            <element signature="e#4918#4919#0" expanded="true" />
-            <element signature="e#4964#4965#0" expanded="true" />
-            <element signature="e#5002#5003#0" expanded="true" />
-            <element signature="e#5040#5041#0" expanded="true" />
-            <element signature="e#5077#5078#0" expanded="true" />
-            <element signature="e#5126#5127#0" expanded="true" />
-            <element signature="e#5170#5171#0" expanded="true" />
-            <element signature="e#5205#5206#0" expanded="true" />
-            <element signature="e#5241#5242#0" expanded="true" />
-            <element signature="e#5286#5287#0" expanded="true" />
-            <element signature="e#5328#5329#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
-            <element signature="e#5406#5407#0" expanded="true" />
-            <element signature="e#5458#5459#0" expanded="true" />
-            <element signature="e#5502#5503#0" expanded="true" />
-            <element signature="e#5541#5542#0" expanded="true" />
-            <element signature="e#5576#5577#0" expanded="true" />
-            <element signature="e#5624#5625#0" expanded="true" />
-            <element signature="e#5664#5665#0" expanded="true" />
-            <element signature="e#5702#5703#0" expanded="true" />
-            <element signature="e#5739#5740#0" expanded="true" />
-            <element signature="e#5788#5789#0" expanded="true" />
-            <element signature="e#5832#5833#0" expanded="true" />
-            <element signature="e#5873#5874#0" expanded="true" />
-            <element signature="e#5915#5916#0" expanded="true" />
-            <element signature="e#5972#5973#0" expanded="true" />
-            <element signature="e#6026#6027#0" expanded="true" />
-            <element signature="e#6074#6075#0" expanded="true" />
-            <element signature="e#6121#6122#0" expanded="true" />
-            <element signature="e#6190#6191#0" expanded="true" />
-            <element signature="e#6254#6255#0" expanded="true" />
-            <element signature="e#6296#6297#0" expanded="true" />
-            <element signature="e#6339#6340#0" expanded="true" />
-            <element signature="e#6398#6399#0" expanded="true" />
-            <element signature="e#6454#6455#0" expanded="true" />
-            <element signature="e#6491#6492#0" expanded="true" />
-            <element signature="e#6527#6528#0" expanded="true" />
-            <element signature="e#6574#6575#0" expanded="true" />
-            <element signature="e#6616#6617#0" expanded="true" />
-            <element signature="e#6655#6656#0" expanded="true" />
-            <element signature="e#6696#6697#0" expanded="true" />
-            <element signature="e#6750#6751#0" expanded="true" />
-            <element signature="e#6802#6803#0" expanded="true" />
-            <element signature="e#6845#6846#0" expanded="true" />
-            <element signature="e#6888#6889#0" expanded="true" />
-            <element signature="e#6948#6949#0" expanded="true" />
-            <element signature="e#7004#7005#0" expanded="true" />
-            <element signature="e#7043#7044#0" expanded="true" />
-            <element signature="e#7084#7085#0" expanded="true" />
-            <element signature="e#7138#7139#0" expanded="true" />
-            <element signature="e#7190#7191#0" expanded="true" />
-            <element signature="e#7233#7234#0" expanded="true" />
-            <element signature="e#7276#7277#0" expanded="true" />
-            <element signature="e#7336#7337#0" expanded="true" />
-            <element signature="e#7392#7393#0" expanded="true" />
-            <element signature="e#7431#7432#0" expanded="true" />
-            <element signature="e#7469#7470#0" expanded="true" />
-            <element signature="e#7520#7521#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
-            <element signature="e#7617#7618#0" expanded="true" />
-            <element signature="e#7664#7665#0" expanded="true" />
-            <element signature="e#7706#7707#0" expanded="true" />
-            <element signature="e#7744#7745#0" expanded="true" />
-            <element signature="e#7787#7788#0" expanded="true" />
-            <element signature="e#7832#7833#0" expanded="true" />
-            <element signature="e#7873#7874#0" expanded="true" />
-            <element signature="e#7914#7915#0" expanded="true" />
-            <element signature="e#7970#7971#0" expanded="true" />
-            <element signature="e#8022#8023#0" expanded="true" />
-            <element signature="e#8063#8064#0" expanded="true" />
-            <element signature="e#8104#8105#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8212#8213#0" expanded="true" />
-            <element signature="e#8274#8275#0" expanded="true" />
-            <element signature="e#8334#8335#0" expanded="true" />
-            <element signature="e#8453#8454#0" expanded="true" />
-            <element signature="e#8501#8502#0" expanded="true" />
-            <element signature="e#8545#8546#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/model/Refund.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#2854#2855#0" expanded="true" />
-            <element signature="e#2874#2875#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="271">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/SkillController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="505" selection-start-line="505" selection-end-line="505" />
+        <state relative-caret-position="124">
+          <caret line="502" column="53" selection-start-line="502" selection-start-column="53" selection-end-line="502" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/common/enums/PushMessageDocTypeEnum.java">
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/component/UserTokenState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="136" column="4" selection-start-line="136" selection-start-column="4" selection-end-line="136" selection-end-column="4" />
+        <state relative-caret-position="78">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/pom.xml">
+    <entry file="file://$PROJECT_DIR$/netx-boss/src/main/java/com/netx/boss/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342" />
+        <state relative-caret-position="-1138">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/java/com/netx/extrator/client/CilentSimple.java">
+    <entry file="file://$PROJECT_DIR$/netx-boss/src/main/java/com/netx/boss/web/controller/AuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114" />
+        <state relative-caret-position="-381">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/java/com/netx/extrator/kafka/CanalKafkaProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1311" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/java/com/netx/extrator/kafka/AbstractCanalKafKaProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/resources/canal_client.properties">
+    <entry file="file://$PROJECT_DIR$/netx-boss/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/resources/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="28" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/kafka-consumer/kafka_consume_run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/kafka-consumer/index_rebuild.py">
+    <entry file="file://$PROJECT_DIR$/netx-boss/src/main/resources/application-dev.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/devops/es_index_realtime_build/canal-consumer/src/main/java/com/netx/extrator/ExtratorLauncher.java">
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/component/CustomUserDetailsService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/user/model/UserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114" />
+        <state relative-caret-position="122">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/redis/service/impl/RedisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-631">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/redis/model/TokenModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-99">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/pay/WeChatInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/cn/jpush/api/jiguang-common/1.0.8/jiguang-common-1.0.8.jar!/cn/jiguang/common/ClientConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/message/JMessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="312" column="1" lean-forward="true" selection-start-line="312" selection-start-column="1" selection-end-line="312" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/pay/PayInfoHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/redis/RedisInfoHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/config/RedisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/config/PushCodeConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/java/com/netx/common/common/utils/WeChatPayUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="97" column="5" lean-forward="true" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-common/src/main/resources/config/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/client/worth/BillClientAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-credit/src/main/java/com/netx/credit/model/Credit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/client/worth/SkillClientAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/proxy/WalletBillProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/proxy/UserClientProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/WorthFuseAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/resources/templates/entity.java.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/mapper/SkillMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/SkillFuseAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="838" column="19" lean-forward="true" selection-start-line="838" selection-start-column="19" selection-end-line="838" selection-end-column="19" />
+        <state relative-caret-position="306">
+          <caret line="132" column="66" selection-start-line="132" selection-start-column="66" selection-end-line="132" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#30032#30033#0" expanded="true" />
+            <element signature="e#30101#30102#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-207" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-searchengine/src/main/java/com/netx/searchengine/service/MeetingSearchService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1577">
+          <caret line="113" column="47" lean-forward="true" selection-start-line="113" selection-start-column="47" selection-end-line="113" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/service/SkillService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="41" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-job/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-utils/src/main/java/com/netx/utils/cache/RedisCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-boss-web/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-boss-web/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/biz/common/IndexAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/biz/skill/SkillAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1463">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2831">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/devops/ops/shell/package_and_deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="322" column="81" selection-start-line="322" selection-start-column="77" selection-end-line="322" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/controller/worth/MeetingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-api/src/main/java/com/netx/api/ApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-job/netx-schedule/src/main/java/com/netx/schedule/ScheduleApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/worth/MeetingFuseAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="102" column="35" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-worth/src/main/java/com/netx/worth/model/Skill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netx-fuse/src/main/java/com/netx/fuse/biz/FuseBaseAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1637,11 +1460,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <last-edited>Maven: com.alibaba:alipay:2017.08.29</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.45790553" />
               </list>
             </option>
           </splitter-proportions>

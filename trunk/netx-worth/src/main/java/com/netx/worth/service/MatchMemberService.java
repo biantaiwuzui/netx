@@ -27,8 +27,6 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
     private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 
-    @Autowired
-    private MatchMemberMapper matchMemberMapper;
     /**
      * 邀请会员
      * @param dto
@@ -63,6 +61,22 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
         return update(matchMember, matchMemberEntityWrapper);
     }
 
+    /**
+     * 接受邀请
+     * @param userId
+     * @param matchId
+     * @return
+     */
+    public boolean acceptMember(String userId,String matchId) {
+        EntityWrapper<MatchMember> matchMemberEntityWrapper = new EntityWrapper<>();
+        matchMemberEntityWrapper.where("user_id = {0}",userId)
+                .and("match_id = {0}",matchId);
+        List<MatchMember> matchMemberList=selectList(matchMemberEntityWrapper);
+        for (int i = 0; i < matchMemberList.size(); i++) {
+            matchMemberList.get(i).setAccept(true);
+        }
+        return updateBatchById(matchMemberList);
+    }
     /**
      * 删除指定工作人员
      * @param id
@@ -133,6 +147,19 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
         }
         return false;
     }
+
+    /**
+     * 获得未接受邀请的列表
+     * @param matchId
+     * @param userId
+     * @return
+     */
+    public List<MatchMember> getNoAcceptMember(String matchId,String userId) {
+        EntityWrapper<MatchMember> matchMemberEntityWrapper = new EntityWrapper<>();
+        matchMemberEntityWrapper.where("match_id = {0}", matchId)
+                .and("user_id = {0}", userId).and("is_accept={0}",false);
+        return  selectList(matchMemberEntityWrapper);
+    }
     /**
      * 获取工作人员的类型/嘉宾/主持人
      * @param matchId
@@ -162,7 +189,7 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
         EntityWrapper<MatchMember> matchMemberEntityWrapper = new EntityWrapper<>();
         matchMemberEntityWrapper.setSqlSelect("kind")
                 .where("match_id = {0}", matchId)
-                .and("user_id = {0}", userId);
+                .and("user_id = {0}", userId).and("is_accept={0}",1);
         MatchMember matchMember=selectOne(matchMemberEntityWrapper);
         if(matchMember==null){
             return "";
@@ -179,7 +206,7 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
     public List<MatchUserInfoVo> getWorkPeopleAllListByMatchId(String matchId){
         Map<String,String> map=new HashMap<>();
         map.put("match_id",matchId);
-        return matchMemberMapper.getWorkPeopleList(map);
+        return baseMapper.getWorkPeopleList(map);
     }
 
 
@@ -193,7 +220,7 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
         map.put("match_id",matchId);
         map.put("is_spot",1);
         map.put("is_accept",1);
-        return matchMemberMapper.getWorkPeopleList(map);
+        return baseMapper.getWorkPeopleList(map);
     }
 
     /**
@@ -205,7 +232,7 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
         Map<String,Object> map=new HashMap<>();
         map.put("match_id",matchId);
         map.put("is_accept",1);
-        return matchMemberMapper.getWorkPeopleList(map);
+        return baseMapper.getWorkPeopleList(map);
     }
 
 
@@ -266,5 +293,18 @@ public class MatchMemberService extends ServiceImpl<MatchMemberMapper, MatchMemb
             return true;
         }
         return false;
+    }
+
+    /**
+     * 判断改用户是不是该比赛的人员
+     * @param matchId
+     * @param mobile
+     * @return
+     */
+    public List<MatchMember> getNoAcceptMemberByMobile(String matchId, String mobile) {
+        EntityWrapper<MatchMember> entityWrapper = new EntityWrapper<>();
+        entityWrapper.where("match_id = {0}", matchId)
+                .and("user_call = {0}", mobile);
+        return selectList(entityWrapper);
     }
 }

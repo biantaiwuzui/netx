@@ -12,9 +12,10 @@ from kafka import KafkaConsumer
 
 from common.const import action_delete, index_demand_name, type_demand, action_update, action_index, index_skill_name, \
     type_skill, index_meeting_name, type_meeting, type_wish, index_wish_name, key_table_name, key_time, \
-    index_worth_name, type_worth
+    index_worth_name, type_worth, index_match_name, type_match
 from index_create.es_create_indices import create_indices
 from index_rebuild.demand_rebuild_body import demand_rebuild
+from index_rebuild.match_rebuild_body import match_rebuild
 from index_rebuild.meeting_rebuild_body import meeting_rebuild
 from index_rebuild.skill_rebuild_body import skill_rebuild
 from index_rebuild.wish_rebuild_body import wish_rebuild
@@ -86,8 +87,14 @@ def rebuild_demand(action, json_value):
         json_value['pkId'] = 'Demand-'+json_value['pkId']
         delete_doc(index_worth_name, type_worth, json_value)
     elif(action == action_update):
-        update_doc(index_demand_name, type_demand, json_body)
-        update_doc(index_worth_name, type_worth, worth_body)
+        print (json_value['deleted'])
+        if(json_value['deleted'] == True):
+            delete_doc(index_demand_name, type_demand, json_value)
+            json_value['pkId'] = 'Demand-' + json_value['pkId']
+            delete_doc(index_worth_name, type_worth, json_value)
+        else:
+            update_doc(index_demand_name, type_demand, json_body)
+            update_doc(index_worth_name, type_worth, worth_body)
     elif(action == action_index):
         index_doc(index_demand_name, type_demand, json_body)
         index_doc(index_worth_name, type_worth, worth_body)
@@ -109,8 +116,13 @@ def rebuild_skill(action, json_value):
         json_value['pkId'] = 'Skill-' + json_value['pkId']
         delete_doc(index_worth_name, type_worth, json_value)
     elif (action == action_update):
-        update_doc(index_skill_name, type_skill, json_body)
-        update_doc(index_worth_name, type_worth, worth_body)
+        if(json_value['deleted']):
+            delete_doc(index_skill_name, type_skill, json_value)
+            json_value['pkId'] = 'Skill-' + json_value['pkId']
+            delete_doc(index_worth_name, type_worth, json_value)
+        else:
+            update_doc(index_skill_name, type_skill, json_body)
+            update_doc(index_worth_name, type_worth, worth_body)
     elif (action == action_index):
         index_doc(index_skill_name, type_skill, json_body)
         index_doc(index_worth_name, type_worth, worth_body)
@@ -132,8 +144,14 @@ def rebuild_meeting(action, json_value):
         json_value['pkId'] = 'Meeting-' + json_value['pkId']
         delete_doc(index_worth_name, type_worth, json_value)
     elif (action == action_update):
-        update_doc(index_meeting_name, type_meeting, json_body)
-        update_doc(index_worth_name, type_worth, worth_json)
+        print (json_value['deleted'])
+        if(json_value['deleted']):
+            delete_doc(index_meeting_name, type_meeting, json_value)
+            json_value['pkId'] = 'Meeting-' + json_value['pkId']
+            delete_doc(index_worth_name, type_worth, json_value)
+        else:
+            update_doc(index_meeting_name, type_meeting, json_body)
+            update_doc(index_worth_name, type_worth, worth_json)
     elif (action == action_index):
         index_doc(index_meeting_name, type_meeting, json_body)
         index_doc(index_worth_name, type_worth, worth_json)
@@ -154,10 +172,42 @@ def rebuild_wish(action, json_value):
         json_value['pkId'] = 'Wish-' + json_value['pkId']
         delete_doc(index_worth_name, type_worth, json_value)
     elif (action == action_update):
-        update_doc(index_wish_name, type_wish, json_body)
-        update_doc(index_worth_name, type_worth, worth_body)
+        if(json_value['deleted']):
+            delete_doc(index_wish_name, type_wish, json_value)
+            json_value['pkId'] = 'Wish-' + json_value['pkId']
+            delete_doc(index_worth_name, type_worth, json_value)
+        else:
+            update_doc(index_wish_name, type_wish, json_body)
+            update_doc(index_worth_name, type_worth, worth_body)
     elif (action == action_index):
         index_doc(index_wish_name, type_wish, json_body)
+        index_doc(index_worth_name, type_worth, worth_body)
+    else:
+        pass
+
+
+def rebuild_match_body(json_value):
+    id = json_value['pkId']
+    json_body, worth_body = match_rebuild(id, True)
+    return json_body, worth_body
+
+
+def rebuild_match(action, json_value):
+    json_body, worth_body = rebuild_match_body(json_value)
+    if (action == action_delete):
+        delete_doc(index_match_name, type_match, json_value)
+        json_value['pkId'] = 'Match-' + json_value['pkId']
+        delete_doc(index_worth_name, type_worth, json_value)
+    elif (action == action_update):
+        if(json_value['deleted']):
+            delete_doc(index_match_name, type_match, json_value)
+            json_value['pkId'] = 'Wish-' + json_value['pkId']
+            delete_doc(index_worth_name, type_worth, json_value)
+        else:
+            update_doc(index_match_name, type_match, json_body)
+            update_doc(index_worth_name, type_worth, worth_body)
+    elif (action == action_index):
+        index_doc(index_match_name, type_match, json_body)
         index_doc(index_worth_name, type_worth, worth_body)
     else:
         pass
@@ -172,6 +222,8 @@ def rebuild(json_key, json_value):
         rebuild_meeting(json_key['eventType'], json_value)
     elif (re.match('^wish.*', json_key[key_table_name], 0)):
         rebuild_wish(json_key['eventType'], json_value)
+    elif (re.match('^match.*', json_key[key_table_name], 0)):
+        rebuild_match(json_key['eventType'], json_value)
     else:
         #增加其他表格
         pass
@@ -180,17 +232,14 @@ def rebuild(json_key, json_value):
 def index_all_skill(conn_db):
     m_sql = 'SELECT s.id from skill as s ' \
             'WHERE s.deleted = 0'
-
     cur = conn_db.cursor()
     count = cur.execute(m_sql)
     results = cur.fetchmany(count)
-
     for result in results:
         skillId = result[0]
         json_body, worth_body = skill_rebuild(skillId, False)
         index_doc(index_skill_name, type_skill, json_body)
         index_doc(index_worth_name, type_worth, worth_body)
-
 
 
 def index_all_demand(conn_db):
@@ -209,11 +258,9 @@ def index_all_demand(conn_db):
 def index_all_meeting(conn_db):
     m_sql = 'SELECT m.id from meeting as m ' \
             'WHERE m.deleted = 0'
-
     cur = conn_db.cursor()
     count = cur.execute(m_sql)
     results = cur.fetchmany(count)
-
     for result in results:
         meetingId = result[0]
         json_body, worth_body = meeting_rebuild(meetingId, False)
@@ -223,15 +270,25 @@ def index_all_meeting(conn_db):
 def index_all_wish(conn_db):
     m_sql = 'SELECT m.id from wish as m ' \
             'WHERE m.deleted = 0'
-
     cur = conn_db.cursor()
     count = cur.execute(m_sql)
     results = cur.fetchmany(count)
-
     for result in results:
         wishId = result[0]
         json_body, worth_body = wish_rebuild(wishId, False)
         index_doc(index_wish_name, type_wish, json_body)
+        index_doc(index_worth_name, type_worth, worth_body)
+
+def index_all_match(conn_db):
+    demand_sql = 'select d.id from match_event as d ' \
+                 'WHERE d.is_approved = 1'
+    cur = conn_db.cursor()
+    count = cur.execute(demand_sql)
+    results = cur.fetchmany(count)
+    for result in results:
+        demandId = result[0]
+        json_body, worth_body = match_rebuild(demandId, False)
+        index_doc(index_match_name, type_match, json_body)
         index_doc(index_worth_name, type_worth, worth_body)
 
 conn_db = es_db.get_mysql_connector('netx')  # 上线
@@ -239,6 +296,7 @@ index_all_demand(conn_db)
 index_all_meeting(conn_db)
 index_all_skill(conn_db)
 index_all_wish(conn_db)
+index_all_match(conn_db)
 conn_db.close()
 log.log('index all indies succeed!!!!!!')
 
@@ -255,7 +313,7 @@ class KafkaMessage:
         return self.queue.empty()
 
 class MessageProducer(threading.Thread):
-    def __init__(self,kafka_consumer,condition,goods,sleeptime = 0.5):#sleeptime=0.5
+    def __init__(self,kafka_consumer,condition,goods,sleeptime = 0.2):#sleeptime=0.5
         threading.Thread.__init__(self)
         self.cond = condition
         self.goods = goods
@@ -276,7 +334,8 @@ class MessageProducer(threading.Thread):
             i += 1
             now = time.time()
             real_time = now-before
-            if(i == 5 or real_time > 5):
+            # 1秒内的所部信息
+            if(i == 6 or real_time > 1.2):
                 i = 0
                 before = now
                 # 唤醒其他线程
@@ -284,6 +343,7 @@ class MessageProducer(threading.Thread):
                 cond.wait()
                 time.sleep(self.sleeptime)
             # 释放信号
+            cond.notifyAll()
             cond.release()
 
 

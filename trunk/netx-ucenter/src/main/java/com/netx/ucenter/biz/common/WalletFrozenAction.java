@@ -178,6 +178,81 @@ public class WalletFrozenAction{
     }
 
     /**
+     * 解除冻结
+     * @param requestDto
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public boolean matchTicketRepeal(FrozenOperationRequestDto requestDto,String[] hostIds,String ownUserId){
+        List<CommonWalletFrozen> frozenList = walletFrozenService.getFrozenList(requestDto.getTypeId(),requestDto.getUserId(),0,requestDto.getType());
+        if (null == frozenList || frozenList.isEmpty()) {
+            logger.warn("未找到typeId为"+requestDto.getTypeId()+",userId为"+requestDto.getUserId()+"的冻结记录,操作失败");
+            return true;
+        }
+        boolean result = false;
+        //主办方收取%9，平台收取%1，剩余90%退还
+        for (CommonWalletFrozen frozen : frozenList) {
+            frozen.setDeleted(1);
+            //解冻零钱
+            if (frozen.getBak3().equals("0")) {
+                CommonWallet userWallet =walletAction.queryWalletByUserId(requestDto.getUserId());
+                Double temp=frozen.getAmount()*0.9;
+                Long userAmount=new Long(temp.longValue());
+                CommonBill bill = new CommonBill();
+                bill.setUserId(frozen.getUserId());
+                //返还退票用户
+                bill.setDescription(frozen.getDescription() + "冻结金额返还" + Money.CentToYuan(userAmount).getAmount()+"元，给用户");
+                bill.setTradeType(1);
+                bill.setAmount(userAmount);
+                bill.setPayChannel(3);
+                userWallet.setTotalAmount(userWallet.getTotalAmount()+userAmount);
+                if(!billService.insert(bill)) {
+                    //添加退款交易流水
+                    throw new RuntimeException("添加交易流水失败。");
+                }
+                commonServiceProvider.getWalletService().updateById(userWallet);//更新用户钱包
+                double hostMultiple=0.09/hostIds.length;
+                Double temp2=frozen.getAmount()*hostMultiple;
+                Long matchHostAmount=new Long(temp2.longValue());
+                //返还主办的
+                for (int i = 0; i < hostIds.length; i++) {
+                    CommonWallet matchHostWallet =walletAction.queryWalletByUserId(hostIds[i]);
+                    CommonBill hostBill = new CommonBill();
+                    hostBill.setDescription(frozen.getDescription() + "冻结金额返还" + Money.CentToYuan(matchHostAmount).getAmount()+"元，给主办单位");
+                    hostBill.setAmount(matchHostAmount);
+                    hostBill.setTradeType(1);
+                    hostBill.setUserId(hostIds[i]);
+                    hostBill.setPayChannel(3);
+                    matchHostWallet.setTotalAmount(userWallet.getTotalAmount()+matchHostAmount);
+                    if(!billService.insert(hostBill)) {
+                        //添加退款交易流水
+                        throw new RuntimeException("添加交易流水失败。");
+                    }
+                    commonServiceProvider.getWalletService().updateById(matchHostWallet);//更新用户钱包
+                }
+                /**
+                 * 给平台
+                 */
+                Double temp3=frozen.getAmount()*0.01;
+                Long matchOwnAmount=new Long(temp3.longValue());
+                CommonWallet matchOwnWallet =walletAction.queryWalletByUserId(ownUserId);
+                CommonBill ownBill = new CommonBill();
+                ownBill.setDescription(frozen.getDescription() + "冻结金额返还" + Money.CentToYuan(matchOwnAmount).getAmount()+"元，给主平台");
+                ownBill.setAmount(matchOwnAmount);
+                ownBill.setTradeType(1);
+                ownBill.setUserId(ownUserId);
+                ownBill.setPayChannel(3);
+                matchOwnWallet.setTotalAmount(userWallet.getTotalAmount()+matchOwnAmount);
+                result = billService.insert(ownBill);
+                commonServiceProvider.getWalletService().updateById(matchOwnWallet);//更新用户钱包
+                walletFrozenService.updateById(frozen); //更新钱包解冻
+            }
+        }
+        return result;
+    }
+
+
+    /**
      * 转账
      * @param requestDto
      * @return
@@ -331,12 +406,10 @@ public class WalletFrozenAction{
         }else{
             return true;
         }
-
         //更新资讯押金金额
         Article al=new Article();
         al.setId(requestDto.getTypeId());
         al.setAmount(0l);
-
         bill.setUserId(requestDto.getUserId());
         bill.setDescription("撤销押金返还" + new BigDecimal(Money.getMoneyString(amount)));
         bill.setTradeType(1);

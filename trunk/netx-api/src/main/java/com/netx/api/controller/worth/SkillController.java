@@ -13,7 +13,6 @@ import com.netx.common.wz.dto.common.CommonCheckDto;
 import com.netx.fuse.biz.worth.SkillFuseAction;
 import com.netx.ucenter.biz.router.ScoreAction;
 import com.netx.ucenter.biz.user.UserAction;
-import com.netx.ucenter.model.user.User;
 import com.netx.utils.DistrictUtil;
 import com.netx.utils.cache.RedisCache;
 import com.netx.utils.json.ApiCode;
@@ -255,7 +254,7 @@ public class SkillController extends BaseController {
             }
             try {
                 boolean success = skillAction.publishCancelOrder(id, userId);
-                //TODO 扣除发布者的信用值，如果需要托管费的退还给入选者
+                // 扣除发布者的信用值，如果需要托管费的退还给入选者
                 SkillOrder skillOrder = worthServiceprovider.getSkillOrderService().selectById(id);
                 SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(skillOrder.getSkillRegisterId());
                 //扣除信用
@@ -457,9 +456,7 @@ public class SkillController extends BaseController {
                             //托管资金转给发布者，预约者扣除信用值
                             settlementAction.settlementAmountRightNow("发布者到场，预约者缺席，立即结算报酬", "SkillOrder", skillOrder.getId(), skill.getUserId(), Money.CentToYuan(skillOrder.getAmount()).getAmount());
                             settlementAction.settlementCredit("SkillOrder", skillOrder.getId(), skillRegister.getUserId(), -2);//信用分-2
-                            User user = userAction.getUserService().selectById(userId);
-                            user.setCredit(user.getCredit() - 2);
-                            user.updateById();
+                            skillFuseAction.updateUserCredit(skillRegister.getUserId(),-2);
                             logger.info("扣除入选者信用值2分，托管金归还给发布者");
                             return JsonResult.fail("超过30分钟未验证验证码，扣除预约者信用值2分，托管资金归发布者");
                         }

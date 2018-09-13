@@ -202,15 +202,7 @@ public class SkillFuseAction extends FuseBaseAction {
         //确认细节
 //        String skillRegisterId = (String) map.get("skillRegister");
 //        skillRegister = worthServiceprovider.getSkillRegisterService().selectById(skillRegisterId);
-        //托管费用
-        Boolean flag = true;
-//        if(skillRegister!=null) {
-//             flag = registerDeposit(skillRegister.getId(), skillRegister.getUserId(), new BigDecimal(skillRegister.getBail()), skillRegister.getPayWay());
-//        }
-        if (flag == true) {
-            wzCommonImHistoryAction.add(skillRegisterDto.getUserId(), skill.getUserId(),
-                    "您的技能\""+skill.getSkill()+"\"正在被" + getNickNameByuserId(skillRegisterDto.getUserId()) + "预约，是否接受？", skill.getId(), MessageTypeEnum.ACTIVITY_TYPE, PushMessageDocTypeEnum.WZ_SKILLDETAIL, null);
-        }
+
         if (map.size() > 0) {
             //修改预约总数
             skill.setRegisterCount(skill.getRegisterCount() + 1);
@@ -219,6 +211,8 @@ public class SkillFuseAction extends FuseBaseAction {
             String skillRegisterId = map.get("skillRegister").toString();
             Date startAt = (Date) map.get("startAt");
             jobFuseAction.addJob(JobEnum.SKILL_CHECK_REGISTER_JOB, skillRegisterId, skillRegisterId, "技能发布者接受预约超时", startAt, AuthorEmailEnum.SHI_JIE);
+            wzCommonImHistoryAction.add(skillRegisterDto.getUserId(), skill.getUserId(),
+                    "您的技能\""+skill.getSkill()+"\"正在被" + getNickNameByuserId(skillRegisterDto.getUserId()) + "预约，是否接受？", skill.getId(), MessageTypeEnum.ACTIVITY_TYPE, PushMessageDocTypeEnum.WZ_SKILLDETAIL, null);
             map.remove("startAt");
 
         }
@@ -264,14 +258,7 @@ public class SkillFuseAction extends FuseBaseAction {
             return false;
         //通知发布者
         wzCommonImHistoryAction.add("999",skill.getUserId(),"\""+getNickNameByuserId(skillRegister.getUserId())+"\"已托管\""+skill.getSkill()+"\"技能的费用，请在技能预约开始前启动预约！",skill.getId(),MessageTypeEnum.ACTIVITY_TYPE,PushMessageDocTypeEnum.WZ_SKILLDETAIL,null);
-//        SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(skillRegisterId);
-        //TODO
-        //	success = quartzService.checkSkillRegisterAccept(skillRegister.getStartAt().getTime(), skillRegisterId, bail,
-        //	skillRegister.getUserId());
-//        if (!success) {
-//            logger.error("创建“未接受或预约者设定的时间开始后，发布者均未响应，则预约失败，托管费用解冻并退回给预约者”定时任务失败");
-//            throw new RuntimeException();
-//        }
+
 
         return success;
     }
@@ -440,13 +427,7 @@ public class SkillFuseAction extends FuseBaseAction {
         if(!validationStatus && !skill.getObj().equals(2)){
             throw new RuntimeException("你与预约距离超出100米，不能启动预约");
         }
-//            if (!skillRegister.getPay()) {
-//                throw new RuntimeException("待预约者支付完成后才可启动预约");
-//            } else {
-//                jobFuseAction.addJob(JobEnum.SKILL_CHECK_SUCCESS_JOB, orderId, orderId, "定时验证码、距离是否通过", new Date(new Date().getTime()+30*6000), AuthorEmailEnum.DAI_HO);
         return skillOrderAction.publishGeneratCode(reId, orderId);
-//            }
-
     }
 
     /* 预约者取消预约 **/
@@ -549,7 +530,6 @@ public class SkillFuseAction extends FuseBaseAction {
     /* 发布者拒绝预约者的退款申请 */
     public boolean publishRejectRefund(String refundId, String userId) {
         Refund fundId= worthServiceprovider.getRefundService().getByUserId(refundId);
-//		SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().getRegListList(fundId.getRelatableId());//！！！！？？有毒-.-，传registerid,当用户id来查
         SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(fundId.getRelatableId());
         Skill skill = worthServiceprovider.getSkillService().selectById(skillRegister.getSkillId());
         int count = worthServiceprovider.getSkillService().getCountByUserIdAndSkillId(skillRegister.getSkillId(), userId);
@@ -571,7 +551,6 @@ public class SkillFuseAction extends FuseBaseAction {
         if(fundId == null){
             throw new RuntimeException("该退款记录不存在");
         }
-//        SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().getRegListList(fundId.getRelatableId());//！！！！？？有毒-.-，传registerid,当用户id来查
         SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(fundId.getRelatableId());
         SkillOrder skillOrder = worthServiceprovider.getSkillOrderService().selectByRegisterId(skillRegister.getId());
         Skill skill = worthServiceprovider.getSkillService().selectById(skillRegister.getSkillId());
@@ -589,7 +568,6 @@ public class SkillFuseAction extends FuseBaseAction {
         BillAddRequestDto billAddRequestDto = new BillAddRequestDto();
         // 获取平台的收取的手续费比例
         BigDecimal sharedFee = getSharedFee();
-//        billAddRequestDto.setAmount(BigDecimal.valueOf((refund.getAmount() / 100)).multiply(BigDecimal.ONE.subtract(sharedFee)));
         billAddRequestDto.setAmount(Money.CentToYuan(refund.getAmount()).getAmount().multiply(BigDecimal.ONE.subtract(sharedFee)));
 
         billAddRequestDto.setDescription("退回给预约者的费用");
@@ -603,7 +581,6 @@ public class SkillFuseAction extends FuseBaseAction {
         //判断是否全额退款，为0时全额退款，不需要插入数据库
         if(fundId.getBail()!= 0) {
             billAddRequestDto.setDescription("支付给发布者的费用");
-//            billAddRequestDto.setAmount(BigDecimal.valueOf(refund.getBail() / 100));
             billAddRequestDto.setAmount(Money.CentToYuan(refund.getBail()).getAmount());
             billAddRequestDto.setPayChannel(3);
             billAddRequestDto.setType(1);
@@ -626,7 +603,6 @@ public class SkillFuseAction extends FuseBaseAction {
 
     /* 是否评价 **/
     public void checkEvaluate(String skillOrderId) {
-//        skillOrderFuseAction.checkEvaluate(skillOrderId);
         skillOrderFuseAction.checkComment2Skill(skillOrderId);
     }
 
@@ -656,6 +632,7 @@ public class SkillFuseAction extends FuseBaseAction {
             }
             if (skillOrder != null) {
                 if (skillOrder.getStatus() == 2 || skillOrder.getStatus() == 4) {
+                    //判断是否已经存在
                     if (!failed.contains(getMergeCompleted(skill, skillRegister, userSynopsisData, skillOrder, lon, lat))) {
                         failed.add(getMergeCompleted(skill, skillRegister, userSynopsisData, skillOrder, lon, lat));
                     }
@@ -892,13 +869,12 @@ public class SkillFuseAction extends FuseBaseAction {
         SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(skillOrder.getSkillRegisterId());
         Integer status = skillOrder.getStatus();
         if (status.equals(SkillOrderStatus.INIT.status) || status.equals(SkillOrderStatus.CANCEL.status)) {
-            //TODO 扣除信用值
-            Skill skill = skillAction.selectById(skillRegister.getSkillId());
-            User user = userAction.getUserService().selectById(skill.getUserId());
-            user.setCredit(user.getCredit() - 5);
-            boolean b = user.updateById();
+            // 扣除信用值
+            Skill skill = skillAction.selectById(skillRegister.getSkillId());;
+            boolean b = updateUserCredit(skill.getUserId(), -5);
             if (b)
                 settlementAction.settlementCredit("Skill0Order", skillOrderId, skill.getUserId(), -5);//只增加记录，不扣除积分
+            //以下有问题，不触发
             Boolean removeJob = jobFuseAction.removeJob(JobEnum.SKILL_CHECK_ORDER_JOB, skillOrderId, skillOrderId, "定时取消预约");
             if (removeJob == null)
                 removeJob = true;
@@ -918,16 +894,6 @@ public class SkillFuseAction extends FuseBaseAction {
         boolean success = false;
         SkillRegister skillRegister = worthServiceprovider.getSkillRegisterService().selectById(skillRegisterId);
         Skill skill = worthServiceprovider.getSkillService().selectById(skillRegister.getSkillId());
-
-        //public Boolean removeJob(JobEnum jobEnum,String typeId,String typeName,String param){
-        //remove有时候返回false不就没添加定时器上去了么，所以注释掉removejob部分
-//        Boolean removeJob = jobFuseAction.removeJob(JobEnum.SKILL_CHECK_REGISTER_JOB, skillDingDto.getUserId(), skillDingDto.getUserId(), "技能发布者接受预约超时");
-//        if (removeJob == null)
-//            removeJob = true;
-//        if (removeJob) {
-//            Boolean flag = jobFuseAction.addJob(JobEnum.SKILL_CHECK_REGISTER_JOB, skillDingDto, skillDingDto.getUserId(),
-//                    "技能发布者接受预约超时", new Date(skillRegister.getStartAt().getTime() + 24l * 3600 * 1000), AuthorEmailEnum.DAI_HO);
-//            if (flag == true) {
         SkillOrder skillOrder = worthServiceprovider.getSkillOrderService().selectByRegisterId(skillRegister.getId());
         if (skillOrder == null) {
             //修改预约表的状态为已拒绝2，之前为已过期3
@@ -938,16 +904,7 @@ public class SkillFuseAction extends FuseBaseAction {
             if (!success) {
                 throw new RuntimeException("设置已拒绝失败");
             }
-
-            //因为要等发布者接受才托管预约费用，所以不需要释放预约费用
-//                    success = settlementAction.settlementAmountRightNow("技能发布者接受预约超时，释放预约费用", "SkillRegister", skillDingDto.getSkillRegisterId(),
-//                            skillRegister.getUserId(), skillDingDto.getBail());
-//                    if (!success) {
-//                        throw new RuntimeException("立即结算失败");
-//                    }
         }
-//            }
-//        }
         return success;
     }
 
@@ -962,14 +919,12 @@ public class SkillFuseAction extends FuseBaseAction {
         if(skillRegister == null){
             throw new RuntimeException("该SkillRegisterId不存在");
         }
-//        boolean success = settlementAction.settlementAmountRightNow("技能发布者取消技能单，释放预约费用", "SkillRegister", skillDingDto.getSkillRegisterId(), skillRegister.getUserId(), skillDingDto.getBail());
-//        boolean success = returnOrGiveCost(skillRegister, "repay");
         FrozenOperationRequestDto requestDto = new FrozenOperationRequestDto();
         requestDto.setTypeId(skillRegister.getId());
         requestDto.setUserId(skillRegister.getUserId());
         requestDto.setType(FrozenTypeEnum.FTZ_SKILL);
         if(!walletFrozenAction.repeal(requestDto)){
-            throw new RuntimeException("回退失败");
+            throw new RuntimeException("技能发布者取消技能单，托管费用回退失败");
         }
 
         settlementAction.settlementAmountRightNow("技能发布者取消技能单，释放预约费用", "SkillRegister", skillDingDto.getSkillRegisterId(), skillRegister.getUserId(), skillDingDto.getBail());
@@ -994,11 +949,8 @@ public class SkillFuseAction extends FuseBaseAction {
         }
         try {
             Skill skill = worthServiceprovider.getSkillService().selectById(skillRegister.getSkillId());
-//            SkillRegister skillRe = worthServiceprovider.getSkillRegisterService().getReByUserIdAndSkillId(skillRegisterId, skill.getId());
             success = true;
             skillRegister.setStatus(2);
-//            skillRegister.setDeleted(1);
-//            skillRe.setStatus(2);
             worthServiceprovider.getSkillRegisterService().updateById(skillRegister);
             //通知入选者
             wzCommonImHistoryAction.add(skill.getUserId(),skillRegister.getUserId(),"您的\""+skill.getSkill()+"\"技能预约已被拒绝！",skill.getId(),MessageTypeEnum.ACTIVITY_TYPE,PushMessageDocTypeEnum.WZ_SKILLDETAIL,null);
@@ -1044,22 +996,13 @@ public class SkillFuseAction extends FuseBaseAction {
             return;
         }
         boolean orderSuccess = skillRegister.getValidation() && skillRegister.getValidationStatus() && skillOrder.getValidationStatus();
-        //remove??
-//        Boolean removeJob = jobFuseAction.removeJob(JobEnum.SKILL_CHECK_SUCCESS_JOB, skillOrderId, skillOrderId, "定时验证码、距离是否通过");
-//        if (removeJob == null)
-//            removeJob = true;
-//        if (removeJob) {
-        //add??
-//            Boolean flag = jobFuseAction.addJob(JobEnum.SKILL_CHECK_SUCCESS_JOB, skillOrderId, skillOrderId, "定时验证码、距离是否通过", new Date(skillRegister.getStartAt().getTime() + 24l * 3600 * 1000), AuthorEmailEnum.DAI_HO);
         if (orderSuccess) {
             success(skillOrder);
         } else {
-//                if (flag == true) {
             fail(skillOrder);   //预约失败
             failSkillRegisterStatus(skillRegister);//预约单过期
             Skill skill = skillAction.selectById(skillRegister.getSkillId());
             if (skillOrder.getValidationStatus() && !skillRegister.getValidationStatus()) {
-//                Boolean succcess = returnOrGiveCost(skillRegister, "pay");
                 FrozenOperationRequestDto requestDto = new FrozenOperationRequestDto();
                 requestDto.setTypeId(skillRegister.getId());
                 requestDto.setUserId(skillRegister.getUserId());
@@ -1080,7 +1023,6 @@ public class SkillFuseAction extends FuseBaseAction {
             }
             if (!skillOrder.getValidationStatus() && skillRegister.getValidationStatus()) {
                 if (skillRegister.getBail().doubleValue() > 0) {
-//                    Boolean success = returnOrGiveCost(skillRegister, "repay");
                     FrozenOperationRequestDto requestDto = new FrozenOperationRequestDto();
                     requestDto.setTypeId(skillRegister.getId());
                     requestDto.setUserId(skillRegister.getUserId());
@@ -1101,9 +1043,7 @@ public class SkillFuseAction extends FuseBaseAction {
                 updateUserCredit(skillRegister.getUserId(), -2);//扣除入选者信用分
                 settlementAction.settlementCredit("SkillOrder", skillOrderId, skillRegister.getUserId(), -2);//信用分-2
             }
-//                }
         }
-//        }
     }
 
     /**
@@ -1153,7 +1093,6 @@ public class SkillFuseAction extends FuseBaseAction {
             logger.info("未启动预约");
             fail(skillOrder);
             failSkillRegisterStatus(skillRegister);
-//            Boolean success = returnOrGiveCost(skillRegister, "repay");
             FrozenOperationRequestDto requestDto = new FrozenOperationRequestDto();
             requestDto.setTypeId(skillRegister.getId());
             requestDto.setUserId(skillRegister.getUserId());
@@ -1167,7 +1106,6 @@ public class SkillFuseAction extends FuseBaseAction {
             logger.info("技能发布者在预约时间开始后尚未启动预约");
             updateUserCredit(skill.getUserId(), -5);//扣除发布者信用分
             settlementAction.settlementCredit("SkillOrder", skillOrder.getId(), skill.getUserId(), -5);//信用分-5
-//            settlementFuseAction.start();
             //系统推送信息给发布者和入选者
             wzCommonImHistoryAction.add("999",skill.getUserId(),"您超时尚未启动\""+skill.getSkill()+"\"技能预约，该预约已失效！",
                     skill.getId(),MessageTypeEnum.ACTIVITY_TYPE,PushMessageDocTypeEnum.WZ_SKILLDETAIL,null);
@@ -1522,7 +1460,12 @@ public class SkillFuseAction extends FuseBaseAction {
                 skill.getId(), MessageTypeEnum.ACTIVITY_TYPE, PushMessageDocTypeEnum.WZ_SKILLDETAIL, null);
         return success = add && add1;
     }
-    //定时任务： 预约者发起退款申请后，36小时后发布者为处理，自动处理
+
+    /**
+     * 定时任务： 预约者发起退款申请后，36小时后发布者为处理，自动处理
+     * @param json 包含退款id和申请人id  eg: {"userId":"c63e63eae6154f46a319b125401baa7b","refundId":"978522f8af1e4ec3b5f1aa565ae07382"}
+     * @return
+     */
     @Transactional
     public Boolean publishTimeoutNotHandleRefund(String json){
         boolean succ = true;
@@ -1545,7 +1488,6 @@ public class SkillFuseAction extends FuseBaseAction {
                     throw new RuntimeException("修改退款记录状态失败");
                 }
                 success(skillOrder);
-//                Refund refund = worthServiceprovider.getRefundService().selectById(refundId);
                 BillAddRequestDto billAddRequestDto = new BillAddRequestDto();
                 // 获取平台的收取的手续费比例
                 BigDecimal sharedFee = getSharedFee();

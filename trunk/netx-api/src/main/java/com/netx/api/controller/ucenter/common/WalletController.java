@@ -261,11 +261,8 @@ public class WalletController extends BaseController{
             BigDecimal billCount = commonBill.add ( requestDto.getAmount ().multiply ( BigDecimal.valueOf ( 100 ) ) );
             BigDecimal count = new BigDecimal ( 200000 );
             if (billCount.compareTo ( count ) > 0) {
-                throw new RuntimeException ();
+                return JsonResult.fail ( "今日提现金额已达或与此次提现金额相加超出2000元,今日不能再提现." );
             }
-        }catch (RuntimeException ex) {
-            //ex.printStackTrace ();
-            return JsonResult.fail ( "今日提现金额已达或与此次提现金额相加超出2000元,今日不能再提现." );
         }catch (Exception e){
             return JsonResult.fail("提现异常");
         }

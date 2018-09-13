@@ -779,9 +779,10 @@ public class DemandFuseAction extends FuseBaseAction {
             //报酬
             //获取入选人的数量
             int count = worthServiceprovider.getDemandOrderService ().getDemandOrderCountByDemandId ( demand.getId () );
-            String wage = dto.getWage ()+"";
+            BigDecimal orderCount = new BigDecimal ( count );
+            BigDecimal wage = dto.getWage ();
             if (!dto.getEachWage ()) {
-                wage = Money.getMoneyString ( (dto.getWage ().divide ( new BigDecimal ( count ) )).longValue () );
+                wage = (wage.divide (orderCount));
             }
             //平台给入选者的推送
             for (int i = 0; i < demandRegisterList.size (); i++) {
@@ -1258,9 +1259,10 @@ public class DemandFuseAction extends FuseBaseAction {
             demandOrder = worthServiceprovider.getDemandOrderService ().selectById ( demandRegister.getDemandOrderId () );
         }
         Demand demand = demandAction.selectById ( demandRegister.getDemandId () );
-        //判断是否是发布者
+        //判断是否是发布者------呃，是判断该需求是否存在吧
         if (demand == null) {
-            throw new RuntimeException ( "预约需求的发布者不存在" );
+//            throw new RuntimeException ( "预约需求的发布者不存在" );
+            throw new RuntimeException ( "该需求不存在" );
         }
         UserSynopsisData userSynopsisData;
         try {
@@ -1314,6 +1316,15 @@ public class DemandFuseAction extends FuseBaseAction {
             demandDataRegisterDetailDto.setWage ( Money.CentToYuan ( demandOrder.getWage () ).getAmount () );
             //处理金额
             demandDataRegisterDetailDto.setOrder_price ( Money.CentToYuan ( demandOrder.getOrderPrice () ).getAmount () );
+            //当订单状态为6时返回退款信息
+            if(demandOrder.getStatus().equals(6)){
+                Integer isRefund = worthServiceprovider.getRefundService().getRefund(demandOrder.getId(), demand.getUserId());
+                if(isRefund != 0 ){
+                    Refund refund = worthServiceprovider.getRefundService().getRefundId(demandOrder.getId(), demand.getUserId());
+                    if(refund != null)
+                        demandDataRegisterDetailDto.setRefund(refund);
+                }
+            }
         }
         if (demand.getWage () != null) {
             demandDataRegisterDetailDto.setPublisterWage ( Money.CentToYuan ( demand.getWage () ).getAmount () );

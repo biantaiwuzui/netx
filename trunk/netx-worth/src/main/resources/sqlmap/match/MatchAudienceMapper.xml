@@ -11,6 +11,9 @@
 		<result column="user_id" property="userId" />
 		<result column="is_pay" property="isPay" />
 		<result column="is_attend" property="isAttend" />
+		<result column="is_quit" property="isQuit" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_time" property="createTime" />
 	</resultMap>
 
 	<select id="listAudienceByMatchId" resultType="com.netx.common.user.model.UserMacthInfo" parameterType="Map">

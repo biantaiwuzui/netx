@@ -59,7 +59,7 @@ def create_one_meeting(result):
     worth_json = {}
     worth_json['id']=result[0]
     worth_json['worthType']='Meeting'
-    worth_json['title']=result[1]
+    worth_json['title']=result[2]
     worth_json['detail']=result[16]
     worth_json['publishTime']=result[34]
     worth_json['endTime']=result[6]

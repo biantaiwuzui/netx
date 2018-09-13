@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,9 @@ public class MatchAudienceService extends ServiceImpl<MatchAudienceMapper, Match
         audience.setPay(dto.getPay());
         audience.setUserId(dto.getUserId());
         audience.setAttend(dto.getAttend());
+        audience.setQuit(false);
+        audience.setCreateTime(new Date());
+        audience.setUpdateTime(new Date());
         return insert(audience)?audience.getId():null;
     }
     /**
@@ -151,4 +155,16 @@ public class MatchAudienceService extends ServiceImpl<MatchAudienceMapper, Match
         return selectList(entityWrapper);
     }
 
+    /**
+     * 获取自己购买的门票
+     * @param id
+     * @param userId
+     * @return
+     */
+    public MatchAudience getAudienceIsPayById(String id,String userId){
+        EntityWrapper<MatchAudience> entityWrapper = new EntityWrapper<>();
+        entityWrapper.where("id = {0}", id)
+                .and("is_pay = 1").and("user_id = {0}",userId);
+        return selectOne(entityWrapper);
+    }
 }

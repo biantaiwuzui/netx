@@ -161,12 +161,16 @@ public class MatchReviewService extends ServiceImpl<MatchReviewMapper, MatchRevi
         EntityWrapper<MatchReview> matchReviewEntityWrapper = new EntityWrapper<>();
         matchReviewEntityWrapper.where("match_id = {0}", matchId)
                 .and("user_id = {0}", userId);
-        MatchReview matchReview = selectOne(matchReviewEntityWrapper);
-        if (matchReview == null) {
+        List<MatchReview> matchReviews = selectList(matchReviewEntityWrapper);
+        if (matchReviews == null) {
             throw new RuntimeException("你还不是比赛的受邀举办方");
         }
-        matchReview.setApprove(isPass);
-        return update(matchReview, matchReviewEntityWrapper);
+        for (MatchReview  matchReview:
+        matchReviews ) {
+            matchReview.setApprove(isPass);
+            updateById(matchReview);
+        }
+        return true;
     }
 
     /**

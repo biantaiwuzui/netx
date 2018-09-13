@@ -6,11 +6,11 @@ package com.netx.worth.enums;
 public enum MatchMemberKind {
     SPONSOR(0, "发起人"),
     HOST(1, "主持人"),
-    STAFF(2, "工作人员"),
-    AUDIT_PASS(3, "审核人员"),
+    STAFF(2, "其他工作人员"),
+    AUDIT_PASS(3, "会场管理员"),
     GUEST(4, "嘉宾"),
     RATER(5, "评委"),
-    OTHER(6, "场地管理人员");
+    OTHER(6, "其他人员");
 
     public Integer status;
     public String description;

@@ -367,6 +367,11 @@ public enum ApiCode {
         public String getMessage() {
                     return "商品已经伸请退款或退货";
                 }
+    },
+    NO_PASSWORD(12000) {
+        public String getMessage() {
+            return "第三方绑定没有设置密码，需要跳设置密码界面";
+        }
     };
     //
 

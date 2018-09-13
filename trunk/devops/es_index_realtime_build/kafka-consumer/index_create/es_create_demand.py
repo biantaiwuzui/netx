@@ -3,9 +3,8 @@
 
 
 from common.const import type_demand, index_demand_name
-from common.mysql_es_datatype import mysql_datetime, mysql_varchar, mysql_decimal, mysql_bigint, mysql_bit, mysql_int, \
-    mysql_tinyint
-from utils import es_db, log
+
+from utils import log
 
 
 def create_demand_index(conn_es):

@@ -371,7 +371,7 @@ u.nickname organizerName, (
     </select>
 
     <select id="selectAllMySimpleMatchEventList" resultType="com.netx.worth.vo.MatchEventSimpleVo" parameterType="Map">
-        SELECT
+        SELECT DISTINCT
             e.id matchId,
             e.title title,
             e.sub_title subTitle,

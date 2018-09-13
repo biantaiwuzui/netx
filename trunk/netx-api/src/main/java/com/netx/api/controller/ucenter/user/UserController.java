@@ -174,7 +174,7 @@ public class  UserController extends BaseController{
             if (user == null) {
                 return JsonResult.fail("登录失败！账号或密码错误");
             } else if (Strings.isNullOrEmpty(user.getPassword())) {
-                return JsonResult.fail("您还没设置密码，请使用手机或第三方登录之后，设置密码即可。");
+                return JsonResult.success().addResult("code",ApiCode.NO_PASSWORD.getValue());
             } else {
                 return loginRule(user,device);
             }

@@ -167,7 +167,7 @@ public class MatchParticipantService extends ServiceImpl<MatchParticipantMapper,
     public Integer getCountSpotBYGroupAndZoneId(String zoneId, String groupId,boolean isSpot) {
         EntityWrapper<MatchParticipant> matchParticipantEntityWrapper = new EntityWrapper<>();
         matchParticipantEntityWrapper.where("zone_id = {0}", zoneId)
-                .and("group_id = {0}", groupId).and("is_spot={0}",isSpot);
+                .and("group_id = {0}", groupId).and("is_spot={0}",isSpot).and("is_pay={0}",true);
         return selectCount(matchParticipantEntityWrapper);
     }
     /**

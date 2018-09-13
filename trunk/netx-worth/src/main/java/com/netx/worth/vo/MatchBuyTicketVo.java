@@ -17,6 +17,15 @@ public class MatchBuyTicketVo {
     private Date endTime;
     private Integer status;
     private BigDecimal free;
+    private Boolean isQuit;
+
+    public Boolean getQuit() {
+        return isQuit;
+    }
+
+    public void setQuit(Boolean quit) {
+        isQuit = quit;
+    }
 
     public BigDecimal getFree() {
         return free;

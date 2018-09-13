@@ -66,8 +66,8 @@ def add_user_location_to_json_body(result, json_body):
     return json_body
 
 
-def add_user_location_message(json_body, conn_db):
-    user_id = json_body['userId']
+def add_user_location_message(json_body, conn_db, user_id):
+    # user_id = json_body['userId']
     sql = 'select u.nickname, u.sex, u.birthday, u.mobile, u.score, u.credit, u.is_login+0,u.lv ,u.lon, u.lat from user as u where u.id  =  \'' + user_id + '\''
     cur = conn_db.cursor()
     count = cur.execute(sql)
@@ -77,6 +77,8 @@ def add_user_location_message(json_body, conn_db):
         json_body = add_user_location_to_json_body(result, json_body)
 
     return json_body
+
+
 
 
 def create_one_worth(result, worth_json):
@@ -119,3 +121,4 @@ def add_user_to_worth(json_body, conn_db, is_meeting, user_id):
         else:
             json_body = create_one_worth(result, json_body)
     return json_body
+

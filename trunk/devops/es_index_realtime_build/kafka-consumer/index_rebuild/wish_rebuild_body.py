@@ -88,8 +88,9 @@ def wish_rebuild(id, is_worth):
     if (wish_body == None):
         return None, None
 # 处理wish
+    user_id = wish_body['userId']
     # 第一步，注入用户信息
-    wish_user_body = add_user_location_message(wish_body, conn_db)
+    wish_user_body = add_user_location_message(wish_body, conn_db, user_id)
     # 第二步，注入信用信息
     wish_user_sum_body = add_credit_sum(wish_user_body, conn_db)
     #第三步，注入wish_suport

@@ -102,12 +102,13 @@
 			a.match_image_url url,
 			b.isAttend,
 			b.venue_ids venueIds,
-			b.free
+			b.free,
+			b.is_quit isQuit
 		FROM
 			match_event a
 		INNER JOIN (
 			SELECT
-				a.*, b.match_id matchId,b.id audienceId,b.is_attend isAttend
+				a.*, b.match_id matchId,b.id audienceId,b.is_attend isAttend,b.is_quit
 			FROM
 				match_ticket a
 			INNER JOIN (
@@ -118,6 +119,7 @@
 				WHERE
 					user_id = #{user_id}
 				AND match_id = #{match_id}
+				AND is_pay=1
 			) b ON a.id = b.match_ticket_id
 		) b ON a.id = b.matchId
 	</select>

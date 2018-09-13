@@ -22,16 +22,13 @@ import com.netx.searchengine.common.LastAscQuery;
 import com.netx.searchengine.model.MatchSearchResponse;
 import com.netx.searchengine.query.MatchSearchQuery;
 import com.netx.searchengine.service.MatchSearchService;
-import com.netx.shopping.biz.merchantcenter.MerchantAction;
 import com.netx.shopping.model.merchantcenter.Merchant;
 import com.netx.shopping.service.merchantcenter.MerchantService;
 import com.netx.ucenter.biz.common.WalletFrozenAction;
 import com.netx.ucenter.biz.common.WzCommonImHistoryAction;
 import com.netx.ucenter.biz.user.UserAction;
 import com.netx.ucenter.model.user.User;
-import com.netx.ucenter.service.common.WalletFrozenService;
 import com.netx.utils.cache.RedisCache;
-import com.netx.utils.format.DateFormatUtils;
 import com.netx.utils.randomCode.RandomUtil;
 import com.netx.worth.biz.match.MatchApplyAction;
 import com.netx.worth.biz.match.MatchCreateAction;
@@ -40,6 +37,7 @@ import com.netx.worth.enums.MatchOrganizerKind;
 import com.netx.worth.enums.MatchStatusCode;
 import com.netx.worth.model.*;
 import com.netx.worth.service.*;
+import com.netx.worth.util.NetWorthMatchResult;
 import com.netx.worth.vo.MatchEventSimpleVo;
 import com.netx.worth.vo.MatchIndexVo;
 import com.netx.worth.vo.MatchReviewVo;
@@ -130,7 +128,7 @@ public class MatchFuseAction {
         Map<String,String> map=new HashMap<>();
         if(StringUtils.isNoneBlank(payId)){
             //开启定时任务，未支付回滚
-            jobFuseAction.addJob(JobEnum.MATCH_BUY_TICKET_ROLLBACK_JOB,audienceId,matchTicketPlanPayDto.getMatchTicketId(),"购票超时回滚票数",new Date(buyTicketTime.getTime()+900000),AuthorEmailEnum.DIAN_QV);
+            jobFuseAction.addJob(JobEnum.MATCH_BUY_TICKET_ROLLBACK_JOB,matchTicketPlanPayDto.getMatchTicketId(),audienceId,"购票超时回滚票数",new Date(buyTicketTime.getTime()+900000),AuthorEmailEnum.DIAN_QV);
         }
         map.put("audienceId",audienceId);
         map.put("payId",payId);
@@ -226,7 +224,7 @@ public class MatchFuseAction {
             return false;
         }
         String toUserId=matchServiceProvider.getMatchEventService().getMatchEventByMatchId(matchTicketPayDto.getMatchId()).getInitiatorId();
-        String description="编号为"+userId+"的报名了编号为"+matchTicketPayDto.getMatchId()+"的比赛，花费"+matchTicketPayDto.getPayPrices()+"元";
+        String description="昵称为"+userAction.getUserInfoAndHeadImg(userId).getNickname()+"的报名了编号为"+matchServiceProvider.getMatchEventService().selectById(matchTicketPayDto.getMatchId()).getTitle()+"的比赛，花费"+matchTicketPayDto.getPayPrices()+"元";
         //将金额写入冻结库
         pay(userId,toUserId,matchTicketPayDto.getPayPrices(),matchTicketPayDto.getMatchTicketOrParticipantId(),description,matchTicketPayDto.getPayType());
         matchApplyAction.deleteApplyCodeByUserId(userId);
@@ -256,7 +254,7 @@ public class MatchFuseAction {
         if(matchAudience==null) {
             throw new RuntimeException("您不存在未支付的票");
         }
-        if(!jobFuseAction.removeJob(JobEnum.MATCH_BUY_TICKET_ROLLBACK_JOB,matchAudience.getMatchTicketId(),"购票超时回滚票数",matchTicketPayDto.getMatchTicketOrParticipantId())){
+        if(!jobFuseAction.removeJob(JobEnum.MATCH_BUY_TICKET_ROLLBACK_JOB,matchTicketPayDto.getMatchTicketOrParticipantId(),"购票超时回滚票数",matchAudience.getMatchTicketId())){
             throw new RuntimeException("移除购票回滚失败");
         }
         MatchAudienceDTO matchAudienceDTO=new MatchAudienceDTO();
@@ -267,7 +265,7 @@ public class MatchFuseAction {
             throw new RuntimeException("修改门票购买状态失败");
         }
         String toUserId=matchServiceProvider.getMatchEventService().getMatchEventByMatchId(matchTicketPayDto.getMatchId()).getInitiatorId();
-        String description="编号为"+userId+"的人购买了门票一张价值"+matchTicketPayDto.getPayPrices()+"的门票";
+        String description="昵称为"+userAction.getUserInfoAndHeadImg(userId).getNickname()+"的人购买了门票一张价值"+matchTicketPayDto.getPayPrices()+"的门票";
         //将金额写入冻结库
         pay(userId,toUserId,matchTicketPayDto.getPayPrices(),matchTicketPayDto.getMatchTicketOrParticipantId(),description,matchTicketPayDto.getPayType());
         return true;
@@ -704,7 +702,7 @@ public class MatchFuseAction {
         for (MatchAudience audience : paidAudiences) {
             FrozenOperationRequestDto frozenOperationRequestDto = new FrozenOperationRequestDto();
             frozenOperationRequestDto.setType(FrozenTypeEnum.FTZ_MATCH);
-            frozenOperationRequestDto.setTypeId(audience.getMatchTicketId());
+            frozenOperationRequestDto.setTypeId(audience.getId());
             frozenOperationRequestDto.setUserId(audience.getUserId());
             if (!walletFrozenAction.pay(frozenOperationRequestDto)) {
                 throw new RuntimeException("结算失败");
@@ -713,6 +711,57 @@ public class MatchFuseAction {
         return true;
     }
 
+    /**
+     * 退票操作
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public boolean refundFrozenMatchTicket(String audienceId,String userId,String matchId) {
+        MatchAudience matchAudience=matchServiceProvider.getMatchAudienceService().getAudienceIsPayById(audienceId,userId);
+        if(matchAudience==null) {
+            throw new RuntimeException("你还没有购买此种票，不能进行退票操作。");
+        }
+        FrozenOperationRequestDto frozenOperationRequestDto = new FrozenOperationRequestDto();
+        frozenOperationRequestDto.setType(FrozenTypeEnum.FTZ_MATCH);
+        frozenOperationRequestDto.setTypeId(matchAudience.getId());
+        frozenOperationRequestDto.setUserId(matchAudience.getUserId());
+        MatchTicket matchTicket=matchServiceProvider.getMatchTicketService().selectById(matchAudience.getMatchTicketId());
+        if(matchTicket==null) {
+            throw new RuntimeException("没有此类门票");
+        }
+        String[] ids=matchTicket.getVenueIds().split(",");
+        Date firstTime=matchServiceProvider.getMatchVenueService().getFirstStartTimeByVenueIds(ids);
+        Date nowTime=new Date();
+        long times=(firstTime.getTime()- nowTime.getTime());
+        Long interval = times  / (1000 * 60 * 60);
+        List<MatchReviewVo> matchReviewVoList=matchServiceProvider.getMatchReviewService().getMainReviewAcceptBYMatchId(matchId);
+        if(matchReviewVoList==null||matchReviewVoList.size()==0) {
+            throw new RuntimeException("获取比赛主办失败。");
+        }
+        String[] hostIds=new String[matchReviewVoList.size()];
+        //网值平台个人账户
+        String ownUserId="999";
+        if (interval > 12) {
+            if (!walletFrozenAction.repeal(frozenOperationRequestDto)) {
+                throw new RuntimeException("结算失败");
+            }
+        } else {
+            if (!walletFrozenAction.matchTicketRepeal(frozenOperationRequestDto,hostIds,ownUserId)) {
+                throw new RuntimeException("结算失败");
+            }
+        }
+        //将票数回滚
+        int oldLock=matchTicket.getOptimisticLocking();
+        int newLock=oldLock+1;
+        matchTicket.setNumber(matchTicket.getNumber()+1);
+        matchTicket.setOptimisticLocking(newLock);
+        if(!matchServiceProvider.getMatchTicketService().updateTicketById(matchTicket,oldLock) ) {
+            throw new RuntimeException("票数回滚失败");
+        }
+        matchAudience.setUpdateTime(new Date());
+        matchAudience.setQuit(true);
+        matchServiceProvider.getMatchAudienceService().updateById(matchAudience);
+        return true;
+    }
 
     public boolean startClearJob(String matchId) {
         boolean flag = false;
@@ -918,5 +967,70 @@ public class MatchFuseAction {
         matchIndexVo.setPublishTime(matchSearchResponse.getPublishTime());
         matchIndexVo.setWorthType(WorthTypeEnum.MATCH_TYPE.getName());
         return matchIndexVo;
+    }
+
+    /**
+     * 获取赛事的基本详情
+     *
+     * @param matchId
+     * @return
+     */
+    public Map getBaseMatchEvent(String matchId,String userId) {
+        Map<String, Object> map = new HashMap<>();
+        MatchEvent matchEvent = matchServiceProvider.getMatchEventService().getMatchEventByMatchId(matchId);
+        if (matchEvent == null) {
+            return null;
+        }
+        if (matchEvent.getMatchStatus() >= MatchStatusCode.AUDIT_PASS.status) {
+            if (!matchCreateAction.updateMatchSatus(matchEvent.getId())) {
+                throw new RuntimeException("更改比赛状态失败");
+            }
+        }
+        matchEvent = matchServiceProvider.getMatchEventService().getMatchEventByMatchId(matchId);
+        if (matchEvent == null) {
+            return null;
+        }
+        matchEvent.setMatchImageUrl(matchCreateAction.pictures(matchEvent.getMatchImageUrl()));
+        map.put("matchevent", matchEvent);
+        List<MatchReviewVo> matchReviewVoList = matchServiceProvider.getMatchReviewService().getMainReviewAcceptBYMatchId(matchId);
+        if (matchReviewVoList != null && matchReviewVoList.size() > 0) {
+            matchReviewVoList.get(0).setLogo(matchCreateAction.updateImages(matchReviewVoList.get(0).getLogo()));
+            List<String> tags = null;
+            if (StringUtils.isNoneBlank(matchReviewVoList.get(0).getMerchantId())) {
+                tags = matchServiceProvider.getMatchReviewService().getOneTags(matchReviewVoList.get(0).getMerchantId());
+            }
+            matchReviewVoList.get(0).setTags(tags);
+            map.put("mainOrganizer", matchReviewVoList.get(0));
+        }
+        /**
+         * 判断是否有门票
+         */
+        Date ticketEndDate = matchServiceProvider.getMatchTicketService().getEndTicketTimeByMatchId(matchId);
+        if (ticketEndDate != null) {
+            map.put("haveTicket", true);
+        } else {
+            map.put("haveTicket", false);
+        }
+        List<String> kindlList=new ArrayList<>();
+        List<MatchMember> matchMemberList=matchServiceProvider.getMatchMemberService().getNoAcceptMember(matchId,userId);
+        if(matchMemberList!=null) {
+            for (MatchMember matchMember:
+                    matchMemberList) {
+                kindlList.add(matchMember.getKind());
+            }
+        }
+        String mobile=userAction.queryUser(userId).getMobile();
+        List<MatchMember> matchMemberMobileList=matchServiceProvider.getMatchMemberService().getNoAcceptMemberByMobile(matchId,mobile);
+        if(matchMemberMobileList!=null) {
+            for (MatchMember matchMember:
+                    matchMemberMobileList) {
+                kindlList.add(matchMember.getKind());
+                matchMember.setUserId(userId);
+                matchMember.setUserCall(null);
+                matchServiceProvider.getMatchMemberService().updateById(matchMember);
+            }
+        }
+        map.put("kindList",kindlList);
+        return map;
     }
 }

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.Version;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -49,7 +50,36 @@ public class MatchAudience extends Model<MatchAudience> {
 	private Boolean isPay;
 	@TableField("is_attend")
 	private Boolean isAttend;
+	@TableField("is_quit")
+	private Boolean isQuit;
+	@TableField("create_time")
+	private Date createTime;
+	@TableField("update_time")
+	private Date updateTime;
 
+	public Boolean getQuit() {
+		return isQuit;
+	}
+
+	public void setQuit(Boolean quit) {
+		isQuit = quit;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
 	public String getId() {
 		return id;

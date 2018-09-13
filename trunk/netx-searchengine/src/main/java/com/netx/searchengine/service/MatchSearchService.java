@@ -1,5 +1,6 @@
 package com.netx.searchengine.service;
 
+import com.netx.searchengine.BaseSearchService;
 import com.netx.searchengine.NetxWorthSearchService;
 import com.netx.searchengine.common.LastAscQuery;
 import com.netx.searchengine.common.SearchField;
@@ -30,7 +31,7 @@ import java.util.Map;
  * Created by Yawn on 2018/9/5 0005.
  */
 @Service
-public class MatchSearchService extends NetxWorthSearchService {
+public class MatchSearchService extends BaseSearchService {
 
     private Logger logger = LoggerFactory.getLogger(MatchSearchService.class);
 

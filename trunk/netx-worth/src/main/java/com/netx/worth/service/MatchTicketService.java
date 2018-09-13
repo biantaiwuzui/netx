@@ -120,6 +120,17 @@ public class MatchTicketService extends ServiceImpl<MatchTicketMapper, MatchTick
     }
 
     /**
+     * 通过门票id更新乐观锁
+     * @param dto
+     * @return
+     */
+    public boolean updateTicketById(MatchTicket dto,Integer oldoptimisticLocking) {
+        EntityWrapper<MatchTicket> ticketEntityWrapper = new EntityWrapper<>();
+        ticketEntityWrapper.where("id = {0}", dto.getId())
+                .and("optimistic_locking={0}", oldoptimisticLocking);
+        return update(dto,ticketEntityWrapper);
+    }
+    /**
      * 获得默认的门票档次信息
      * @param matchId
      * @return
@@ -146,7 +157,7 @@ public class MatchTicketService extends ServiceImpl<MatchTicketMapper, MatchTick
      */
     public List<MatchTicket> getMatchTicketByZoneId(String zoneId) {
         EntityWrapper<MatchTicket> ticketEntityWrapper = new EntityWrapper<>();
-        ticketEntityWrapper.where("zone_id = {0} and is_defalut=0 and use_defalut=0", zoneId).orderBy("sort",true);
+        ticketEntityWrapper.where("zone_id = {0} and is_defalut=0", zoneId).orderBy("sort",true);
         return selectList(ticketEntityWrapper);
     }
     /**
@@ -156,7 +167,7 @@ public class MatchTicketService extends ServiceImpl<MatchTicketMapper, MatchTick
      */
     public List<MatchTicket> getAllMatchTicketByZoneIds(String[] zoneIds) {
         EntityWrapper<MatchTicket> ticketEntityWrapper = new EntityWrapper<>();
-        ticketEntityWrapper.in("zone_id", zoneIds).where(" is_defalut=0 and use_defalut=0");
+        ticketEntityWrapper.in("zone_id", zoneIds).where(" is_defalut=0");
         return selectList(ticketEntityWrapper);
     }
 

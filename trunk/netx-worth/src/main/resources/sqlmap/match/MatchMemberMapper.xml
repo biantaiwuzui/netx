@@ -61,6 +61,6 @@
 					AND is_accept=#{is_accept}
 				</if>
 			) members ON members.userId = users.id
-		) b ON a.user_id = b.id AND a.position=1 ORDER BY b.userNumber desc
+		) b ON a.user_id = b.id AND a.position=1 ORDER BY b.kind
 	</select>
 </mapper>
